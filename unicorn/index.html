@@ -8,64 +8,136 @@
 </head>
 <body>
   <main class="app-shell">
-    <div class="hero-layout">
-      <div class="hero-sidebar">
-        <section class="copy">
-          <p class="eyebrow">Browser-based Tamagotchi asset prototype</p>
-          <h1>Einhorn Tamagotchi</h1>
-          <p class="lede">
-            Ressourcen, Tageswechsel und Notfallrettung in einem modularen Einhorn-System.
-          </p>
-        </section>
+    <h1>Einhorn Tamagotchi</h1>
 
-        <section class="panel customization-panel" aria-label="Customizing">
-          <div class="panel-block">
-            <h2>Customizing</h2>
-            <div class="form-grid">
-              <label>
-                Body
-                <select id="bodyColorSelect">
-                  <option value="white">white</option>
-                  <option value="pink">pink</option>
-                  <option value="mint">mint</option>
-                </select>
-              </label>
-              <label>
-                Mane
-                <select id="maneStyleSelect">
-                  <option value="rainbow_01">rainbow_01</option>
-                  <option value="pastel_wave">pastel_wave</option>
-                  <option value="starry">starry</option>
-                </select>
-              </label>
-              <label>
-                Horn
-                <select id="hornTypeSelect">
-                  <option value="classic">classic</option>
-                  <option value="crystal">crystal</option>
-                  <option value="spiral">spiral</option>
-                </select>
-              </label>
-              <label>
-                Wings
-                <select id="wingsSelect">
-                  <option value="none">none</option>
-                  <option value="feather">feather</option>
-                  <option value="butterfly">butterfly</option>
-                </select>
-              </label>
+    <section id="dashboard-screen" class="panel dashboard-panel" aria-label="Dashboard">
+      <div class="panel-block dashboard-block">
+        <h2>Meine Einhörner</h2>
+        <div id="unicorn-list" class="unicorn-grid">
+          <!-- populated by dashboard -->
+          <button id="openCreationOverlay" class="unicorn-card create-card" type="button" aria-label="Neues Einhorn">
+            <div class="card-header">
+              <div class="card-name"><span class="status-indicator new-card"></span>Neues Einhorn</div>
             </div>
-          </div>
-        </section>
+            <div class="card-color-preview create-preview">
+              <span class="create-preview-icon">+</span>
+            </div>
+            <div class="card-stats">
+              <div class="stat-mini">
+                <span class="stat-mini-label">Erstelle ein neues Einhorn</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <span class="play-button new-card-button">Neues Einhorn</span>
+            </div>
+          </button>
+        </div>
       </div>
+    </section>
 
-      <div class="scene" aria-label="Einhorn Vorschau">
-        <div id="unicorn-stage" class="unicorn-stage"></div>
+    <div id="creationOverlay" class="creation-overlay is-hidden" aria-hidden="true">
+      <div class="overlay-backdrop" id="creationOverlayBackdrop"></div>
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <div>
+            <h2>Neues Einhorn erstellen</h2>
+            <p class="overlay-subtitle">Wähle die Werte aus und sieh die Live-Vorschau.</p>
+          </div>
+          <button type="button" id="closeCreationOverlay" class="close-overlay" aria-label="Overlay schließen">✕</button>
+        </div>
+        <div class="overlay-grid">
+          <div id="creation-stage" class="unicorn-stage preview-stage"></div>
+          <form class="creation-form-content" id="unicornCreationForm">
+            <label>
+              Name
+              <input type="text" id="unicornName" placeholder="Dein Einhorn Name" required />
+            </label>
+            <label>
+              Body
+              <select id="creationBodyColor">
+                <option value="white">white</option>
+                <option value="pink">pink</option>
+                <option value="mint">mint</option>
+              </select>
+            </label>
+            <label>
+              Mane
+              <select id="creationManeStyle">
+                <option value="rainbow_01">rainbow_01</option>
+                <option value="pastel_wave">pastel_wave</option>
+                <option value="starry">starry</option>
+              </select>
+            </label>
+            <label>
+              Horn
+              <select id="creationHornType">
+                <option value="classic">classic</option>
+                <option value="crystal">crystal</option>
+                <option value="spiral">spiral</option>
+              </select>
+            </label>
+            <label>
+              Wings
+              <select id="creationWings">
+                <option value="none">none</option>
+                <option value="feather">feather</option>
+                <option value="butterfly">butterfly</option>
+              </select>
+            </label>
+            <button type="submit" class="creation-submit">Einhorn erstellen</button>
+          </form>
+        </div>
       </div>
     </div>
 
-    <section class="panel game-panel" aria-label="Spielzustand">
-      <div class="panel-block status-block">
+    <section class="panel game-panel is-hidden" aria-label="Spielzustand">
+      <div class="panel-header">
+        <button type="button" id="backButton" class="back-button">← Dashboard</button>
+      </div>
+
+      <div class="game-grid">
+        <div class="game-play-area">
+          <div class="game-unicorn-title"><h2 id="playUnicornName">Dein Einhorn</h2></div>
+          <div id="unicorn-stage" class="unicorn-stage"></div>
+          <div class="panel-block actions-block">
+            <h2>Aktionen</h2>
+            <div class="button-row action-row" id="action-controls">
+              <button type="button" data-action="feed">Fuettern</button>
+              <button type="button" data-action="play">Spielen</button>
+              <button type="button" data-action="pet">Streicheln</button>
+              <button type="button" data-action="clean">Ausmisten</button>
+              <button type="button" data-action="fly">Fliegen</button>
+              <button type="button" data-action="sleep">Schlafen</button>
+              <button type="button" data-action="arzt">Arzt</button>
+            </div>
+            <details class="action-overlay" id="actionOverlay" aria-live="polite">
+              <summary class="action-overlay-summary">
+                <span class="action-overlay-title" id="actionOverlayTitle">Button-Effekt</span>
+                <span class="action-overlay-summary-hint">aufklappen</span>
+              </summary>
+              <ul class="action-overlay-list" id="actionOverlayBody">
+                <li>Bewege den Mauszeiger ueber eine Aktion oder fokussiere sie per Tastatur.</li>
+              </ul>
+            </details>
+            <details class="cheats-panel">
+              <summary class="action-overlay-summary">
+                <span class="action-overlay-title">Cheats</span>
+                <span class="action-overlay-summary-hint">debug</span>
+              </summary>
+              <div class="cheats-grid" id="cheat-controls">
+                <button type="button" data-cheat="coins-100">+100 Coins</button>
+                <button type="button" data-cheat="hunger-0">Hunger = 0</button>
+                <button type="button" data-cheat="hunger-100">Hunger = 100</button>
+                <button type="button" data-cheat="cleanliness-0">Sauberkeit = 0</button>
+                <button type="button" data-cheat="cleanliness-100">Sauberkeit = 100</button>
+                <button type="button" data-cheat="health-100">Gesundheit = 100</button>
+              </div>
+              <p class="hint cheats-hint">Nur lokal aktiv fuer Tests und Balancing.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="panel-block status-block">
         <div class="status-head">
           <h2>Status</h2>
           <div class="status-badges">
@@ -98,44 +170,6 @@
             <div id="healthValue" class="stat-value">0</div>
           </div>
         </div>
-      </div>
-
-      <div class="panel-block">
-        <h2>Aktionen</h2>
-          <div class="button-row action-row" id="action-controls">
-            <button type="button" data-action="feed">Fuettern</button>
-            <button type="button" data-action="play">Spielen</button>
-            <button type="button" data-action="pet">Streicheln</button>
-            <button type="button" data-action="clean">Ausmisten</button>
-            <button type="button" data-action="fly">Fliegen</button>
-            <button type="button" data-action="sleep">Schlafen</button>
-            <button type="button" data-action="arzt">Arzt</button>
-          </div>
-        <details class="action-overlay" id="actionOverlay" aria-live="polite">
-          <summary class="action-overlay-summary">
-            <span class="action-overlay-title" id="actionOverlayTitle">Button-Effekt</span>
-            <span class="action-overlay-summary-hint">aufklappen</span>
-          </summary>
-          <ul class="action-overlay-list" id="actionOverlayBody">
-            <li>Bewege den Mauszeiger ueber eine Aktion oder fokussiere sie per Tastatur.</li>
-          </ul>
-        </details>
-        <details class="cheats-panel">
-          <summary class="action-overlay-summary">
-            <span class="action-overlay-title">Cheats</span>
-            <span class="action-overlay-summary-hint">debug</span>
-          </summary>
-          <div class="cheats-grid" id="cheat-controls">
-            <button type="button" data-cheat="coins-100">+100 Coins</button>
-            <button type="button" data-cheat="hunger-0">Hunger = 0</button>
-            <button type="button" data-cheat="hunger-100">Hunger = 100</button>
-            <button type="button" data-cheat="cleanliness-0">Sauberkeit = 0</button>
-            <button type="button" data-cheat="cleanliness-100">Sauberkeit = 100</button>
-            <button type="button" data-cheat="health-100">Gesundheit = 100</button>
-          </div>
-          <p class="hint cheats-hint">Nur lokal aktiv fuer Tests und Balancing.</p>
-        </details>
-        <p class="hint" id="statusHint">Das Einhorn reagiert aus seinen Werten heraus. Aktive Aktionen blockieren weitere Eingaben fuer 5 Sekunden.</p>
       </div>
     </section>
   </main>

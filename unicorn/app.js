@@ -1,4 +1,21 @@
-/* global document, window, localStorage */
+/* global document, window, localStorage, crypto */
+
+// ============ APP MODE AND STORAGE ============
+
+// App mode constants
+const APP_MODE = {
+  DASHBOARD: "dashboard",
+  PLAY: "play",
+};
+
+// App state
+let appMode = APP_MODE.DASHBOARD;
+let currentUnicornId = null;
+let tickTimer = null;
+
+// Storage keys
+const STORAGE_KEY = "unicorn-tamagotchi-state-v2"; // legacy, for reference
+const NEW_STORAGE_KEY = "unicorn-tamagotchi-v3";
 
 const unicornConfig = {
   bodyColor: "white",
@@ -7,16 +24,24 @@ const unicornConfig = {
   wings: "butterfly",
 };
 
-const STORAGE_KEY = "unicorn-tamagotchi-state-v2";
 const TICK_MS = 10000;
 const OFFLINE_TICK_MS = 10000;
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const roundValue = (value) => Math.round(value * 10) / 10;
 
+// Color mapping for body colors
+const bodyColorMap = {
+  white: "#f8fbff",
+  pink: "#ffd9ea",
+  mint: "#d7fff2",
+};
+
+// ============ MULTI-UNICORN STORAGE SYSTEM ============
+
 function readStorage() {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(NEW_STORAGE_KEY);
   } catch {
     return null;
   }
@@ -24,10 +49,86 @@ function readStorage() {
 
 function writeStorage(value) {
   try {
-    localStorage.setItem(STORAGE_KEY, value);
+    localStorage.setItem(NEW_STORAGE_KEY, value);
   } catch {
     // Storage may be unavailable in file:// or private contexts.
   }
+}
+
+function loadAllUnicorns() {
+  try {
+    const raw = readStorage();
+    if (!raw) return { unicorns: [] };
+    const data = JSON.parse(raw);
+    return data && data.unicorns ? data : { unicorns: [] };
+  } catch {
+    return { unicorns: [] };
+  }
+}
+
+function saveAllUnicorns(data) {
+  writeStorage(JSON.stringify(data));
+}
+
+function createUnicornId() {
+  return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+}
+
+function createNewUnicorn(name, config) {
+  return {
+    id: createUnicornId(),
+    name,
+    createdAt: Date.now(),
+    state: {
+      stats: {
+        hunger: 78,
+        happiness: 82,
+        cleanliness: 70,
+      },
+      health: 100,
+      coins: 0,
+      magicDust: 0,
+      mood: "neutral",
+      moodSnapshot: null,
+      activeAction: null,
+      activityUntil: 0,
+      lastUpdated: Date.now(),
+      lastRewardAt: 0,
+      config: { ...config },
+    },
+  };
+}
+
+function getUnicorn(unicornId) {
+  const data = loadAllUnicorns();
+  return data.unicorns.find((u) => u.id === unicornId);
+}
+
+function saveUnicorn(unicornId, unicornData) {
+  const data = loadAllUnicorns();
+  const index = data.unicorns.findIndex((u) => u.id === unicornId);
+  if (index >= 0) {
+    data.unicorns[index] = unicornData;
+  } else {
+    data.unicorns.push(unicornData);
+  }
+  saveAllUnicorns(data);
+}
+
+function deleteUnicorn(unicornId) {
+  const data = loadAllUnicorns();
+  data.unicorns = data.unicorns.filter((u) => u.id !== unicornId);
+  saveAllUnicorns(data);
+}
+
+function getSortedUnicorns() {
+  const data = loadAllUnicorns();
+  // Sort by lastUpdated descending (most recent first)
+  return data.unicorns.sort((a, b) => {
+    const aTime = a.state.lastUpdated || 0;
+    const bTime = b.state.lastUpdated || 0;
+    return bTime - aTime;
+  });
 }
 
 const UnicornRenderer = (() => {
@@ -66,11 +167,19 @@ const UnicornRenderer = (() => {
   let currentConfig = { ...unicornConfig };
   let currentMood = "neutral";
   let currentAction = null;
+  let currentSvg = null;
 
   function render(target, config = currentConfig) {
     currentConfig = { ...currentConfig, ...config };
-    target.innerHTML = buildSvg(currentConfig, currentMood, currentAction);
+    const uid = `unicorn-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    target.innerHTML = buildSvg(currentConfig, currentMood, currentAction, uid);
     bindSvg(target);
+  }
+
+  function renderPreview(target, config = currentConfig) {
+    const previewConfig = { ...currentConfig, ...config };
+    const uid = `unicorn-preview-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    target.innerHTML = buildSvg(previewConfig, "neutral", null, uid);
   }
 
   function setMood(mood) {
@@ -96,7 +205,7 @@ const UnicornRenderer = (() => {
   }
 
   function syncClassState() {
-    const svg = document.querySelector("svg.unicorn");
+    const svg = currentSvg;
     if (!svg) return;
     const moodClasses = ["state-happy", "state-hungry", "state-sick"];
     const actionClasses = ["activity-feed", "activity-pet", "activity-play", "activity-clean", "activity-fly", "activity-sleep", "activity-arzt"];
@@ -112,15 +221,18 @@ const UnicornRenderer = (() => {
 
   function bindSvg(target) {
     const svg = target.querySelector("svg.unicorn");
-    if (!svg || svg.dataset.bound === "1") return;
-    svg.dataset.bound = "1";
-    svg.addEventListener("click", () => {
-      window.dispatchEvent(new CustomEvent("unicorn:action", { detail: { action: "pet" } }));
-    });
+    if (!svg) return;
+    currentSvg = svg;
+    if (svg.dataset.bound !== "1") {
+      svg.dataset.bound = "1";
+      svg.addEventListener("click", () => {
+        window.dispatchEvent(new CustomEvent("unicorn:action", { detail: { action: "pet" } }));
+      });
+    }
     syncClassState();
   }
 
-  function buildSvg(config, mood, action) {
+  function buildSvg(config, mood, action, uid) {
     const body = bodyVariants[config.bodyColor] || bodyVariants.white;
     const maneColors = maneVariants[config.maneStyle] || maneVariants.rainbow_01;
     const hornColors = hornVariants[config.hornType] || hornVariants.classic;
@@ -128,15 +240,19 @@ const UnicornRenderer = (() => {
     const moodClass = mood && mood !== "neutral" ? `state-${mood}` : "";
     const actionClass = action ? `activity-${action}` : "";
     const wingsClass = config.wings && config.wings !== "none" ? config.wings : "none";
+    const bodyGradientId = `bodyGradient-${uid}`;
+    const maneGradientId = `maneGradient-${uid}`;
+    const hornGradientId = `hornGradient-${uid}`;
+    const glowId = `glow-${uid}`;
 
     return `
       <svg class="unicorn ${moodClass} ${actionClass}" viewBox="0 0 720 540" role="img" aria-label="Modulares Einhorn" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="bodyGradient" x1="20%" y1="10%" x2="80%" y2="90%">
+          <linearGradient id="${bodyGradientId}" x1="20%" y1="10%" x2="80%" y2="90%">
             <stop offset="0%" stop-color="${body.fill}" />
             <stop offset="100%" stop-color="${body.shade}" />
           </linearGradient>
-          <linearGradient id="maneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="${maneGradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
             ${maneColors
               .map((color, index) => {
                 const denominator = Math.max(maneColors.length - 1, 1);
@@ -144,36 +260,36 @@ const UnicornRenderer = (() => {
               })
               .join("")}
           </linearGradient>
-          <linearGradient id="hornGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="${hornGradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="${hornColors[0]}" />
             <stop offset="100%" stop-color="${hornColors[1]}" />
           </linearGradient>
-          <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+          <radialGradient id="${glowId}" cx="50%" cy="40%" r="60%">
             <stop offset="0%" stop-color="#ffffff" stop-opacity="0.65" />
             <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
           </radialGradient>
         </defs>
 
         <g data-layer="glow" opacity="0.6">
-          <ellipse cx="360" cy="260" rx="180" ry="150" fill="url(#glow)" />
+          <ellipse cx="360" cy="260" rx="180" ry="150" fill="url(#${glowId})" />
         </g>
 
         <g data-layer="main" class="layer-main">
           ${renderWings(wingsClass, wings)}
-          <g data-layer="tail" class="layer-tail">${renderTail(maneColors)}</g>
-          <g data-layer="body" class="layer-body">${renderBody(body)}</g>
-          <g data-layer="head" class="layer-head">${renderHead(body, hornColors, mood)}</g>
-          <g data-layer="mane" class="layer-mane">${renderMane(maneColors)}</g>
+          <g data-layer="tail" class="layer-tail">${renderTail(maneColors, maneGradientId)}</g>
+          <g data-layer="body" class="layer-body">${renderBody(body, bodyGradientId)}</g>
+          <g data-layer="head" class="layer-head">${renderHead(body, hornColors, mood, bodyGradientId, hornGradientId)}</g>
+          <g data-layer="mane" class="layer-mane">${renderMane(maneColors, maneGradientId)}</g>
           <g data-layer="accessories" class="layer-accessories">${renderAccessories()}</g>
         </g>
       </svg>
     `;
   }
 
-  function renderBody(body) {
+  function renderBody(body, bodyGradientId) {
     return `
       <g data-part="body">
-        <ellipse cx="345" cy="330" rx="126" ry="98" fill="url(#bodyGradient)" stroke="${body.accent}" stroke-width="5" />
+        <ellipse cx="345" cy="330" rx="126" ry="98" fill="url(#${bodyGradientId})" stroke="${body.accent}" stroke-width="5" />
         <path d="M250 322c-12 10-22 30-23 49-1 30 24 50 55 50h126c31 0 56-20 55-50-1-19-11-39-23-49" fill="none" stroke="${body.accent}" stroke-width="5" stroke-linecap="round" opacity="0.34" />
         <path d="M275 407v56" stroke="${body.accent}" stroke-width="16" stroke-linecap="round" />
         <path d="M330 415v60" stroke="${body.accent}" stroke-width="16" stroke-linecap="round" />
@@ -184,13 +300,13 @@ const UnicornRenderer = (() => {
     `;
   }
 
-  function renderHead(body, hornColors, mood) {
+  function renderHead(body, hornColors, mood, bodyGradientId, hornGradientId) {
     return `
       <g data-part="head">
-        <ellipse cx="478" cy="220" rx="96" ry="84" fill="url(#bodyGradient)" stroke="${body.accent}" stroke-width="5" />
+        <ellipse cx="478" cy="220" rx="96" ry="84" fill="url(#${bodyGradientId})" stroke="${body.accent}" stroke-width="5" />
         <path d="M435 240c0-38 26-68 70-68 18 0 34 4 45 14" fill="none" stroke="${body.accent}" stroke-width="5" stroke-linecap="round" opacity="0.28" />
         <path d="M444 267c14 22 43 35 67 35 27 0 53-13 67-36" fill="none" stroke="${body.accent}" stroke-width="5" stroke-linecap="round" opacity="0.25" />
-        <g data-part="horn" class="layer-horn">${renderHorn(hornColors)}</g>
+        <g data-part="horn" class="layer-horn">${renderHorn(hornColors, hornGradientId)}</g>
         <g data-part="face" class="layer-face">
           <g data-part="eyes" class="layer-eyes">
             <g class="eye-wrap eye-left" transform="translate(512 238)">
@@ -230,7 +346,7 @@ const UnicornRenderer = (() => {
     `;
   }
 
-  function renderMane(maneColors) {
+  function renderMane(maneColors, maneGradientId) {
     const stripes = maneColors
       .map((color, index) => {
         const x = 300 + index * 20;
@@ -241,17 +357,17 @@ const UnicornRenderer = (() => {
 
     return `
       <g data-part="mane">
-        <path d="M314 156c-16 28-22 58-15 84 7 29 28 49 50 58-7-13-10-26-7-40 5-23 22-37 37-50 18-15 30-32 31-53-21 9-38 7-58-2-17-8-31-8-38 3z" fill="url(#maneGradient)" opacity="0.95" />
+        <path d="M314 156c-16 28-22 58-15 84 7 29 28 49 50 58-7-13-10-26-7-40 5-23 22-37 37-50 18-15 30-32 31-53-21 9-38 7-58-2-17-8-31-8-38 3z" fill="url(#${maneGradientId})" opacity="0.95" />
         ${stripes}
         <path d="M289 229c18-15 38-19 59-11" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.18" />
       </g>
     `;
   }
 
-  function renderTail(maneColors) {
+  function renderTail(maneColors, maneGradientId) {
     return `
       <g data-part="tail">
-        <path d="M229 353c-38 8-62 40-59 74 3 33 29 54 60 60 22 4 39-1 52-13-25-5-44-18-55-39-10-19-12-40-5-61 5-15 12-23 20-29-3-2-8-2-13-2z" fill="url(#maneGradient)" opacity="0.95" />
+        <path d="M229 353c-38 8-62 40-59 74 3 33 29 54 60 60 22 4 39-1 52-13-25-5-44-18-55-39-10-19-12-40-5-61 5-15 12-23 20-29-3-2-8-2-13-2z" fill="url(#${maneGradientId})" opacity="0.95" />
         <path d="M196 368c16 4 32 15 44 33" fill="none" stroke="${maneColors[1]}" stroke-width="12" stroke-linecap="round" opacity="0.7" />
         <path d="M190 398c20-1 39 7 55 24" fill="none" stroke="${maneColors[3]}" stroke-width="12" stroke-linecap="round" opacity="0.65" />
         <path d="M205 433c16-3 31-2 45 4" fill="none" stroke="${maneColors[4]}" stroke-width="12" stroke-linecap="round" opacity="0.62" />
@@ -259,9 +375,9 @@ const UnicornRenderer = (() => {
     `;
   }
 
-  function renderHorn(hornColors) {
+  function renderHorn(hornColors, hornGradientId) {
     return `
-      <path d="M544 123c11 18 17 37 17 57 0 16-6 30-17 42-4-13-9-21-15-28-6-8-8-18-7-31 2-16 10-31 22-40z" fill="url(#hornGradient)" stroke="${hornColors[1]}" stroke-width="4" stroke-linejoin="round" />
+      <path d="M544 123c11 18 17 37 17 57 0 16-6 30-17 42-4-13-9-21-15-28-6-8-8-18-7-31 2-16 10-31 22-40z" fill="url(#${hornGradientId})" stroke="${hornColors[1]}" stroke-width="4" stroke-linejoin="round" />
       <path d="M541 126c-7 15-8 31-4 47" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.45" />
       <path d="M544 126c10 17 14 36 11 58" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.35" />
     `;
@@ -299,6 +415,7 @@ const UnicornRenderer = (() => {
 
   return {
     render,
+    renderPreview,
     setMood,
     triggerAction,
     updateConfig,
@@ -507,20 +624,19 @@ const Game = (() => {
   let uiBound = false;
 
   function loadState() {
-    const fallback = defaultState();
-    try {
-      const raw = readStorage();
-      if (!raw) return fallback;
-      const parsed = JSON.parse(raw);
-      return {
-        ...fallback,
-        ...parsed,
-        stats: { ...fallback.stats, ...(parsed.stats || {}) },
-        config: { ...fallback.config, ...(parsed.config || {}) },
-      };
-    } catch {
-      return fallback;
+    // For play mode: load from current unicorn
+    if (currentUnicornId) {
+      const unicorn = getUnicorn(currentUnicornId);
+      if (unicorn) {
+        return {
+          ...defaultState(),
+          ...unicorn.state,
+          stats: { ...defaultState().stats, ...unicorn.state.stats },
+          config: { ...defaultState().config, ...unicorn.state.config },
+        };
+      }
     }
+    return defaultState();
   }
 
   function syncActivityState(now = Date.now()) {
@@ -530,8 +646,13 @@ const Game = (() => {
   }
 
   function persistState() {
+    if (!currentUnicornId) return; // Don't save if not in play mode
     state.lastUpdated = Date.now();
-    writeStorage(JSON.stringify(state));
+    const unicorn = getUnicorn(currentUnicornId);
+    if (unicorn) {
+      unicorn.state = state;
+      saveUnicorn(currentUnicornId, unicorn);
+    }
   }
 
   function advanceOfflineProgress() {
@@ -894,6 +1015,13 @@ const Game = (() => {
     }
   }
 
+  function updatePlayUnicornName() {
+    const nameDisplay = document.querySelector("#playUnicornName");
+    if (!nameDisplay) return;
+    const unicorn = currentUnicornId ? getUnicorn(currentUnicornId) : null;
+    nameDisplay.textContent = unicorn?.name || "Dein Einhorn";
+  }
+
   function restoreActivityAfterReload() {
     syncActivityState();
     if (!state.activeAction) {
@@ -1084,6 +1212,7 @@ const Game = (() => {
     const stage = document.querySelector("#unicorn-stage");
     if (!stage) return;
 
+    state = loadState();
     bindUI();
     advanceOfflineProgress();
     syncActivityState();
@@ -1093,6 +1222,7 @@ const Game = (() => {
     UnicornRenderer.render(stage, state.config);
     updateActionLocks();
     renderHUD();
+    updatePlayUnicornName();
     resetActionOverlay();
     window.unicornConfig = state.config;
 
@@ -1103,11 +1233,253 @@ const Game = (() => {
 
   return {
     start,
+    stop: () => window.clearInterval(tickTimer),
     getState: () => state,
   };
 })();
 
-document.addEventListener("DOMContentLoaded", Game.start);
+
+
+// ============ DASHBOARD & MODE MANAGEMENT ============
+
+function switchMode(newMode) {
+  appMode = newMode;
+  const dashboardScreen = document.querySelector("#dashboard-screen");
+  const gamePanel = document.querySelector(".game-panel");
+
+  if (newMode === APP_MODE.DASHBOARD) {
+    dashboardScreen?.classList.remove("is-hidden");
+    gamePanel?.classList.add("is-hidden");
+    renderDashboard();
+  } else {
+    dashboardScreen?.classList.add("is-hidden");
+    gamePanel?.classList.remove("is-hidden");
+  }
+}
+
+function renderDashboard() {
+  const unicornList = document.querySelector("#unicorn-list");
+  if (!unicornList) return;
+
+  const createCard = document.querySelector("#openCreationOverlay");
+  const unicorns = getSortedUnicorns();
+  unicornList.innerHTML = "";
+
+  if (unicorns.length === 0) {
+    unicornList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 20px;">Noch keine Einhörner erstellt. Erstelle dein erstes Einhorn!</div>';
+    if (createCard) unicornList.appendChild(createCard);
+    return;
+  }
+
+  unicorns.forEach((unicorn) => {
+    const card = createUnicornCard(unicorn);
+    unicornList.appendChild(card);
+  });
+
+  if (createCard) unicornList.appendChild(createCard);
+}
+
+function createUnicornCard(unicorn) {
+  const card = document.createElement("div");
+  card.className = "unicorn-card";
+
+  const state = unicorn.state;
+  const colorPreview = bodyColorMap[state.config.bodyColor] || bodyColorMap.white;
+
+  // Calculate status indicator
+  const allStatsGood = Object.values(state.stats).every((s) => s > 50) && state.health > 50;
+  const anyCritical = Object.values(state.stats).some((s) => s < 25) || state.health < 25;
+  const healthCritical = state.health < 20;
+
+  let statusClass = "good";
+  if (healthCritical) {
+    statusClass = "critical";
+  } else if (anyCritical) {
+    statusClass = "critical";
+  } else if (!allStatsGood) {
+    statusClass = "warning";
+  }
+
+  const hunger = Math.round(state.stats.hunger);
+  const happiness = Math.round(state.stats.happiness);
+  const cleanliness = Math.round(state.stats.cleanliness);
+
+  card.innerHTML = `
+    <div class="card-header">
+      <div class="card-name"><span class="status-indicator ${statusClass}"></span>${unicorn.name}</div>
+      <button class="card-delete" data-delete-id="${unicorn.id}" title="Löschen">🗑</button>
+    </div>
+    <div class="card-color-preview" data-card-preview-id="${unicorn.id}"></div>
+    <div class="card-stats">
+      <div class="stat-mini">
+        <span class="stat-mini-label">🍎</span>
+        <div class="stat-mini-meter"><div class="stat-mini-fill" style="width: ${hunger}%;"></div></div>
+        <span style="min-width: 24px; text-align: right; font-weight: 600;">${hunger}</span>
+      </div>
+      <div class="stat-mini">
+        <span class="stat-mini-label">✨</span>
+        <div class="stat-mini-meter"><div class="stat-mini-fill" style="width: ${happiness}%;"></div></div>
+        <span style="min-width: 24px; text-align: right; font-weight: 600;">${happiness}</span>
+      </div>
+      <div class="stat-mini">
+        <span class="stat-mini-label">🧼</span>
+        <div class="stat-mini-meter"><div class="stat-mini-fill" style="width: ${cleanliness}%;"></div></div>
+        <span style="min-width: 24px; text-align: right; font-weight: 600;">${cleanliness}</span>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="play-button" data-play-id="${unicorn.id}">Spielen</button>
+    </div>
+  `;
+
+  const previewTarget = card.querySelector(".card-color-preview");
+  if (previewTarget) {
+    UnicornRenderer.renderPreview(previewTarget, state.config);
+  }
+
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.addEventListener("click", (event) => {
+    if (event.target.closest(".card-delete")) return;
+    enterPlayMode(unicorn.id);
+  });
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      enterPlayMode(unicorn.id);
+    }
+  });
+
+  // Play button handler
+  const playBtn = card.querySelector(".play-button");
+  playBtn?.addEventListener("click", () => {
+    enterPlayMode(unicorn.id);
+  });
+
+  // Delete button handler
+  const deleteBtn = card.querySelector(".card-delete");
+  deleteBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (confirm(`Bist du sicher, dass du "${unicorn.name}" löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.`)) {
+      deleteUnicorn(unicorn.id);
+      renderDashboard();
+    }
+  });
+
+  return card;
+}
+
+function enterPlayMode(unicornId) {
+  currentUnicornId = unicornId;
+  switchMode(APP_MODE.PLAY);
+  Game.start();
+}
+
+function exitPlayMode() {
+  Game.stop();
+  currentUnicornId = null;
+  switchMode(APP_MODE.DASHBOARD);
+  renderDashboard();
+}
+
+// ============ CREATION PREVIEW ============
+
+function getCreationConfig() {
+  return {
+    bodyColor: document.querySelector("#creationBodyColor")?.value || "white",
+    maneStyle: document.querySelector("#creationManeStyle")?.value || "rainbow_01",
+    hornType: document.querySelector("#creationHornType")?.value || "classic",
+    wings: document.querySelector("#creationWings")?.value || "none",
+  };
+}
+
+function renderCreationPreview() {
+  const stage = document.querySelector("#creation-stage");
+  if (!stage) return;
+  UnicornRenderer.render(stage, getCreationConfig());
+}
+
+function showCreationOverlay() {
+  const overlay = document.querySelector("#creationOverlay");
+  if (!overlay) return;
+  overlay.classList.remove("is-hidden");
+  overlay.setAttribute("aria-hidden", "false");
+  renderCreationPreview();
+  window.setTimeout(() => {
+    document.querySelector("#unicornName")?.focus();
+  }, 10);
+}
+
+function hideCreationOverlay() {
+  const overlay = document.querySelector("#creationOverlay");
+  if (!overlay) return;
+  overlay.classList.add("is-hidden");
+  overlay.setAttribute("aria-hidden", "true");
+}
+
+function initializeDashboard() {
+  // Back button handler
+  const backButton = document.querySelector("#backButton");
+  backButton?.addEventListener("click", () => {
+    exitPlayMode();
+  });
+
+  // Creation overlay open/close
+  const creationOpen = document.querySelector("#openCreationOverlay");
+  const creationClose = document.querySelector("#closeCreationOverlay");
+  const overlayBackdrop = document.querySelector("#creationOverlayBackdrop");
+
+  creationOpen?.addEventListener("click", showCreationOverlay);
+  creationClose?.addEventListener("click", hideCreationOverlay);
+  overlayBackdrop?.addEventListener("click", hideCreationOverlay);
+  window.addEventListener("keydown", (event) => {
+    const overlay = document.querySelector("#creationOverlay");
+    if (event.key === "Escape" && overlay && !overlay.classList.contains("is-hidden")) {
+      hideCreationOverlay();
+    }
+  });
+
+  ["#creationBodyColor", "#creationManeStyle", "#creationHornType", "#creationWings"].forEach((sel) => {
+    document.querySelector(sel)?.addEventListener("change", renderCreationPreview);
+  });
+
+  // Creation form handler
+  const creationForm = document.querySelector("#unicornCreationForm");
+  creationForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector("#unicornName")?.value?.trim();
+    if (!name) {
+      alert("Bitte geben Sie einen Namen ein.");
+      return;
+    }
+
+    const config = {
+      bodyColor: document.querySelector("#creationBodyColor")?.value || "white",
+      maneStyle: document.querySelector("#creationManeStyle")?.value || "rainbow_01",
+      hornType: document.querySelector("#creationHornType")?.value || "classic",
+      wings: document.querySelector("#creationWings")?.value || "none",
+    };
+
+    const newUnicorn = createNewUnicorn(name, config);
+    saveUnicorn(newUnicorn.id, newUnicorn);
+
+    // Reset form and close overlay
+    creationForm.reset();
+    hideCreationOverlay();
+
+    // Go directly to play mode for the newly created unicorn
+    enterPlayMode(newUnicorn.id);
+  });
+
+  // Initial render
+  renderDashboard();
+  switchMode(APP_MODE.DASHBOARD);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeDashboard();
+});
 
 window.unicornConfig = unicornConfig;
 window.UnicornRenderer = UnicornRenderer;
