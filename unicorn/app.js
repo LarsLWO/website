@@ -1318,6 +1318,7 @@ function createUnicornCard(unicorn) {
         <span style="min-width: 24px; text-align: right; font-weight: 600;">${cleanliness}</span>
       </div>
     </div>
+    ${statusClass === "critical" ? '<div class="attention-bubble">!</div>' : ''}
     <div class="card-actions">
       <button class="play-button" data-play-id="${unicorn.id}">Spielen</button>
     </div>

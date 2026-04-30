@@ -808,6 +808,7 @@ svg.unicorn {
   gap: 10px;
   transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease, background 200ms ease;
   cursor: pointer;
+  position: relative;
 }
 
 .unicorn-card:hover,
@@ -918,6 +919,23 @@ svg.unicorn {
 
 .status-indicator.critical {
   background: #d84f5c;
+}
+
+.attention-bubble {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d84f5c;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(216, 79, 92, 0.4);
+  z-index: 1;
 }
 
 .card-actions {
