@@ -715,10 +715,6 @@ const Game = (() => {
     state.coins += amount;
   }
 
-  function rewardDust(amount) {
-    state.magicDust += amount;
-  }
-
   function applyActionEffects(action) {
     switch (action) {
       case "feed":
@@ -1103,7 +1099,9 @@ const Game = (() => {
       const isPercentStat = ["health", "hunger", "happiness", "cleanliness"].includes(stat);
       const label = stat === "dust" ? "Dust" : stat === "hunger" ? "Hunger" : stat === "cleanliness" ? "Sauberkeit" : stat === "health" ? "Gesundheit" : stat === "coins" ? "Coins" : "Glück";
 
-      if (isPercentStat) {
+      if (stat === "health") {
+        state.health = clamp(state.health + amount, 0, 100);
+      } else if (isPercentStat) {
         state.stats[stat] = clamp(state.stats[stat] + amount, 0, 100);
       } else if (stat === "coins") {
         state.coins = clamp(state.coins + amount, 0, Infinity);
@@ -1159,44 +1157,9 @@ const Game = (() => {
       applyCheat(button.dataset.cheat);
     });
 
-    document.querySelector("#bodyColorSelect")?.addEventListener("change", (event) => {
-      state.config.bodyColor = event.target.value;
-      UnicornRenderer.updateConfig({ bodyColor: event.target.value });
-      persistState();
-    });
-
-    document.querySelector("#maneStyleSelect")?.addEventListener("change", (event) => {
-      state.config.maneStyle = event.target.value;
-      UnicornRenderer.updateConfig({ maneStyle: event.target.value });
-      persistState();
-    });
-
-    document.querySelector("#hornTypeSelect")?.addEventListener("change", (event) => {
-      state.config.hornType = event.target.value;
-      UnicornRenderer.updateConfig({ hornType: event.target.value });
-      persistState();
-    });
-
-    document.querySelector("#wingsSelect")?.addEventListener("change", (event) => {
-      state.config.wings = event.target.value;
-      UnicornRenderer.updateConfig({ wings: event.target.value });
-      persistState();
-    });
-
     window.addEventListener("unicorn:action", (event) => {
       if (event.detail?.action) applyAction(event.detail.action);
     });
-  }
-
-  function syncConfigControls() {
-    const bodySelect = document.querySelector("#bodyColorSelect");
-    const maneSelect = document.querySelector("#maneStyleSelect");
-    const hornSelect = document.querySelector("#hornTypeSelect");
-    const wingsSelect = document.querySelector("#wingsSelect");
-    if (bodySelect) bodySelect.value = state.config.bodyColor;
-    if (maneSelect) maneSelect.value = state.config.maneStyle;
-    if (hornSelect) hornSelect.value = state.config.hornType;
-    if (wingsSelect) wingsSelect.value = state.config.wings;
   }
 
   function start() {
@@ -1207,7 +1170,6 @@ const Game = (() => {
     bindUI();
     advanceOfflineProgress();
     syncActivityState();
-    syncConfigControls();
     updateMoodFromStats();
     restoreActivityAfterReload();
     UnicornRenderer.render(stage, state.config);
@@ -1277,10 +1239,15 @@ function createUnicornCard(unicorn) {
   const state = unicorn.state;
   const colorPreview = bodyColorMap[state.config.bodyColor] || bodyColorMap.white;
 
-  // Calculate status indicator
-  const allStatsGood = Object.values(state.stats).every((s) => s > 50) && state.health > 50;
-  const anyCritical = Object.values(state.stats).some((s) => s < 25) || state.health < 25;
-  const healthCritical = state.health < 20;
+  // Calculate status indicator using explicit stat fields
+  const hunger = Number(state.stats.hunger || 0);
+  const happiness = Number(state.stats.happiness || 0);
+  const cleanliness = Number(state.stats.cleanliness || 0);
+  const health = Number(state.health || 0);
+
+  const allStatsGood = hunger > 50 && happiness > 50 && cleanliness > 50 && health > 50;
+  const anyCritical = [hunger, happiness, cleanliness].some((value) => value < 25);
+  const healthCritical = health < 20;
 
   let statusClass = "good";
   if (healthCritical) {
@@ -1290,10 +1257,6 @@ function createUnicornCard(unicorn) {
   } else if (!allStatsGood) {
     statusClass = "warning";
   }
-
-  const hunger = Math.round(state.stats.hunger);
-  const happiness = Math.round(state.stats.happiness);
-  const cleanliness = Math.round(state.stats.cleanliness);
 
   card.innerHTML = `
     <div class="card-header">
@@ -1388,7 +1351,7 @@ function getCreationConfig() {
 function renderCreationPreview() {
   const stage = document.querySelector("#creation-stage");
   if (!stage) return;
-  UnicornRenderer.render(stage, getCreationConfig());
+  UnicornRenderer.renderPreview(stage, getCreationConfig());
 }
 
 function showCreationOverlay() {
