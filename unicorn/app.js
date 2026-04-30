@@ -333,7 +333,7 @@ const UnicornRenderer = (() => {
             <path class="expression-happy" d="M526 270c12 11 27 11 39 0" fill="none" stroke="#f06a8e" stroke-width="5" stroke-linecap="round" />
             <path class="expression-sleeping" d="M528 271c12-4 24-4 36 0" fill="none" stroke="#a56a6e" stroke-width="5" stroke-linecap="round" />
             <path class="expression-hungry" d="M527 275c13-8 24-8 37 0" fill="none" stroke="#9a4f63" stroke-width="5" stroke-linecap="round" />
-            <path class="expression-sick" d="M527 274c12 6 25 6 37 0" fill="none" stroke="#8e5675" stroke-width="5" stroke-linecap="round" />
+            <path class="expression-sick" d="M527 282c12 14 25 14 37 0" fill="none" stroke="#8e5675" stroke-width="5" stroke-linecap="round" />
           </g>
           <g data-part="sweat" class="layer-sweat">
             <path class="sweat-drop sweat-drop-1" d="M478 214c4 8 6 12 6 16 0 5-4 9-8 9s-8-4-8-9c0-4 2-8 10-16z" fill="#8fe0ff" opacity="0.92" />
@@ -1096,33 +1096,24 @@ const Game = (() => {
   }
 
   function applyCheat(cheat) {
-    switch (cheat) {
-      case "coins-100":
-        state.coins += 100;
-        setHint("Cheat: +100 Coins.");
-        break;
-      case "hunger-0":
-        state.stats.hunger = 0;
-        setHint("Cheat: Hunger auf 0 gesetzt.");
-        break;
-      case "hunger-100":
-        state.stats.hunger = 100;
-        setHint("Cheat: Hunger auf 100 gesetzt.");
-        break;
-      case "cleanliness-0":
-        state.stats.cleanliness = 0;
-        setHint("Cheat: Sauberkeit auf 0 gesetzt.");
-        break;
-      case "cleanliness-100":
-        state.stats.cleanliness = 100;
-        setHint("Cheat: Sauberkeit auf 100 gesetzt.");
-        break;
-      case "health-100":
-        state.health = 100;
-        setHint("Cheat: Gesundheit auf 100 gesetzt.");
-        break;
-      default:
-        return;
+    const cheatMatch = cheat.match(/^(health|hunger|happiness|cleanliness|coins|dust)-(plus|minus)-(\d+)$/);
+    if (cheatMatch) {
+      const [, stat, direction, amountText] = cheatMatch;
+      const amount = Number(amountText) * (direction === "minus" ? -1 : 1);
+      const isPercentStat = ["health", "hunger", "happiness", "cleanliness"].includes(stat);
+      const label = stat === "dust" ? "Dust" : stat === "hunger" ? "Hunger" : stat === "cleanliness" ? "Sauberkeit" : stat === "health" ? "Gesundheit" : stat === "coins" ? "Coins" : "Glück";
+
+      if (isPercentStat) {
+        state.stats[stat] = clamp(state.stats[stat] + amount, 0, 100);
+      } else if (stat === "coins") {
+        state.coins = clamp(state.coins + amount, 0, Infinity);
+      } else if (stat === "dust") {
+        state.magicDust = clamp(state.magicDust + amount, 0, Infinity);
+      }
+
+      setHint(`Cheat: ${direction === "plus" ? "+" : "-"}${Math.abs(amount)} ${label}.`);
+    } else {
+      return;
     }
 
     updateMoodFromStats();
@@ -1417,6 +1408,20 @@ function hideCreationOverlay() {
   overlay.setAttribute("aria-hidden", "true");
 }
 
+function showCheatOverlay() {
+  const overlay = document.querySelector("#cheatOverlay");
+  if (!overlay) return;
+  overlay.classList.remove("is-hidden");
+  overlay.setAttribute("aria-hidden", "false");
+}
+
+function hideCheatOverlay() {
+  const overlay = document.querySelector("#cheatOverlay");
+  if (!overlay) return;
+  overlay.classList.add("is-hidden");
+  overlay.setAttribute("aria-hidden", "true");
+}
+
 function initializeDashboard() {
   // Back button handler
   const backButton = document.querySelector("#backButton");
@@ -1432,10 +1437,26 @@ function initializeDashboard() {
   creationOpen?.addEventListener("click", showCreationOverlay);
   creationClose?.addEventListener("click", hideCreationOverlay);
   overlayBackdrop?.addEventListener("click", hideCreationOverlay);
+
+  const cheatOpen = document.querySelector("#openCheatOverlay");
+  const cheatClose = document.querySelector("#closeCheatOverlay");
+  const cheatBackdrop = document.querySelector("#cheatOverlayBackdrop");
+
+  cheatOpen?.addEventListener("click", showCheatOverlay);
+  cheatClose?.addEventListener("click", hideCheatOverlay);
+  cheatBackdrop?.addEventListener("click", hideCheatOverlay);
+
   window.addEventListener("keydown", (event) => {
     const overlay = document.querySelector("#creationOverlay");
-    if (event.key === "Escape" && overlay && !overlay.classList.contains("is-hidden")) {
-      hideCreationOverlay();
+    const cheatOverlay = document.querySelector("#cheatOverlay");
+    if (event.key === "Escape") {
+      if (cheatOverlay && !cheatOverlay.classList.contains("is-hidden")) {
+        hideCheatOverlay();
+        return;
+      }
+      if (overlay && !overlay.classList.contains("is-hidden")) {
+        hideCreationOverlay();
+      }
     }
   });
 

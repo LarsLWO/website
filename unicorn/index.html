@@ -41,7 +41,6 @@
         <div class="overlay-header">
           <div>
             <h2>Neues Einhorn erstellen</h2>
-            <p class="overlay-subtitle">Wähle die Werte aus und sieh die Live-Vorschau.</p>
           </div>
           <button type="button" id="closeCreationOverlay" class="close-overlay" aria-label="Overlay schließen">✕</button>
         </div>
@@ -90,9 +89,36 @@
       </div>
     </div>
 
+    <div id="cheatOverlay" class="creation-overlay is-hidden" aria-hidden="true">
+      <div class="overlay-backdrop" id="cheatOverlayBackdrop"></div>
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <div>
+            <h2>Cheats</h2>
+          </div>
+          <button type="button" id="closeCheatOverlay" class="close-overlay" aria-label="Cheat Overlay schließen">✕</button>
+        </div>
+        <div class="cheats-grid" id="cheat-controls">
+          <button type="button" data-cheat="health-plus-100">+100 Gesundheit</button>
+          <button type="button" data-cheat="health-minus-100">-100 Gesundheit</button>
+          <button type="button" data-cheat="hunger-plus-100">+100 Hunger</button>
+          <button type="button" data-cheat="hunger-minus-100">-100 Hunger</button>
+          <button type="button" data-cheat="happiness-plus-100">+100 Glück</button>
+          <button type="button" data-cheat="happiness-minus-100">-100 Glück</button>
+          <button type="button" data-cheat="cleanliness-plus-100">+100 Sauberkeit</button>
+          <button type="button" data-cheat="cleanliness-minus-100">-100 Sauberkeit</button>
+          <button type="button" data-cheat="coins-plus-100">+100 Coins</button>
+          <button type="button" data-cheat="coins-minus-100">-100 Coins</button>
+          <button type="button" data-cheat="dust-plus-100">+100 Dust</button>
+          <button type="button" data-cheat="dust-minus-100">-100 Dust</button>
+        </div>
+      </div>
+    </div>
+
     <section class="panel game-panel is-hidden" aria-label="Spielzustand">
       <div class="panel-header">
         <button type="button" id="backButton" class="back-button">← Dashboard</button>
+        <button type="button" id="openCheatOverlay" class="cheat-control-button">Cheats</button>
       </div>
 
       <div class="game-grid">
@@ -110,30 +136,6 @@
               <button type="button" data-action="sleep">Schlafen</button>
               <button type="button" data-action="arzt">Arzt</button>
             </div>
-            <details class="action-overlay" id="actionOverlay" aria-live="polite">
-              <summary class="action-overlay-summary">
-                <span class="action-overlay-title" id="actionOverlayTitle">Button-Effekt</span>
-                <span class="action-overlay-summary-hint">aufklappen</span>
-              </summary>
-              <ul class="action-overlay-list" id="actionOverlayBody">
-                <li>Bewege den Mauszeiger ueber eine Aktion oder fokussiere sie per Tastatur.</li>
-              </ul>
-            </details>
-            <details class="cheats-panel">
-              <summary class="action-overlay-summary">
-                <span class="action-overlay-title">Cheats</span>
-                <span class="action-overlay-summary-hint">debug</span>
-              </summary>
-              <div class="cheats-grid" id="cheat-controls">
-                <button type="button" data-cheat="coins-100">+100 Coins</button>
-                <button type="button" data-cheat="hunger-0">Hunger = 0</button>
-                <button type="button" data-cheat="hunger-100">Hunger = 100</button>
-                <button type="button" data-cheat="cleanliness-0">Sauberkeit = 0</button>
-                <button type="button" data-cheat="cleanliness-100">Sauberkeit = 100</button>
-                <button type="button" data-cheat="health-100">Gesundheit = 100</button>
-              </div>
-              <p class="hint cheats-hint">Nur lokal aktiv fuer Tests und Balancing.</p>
-            </details>
           </div>
         </div>
 
@@ -171,6 +173,15 @@
           </div>
         </div>
       </div>
+      <details class="action-overlay" id="actionOverlay" aria-live="polite">
+        <summary class="action-overlay-summary">
+          <span class="action-overlay-title" id="actionOverlayTitle">Button-Effekt</span>
+          <span class="action-overlay-summary-hint">aufklappen</span>
+        </summary>
+        <ul class="action-overlay-list" id="actionOverlayBody">
+          <li>Bewege den Mauszeiger ueber eine Aktion oder fokussiere sie per Tastatur.</li>
+        </ul>
+      </details>
     </section>
   </main>
 

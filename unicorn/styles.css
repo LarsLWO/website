@@ -995,6 +995,18 @@ svg.unicorn {
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid rgba(88, 110, 145, 0.12);
+  min-width: 0;
+}
+
+.creation-form-content > * {
+  min-width: 0;
+}
+
+#unicornCreationForm input,
+#unicornCreationForm select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .creation-submit {
@@ -1075,6 +1087,11 @@ svg.unicorn {
   overflow-x: hidden;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .creation-overlay.is-hidden {
   display: none;
 }
@@ -1089,8 +1106,8 @@ svg.unicorn {
 .overlay-panel {
   position: relative;
   z-index: 1;
-  width: min(100%, 1024px);
-  max-width: min(1024px, calc(100vw - 32px));
+  width: min(100%, calc(100vw - 32px));
+  max-width: 1024px;
   max-height: min(90vh, 820px);
   overflow: auto;
   background: var(--panel);
@@ -1098,6 +1115,7 @@ svg.unicorn {
   box-shadow: var(--shadow);
   border-radius: 28px;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .overlay-header {
@@ -1160,12 +1178,49 @@ svg.unicorn {
 
 .game-panel {
   margin-top: 24px;
+  position: relative;
+}
+
+.cheat-control-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 99, 255, 0.22);
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 12px 30px rgba(16, 39, 88, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cheat-control-button:hover,
+.cheat-control-button:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(16, 39, 88, 0.18);
+}
+
+@media (max-width: 640px) {
+  .cheat-control-button {
+    position: static;
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
   .overlay-grid,
   .game-grid {
     grid-template-columns: 1fr;
+  }
+
+  .overlay-panel {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    padding: 18px;
   }
 
   .preview-stage {
