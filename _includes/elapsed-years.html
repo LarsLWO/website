@@ -1,0 +1,9 @@
+{%- assign since_year = include.since | date: '%Y' | plus: 0 -%}
+{%- assign since_month_day = include.since | date: '%m%d' | plus: 0 -%}
+{%- assign current_year = site.time | date: '%Y' | plus: 0 -%}
+{%- assign current_month_day = site.time | date: '%m%d' | plus: 0 -%}
+{%- assign elapsed_years = current_year | minus: since_year -%}
+{%- if current_month_day < since_month_day -%}
+{%- assign elapsed_years = elapsed_years | minus: 1 -%}
+{%- endif -%}
+<span data-elapsed-years data-since="{{ include.since | escape }}">{{ elapsed_years | at_least: 0 }}</span>

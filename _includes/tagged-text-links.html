@@ -1,0 +1,10 @@
+{%- assign related_texts = site.texts | where_exp: 'text', 'text.tags contains include.tag' | where_exp: 'text', 'text.published != false' | sort: 'created_on' | reverse -%}
+{%- if related_texts.size > 0 -%}
+<nav class="related-texts" aria-label="{{ include.label | escape }}">
+  <ul role="list">
+    {%- for text in related_texts -%}
+    <li>{% unless forloop.first %}<span class="related-text-separator" aria-hidden="true">·</span>{% endunless %}<a href="{{ text.url | relative_url }}">{{ text.title | escape }}</a></li>
+    {%- endfor -%}
+  </ul>
+</nav>
+{%- endif -%}

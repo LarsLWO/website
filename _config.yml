@@ -13,6 +13,7 @@ collections:
     output: true
     permalink: /:collection/:path/
 
+timezone: Europe/Berlin
 lang: de-DE
 author: Lars Wollny
 default_image: /assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg
