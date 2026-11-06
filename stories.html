@@ -1,0 +1,89 @@
+---
+layout: magazine
+title: Geschriebenes
+nav: stories
+permalink: /stories/
+description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen Brüchen im Alltag. Hier findest du meine Texte – mal leise, mal komisch, mal mit einem Blick in den Abgrund."
+---
+<section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
+
+
+  <div class="story-filters" role="group" aria-label="Geschichten filtern">
+  <input
+    type="search"
+    id="search"
+    placeholder="Alle Texte durchsuchen …"
+    aria-label="Alle Texte durchsuchen" aria-describedby="search-status">
+
+  <select id="genre" aria-label="Genre auswählen">
+    <option value="">Alle Genres</option>
+
+    {% assign short_stories = site.texts | sort: "created_on" | reverse %}
+    {% assign genres = short_stories | map: "genre" | uniq | sort %}
+
+    {% for genre in genres %}
+      <option value="{{ genre | escape }}">
+        {{ genre }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <button type="button" id="reset">
+    Filter zurücksetzen
+  </button>
+  </div>
+
+  <!-- Anzeige des aktiven Tags -->
+  <div id="active-filters" hidden>
+    <span>Aktive Filter:</span>
+    <button type="button" id="active-tag"
+            aria-label="Tag-Filter entfernen"></button>
+  </div>
+
+  <!-- Geschichtenübersicht -->
+  <p id="search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div id="stories" class="story-grid" data-search-index="{{ '/search-index.json' | relative_url }}">
+
+    {% for story in short_stories %}
+
+      <article class="story-card"
+        data-url="{{ story.url | relative_url }}"
+        data-genre="{{ story.genre | escape }}"
+        data-tags="{{ story.tags | join: ',' | escape }}"
+        data-title="{{ story.title | escape }}"
+        data-description="{{ story.description | escape }}">
+
+        <h2>
+          <a href="{{ story.url | relative_url }}">
+            {{ story.title }}
+          </a>
+        </h2>
+        <p class="meta">{{ story.genre | escape }}</p><div class="story-dates">{% include story-created.html story=story %}</div><div class="story-visual"><a class="image-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title | escape }} lesen">{% include responsive-image.html story=story priority=forloop.first sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc((100vw - 122px) / 2), 569px' %}</a>{% include story-share.html story=story %}</div>
+
+        <p>{{ story.description | escape }}</p>
+        <p class="search-excerpt" hidden></p>
+
+        <div class="story-tags">
+        {% for tag in story.tags %}
+          <button
+            type="button"
+            class="tag"
+            data-filter-tag="{{ tag | escape }}">
+            #{{ tag }}
+          </button>
+        {% endfor %}
+        </div>
+
+
+      </article>
+
+    {% endfor %}
+
+  </div>
+
+  <p id="empty" hidden>
+    Keine passenden Geschichten gefunden.
+  </p>
+
+  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=1" defer></script>

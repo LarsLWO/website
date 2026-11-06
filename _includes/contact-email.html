@@ -1,0 +1,1 @@
+{% assign email_parts = site.data.legal.email | split: '@' %}<span class="contact-email" data-email-user="{{ email_parts[0] | split: '' | reverse | join: '' | escape }}" data-email-domain="{{ email_parts[1] | split: '' | reverse | join: '' | escape }}"></span><noscript>{{ email_parts[0] | escape }} [at] {{ email_parts[1] | replace: '.', ' [dot] ' | escape }}</noscript>

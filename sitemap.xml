@@ -1,0 +1,12 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% assign sitemap_pages = site.html_pages | where: 'layout', 'magazine' | sort: 'url' %}{% for item in sitemap_pages %}{% unless item.sitemap == false or item.noindex %}
+  <url><loc>{{ item.url | replace: 'index.html', '' | absolute_url | xml_escape }}</loc></url>
+{% endunless %}{% endfor %}{% for item in site.texts %}{% unless item.sitemap == false or item.noindex %}
+  <url><loc>{{ item.url | absolute_url | xml_escape }}</loc>{% if item.modified_on %}<lastmod>{{ item.modified_on | date: '%Y-%m-%d' }}</lastmod>{% endif %}</url>
+{% endunless %}{% endfor %}
+</urlset>

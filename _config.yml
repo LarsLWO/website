@@ -1,0 +1,45 @@
+title: "Lars Wollny"
+url: "https://www.larswollny.de"
+description: "Kurzgeschichten und literarische Texte"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  # Preserve deliberate line breaks, including changes of speaker.
+  hard_wrap: true
+
+collections:
+  texts:
+    output: true
+    permalink: /:collection/:path/
+
+lang: de-DE
+author: Lars Wollny
+default_image: /assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg
+
+# Private working resources are ignored by Git and excluded from the website.
+# Keep build tools, caches and local documentation out of the published output.
+exclude:
+  # Local working material and documentation.
+  - docs
+  - Docs
+  - _resources
+  - README.md
+  - "**/README.md"
+  - AGENTS.md
+  - "**/AGENTS.md"
+
+  # Local build tools and caches (Jekyll 3 replaces its default exclude list).
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles
+  - vendor
+  - node_modules
+  - .bundle
+  - .jekyll-cache
+  - .sass-cache
+  - .jekyll-metadata
+  - .git
+  - .gitignore
+  - .DS_Store
+  - "**/.DS_Store"

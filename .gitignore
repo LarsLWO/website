@@ -1,0 +1,9 @@
+# Local resources, source artwork, documentation and private backups.
+/_resources/
+
+# Local operating system metadata and build output.
+.DS_Store
+/_site/
+/.jekyll-cache/
+/.jekyll-metadata
+/.sass-cache/

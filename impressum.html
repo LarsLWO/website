@@ -1,0 +1,7 @@
+---
+layout: magazine
+title: Impressum
+permalink: /impressum/
+description: Anbieter- und Kontaktangaben für die Website von Lars Wollny.
+---
+<article><header class="hero"><p class="eyebrow">Impressum</p><h1>Worte haben einen<br><em>Absender.</em></h1></header><div class="legal-body">{% unless site.data.legal.address and site.data.legal.email %}<p class="legal-note">Entwurf: Die Anbieter- und Kontaktangaben werden noch vervollständigt.</p>{% endunless %}<h2>Anbieter und Kontakt</h2><address>{{ site.data.legal.name | escape }}<br>{% if site.data.legal.address %}{{ site.data.legal.address | escape | newline_to_br }}{% else %}<strong>Anschrift noch zu ergänzen</strong>{% endif %}<br>{% if site.data.legal.email %}{% include contact-email.html %}{% else %}<strong>Kontakt-E-Mail noch zu ergänzen</strong>{% endif %}</address><h2>Datenschutz</h2><p>Informationen zur Verarbeitung personenbezogener Daten auf dieser Website findest du in der <a href="{{ '/datenschutz/' | relative_url }}">Datenschutzerklärung</a>.</p></div></article>

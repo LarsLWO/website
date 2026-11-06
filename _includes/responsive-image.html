@@ -1,0 +1,5 @@
+{%- assign image_story = include.story -%}
+<picture>
+  {% if image_story.image_webp_base %}<source type="image/webp" srcset="{{ image_story.image_webp_base | append: '-480.webp' | relative_url }} 480w, {{ image_story.image_webp_base | append: '-800.webp' | relative_url }} 800w, {{ image_story.image_webp_base | append: '-1280.webp' | relative_url }} 1280w" sizes="{{ include.sizes }}">{% endif %}
+  <img src="{{ image_story.image | relative_url }}" alt="{{ image_story.image_alt | escape }}" width="{{ image_story.image_width | default: 1280 }}" height="{{ image_story.image_height | default: 853 }}" loading="{% if include.priority %}eager{% else %}lazy{% endif %}"{% if include.priority %} fetchpriority="high"{% endif %} decoding="async">
+</picture>

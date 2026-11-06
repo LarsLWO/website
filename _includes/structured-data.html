@@ -1,0 +1,49 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ '/' | absolute_url | append: '#website' | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "inLanguage": "de-DE",
+      "author": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}}
+    },
+    {
+      "@type": "Person",
+      "@id": {{ '/' | absolute_url | append: '#author' | jsonify }},
+      "name": {{ site.author | jsonify }},
+      "url": {{ '/ueber-mich/' | absolute_url | jsonify }},
+      "image": {{ site.default_image | absolute_url | jsonify }}
+    },
+    {
+      "@type": "{% if page.nav == 'about' %}ProfilePage{% elsif page.url == '/stories/' %}CollectionPage{% else %}WebPage{% endif %}",
+      "@id": {{ canonical_url | append: '#webpage' | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "name": {{ seo_title | jsonify }},
+      "description": {{ seo_description | jsonify }},
+      "inLanguage": "de-DE",
+      "isPartOf": {"@id": {{ '/' | absolute_url | append: '#website' | jsonify }}}{% if page.nav == 'about' %},
+      "mainEntity": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}}{% elsif page.collection == 'texts' %},
+      "mainEntity": {"@id": {{ canonical_url | append: '#story' | jsonify }}}{% endif %}
+    }{% if page.collection == 'texts' %},
+    {
+      "@type": "{% if page.text_type == 'Liedtext' or page.text_type == 'Gedicht' %}CreativeWork{% else %}ShortStory{% endif %}",
+      "@id": {{ canonical_url | append: '#story' | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "name": {{ page.title | jsonify }},
+      "headline": {{ page.title | jsonify }},
+      "description": {{ seo_description | jsonify }},
+      "inLanguage": "de-DE",
+      "genre": {{ page.genre | jsonify }},
+      "keywords": {{ page.tags | join: ', ' | jsonify }},
+      "image": {{ seo_image | jsonify }},
+      "author": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}},
+      "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.published_on %},
+      "datePublished": {{ page.published_on | date: '%Y-%m-%d' | jsonify }}{% endif %}{% if page.created_on %},
+      "dateCreated": {{ page.created_on | date: '%Y-%m-%d' | jsonify }}{% endif %}
+    }{% endif %}
+  ]
+}
+</script>

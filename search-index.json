@@ -1,0 +1,14 @@
+---
+layout: null
+permalink: /search-index.json
+sitemap: false
+---
+[
+{% assign searchable_texts = site.texts %}
+{% for text in searchable_texts %}
+  {
+    "url": {{ text.url | relative_url | jsonify }},
+    "content": {{ text.content | markdownify | strip_html | normalize_whitespace | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
