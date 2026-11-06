@@ -80,8 +80,12 @@
     preview.appendChild(fragment);
   }
 
+  const filterKeys = ['q', 'genre', 'tag'];
+
   function restoreFiltersFromUrl() {
-    const params = new URLSearchParams(window.location.search);
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    const params = filterKeys.some(key => fragment.has(key))
+      ? fragment : new URLSearchParams(window.location.search);
     search.value = params.get('q') || '';
     genre.value = params.get('genre') || '';
     activeTag = params.get('tag') || '';
@@ -89,14 +93,20 @@
 
   function syncFiltersToUrl(mode = 'push') {
     const url = new URL(window.location.href);
+    const fragment = new URLSearchParams();
     const values = { q: search.value.trim(), genre: genre.value, tag: activeTag };
     Object.entries(values).forEach(([key, value]) => {
-      if (value) url.searchParams.set(key, value);
-      else url.searchParams.delete(key);
+      url.searchParams.delete(key);
+      if (value) fragment.set(key, value);
     });
+    const previousFragment = new URLSearchParams(url.hash.slice(1));
+    if (fragment.size || filterKeys.some(key => previousFragment.has(key))) {
+      url.hash = fragment.toString();
+    }
     if (url.href !== window.location.href) {
       window.history[mode + 'State'](null, '', url.pathname + url.search + url.hash);
     }
+    lastRestoredUrl = window.location.href;
   }
 
   async function filterStories() {
@@ -197,14 +207,29 @@
     filterStories();
   });
 
-  // Browser navigation restores the filter state shown in the address.
-  window.addEventListener('popstate', () => {
+  // Support browser history, pasted fragments and legacy query links.
+  let lastRestoredUrl;
+  function restoreAndFilter() {
+    if (lastRestoredUrl === window.location.href) return;
     restoreFiltersFromUrl();
+    syncFiltersToUrl('replace');
+    lastRestoredUrl = window.location.href;
     filterStories();
-  });
+  }
+  window.addEventListener('popstate', restoreAndFilter);
+  window.addEventListener('hashchange', restoreAndFilter);
 
-  // Initiale Anzeige
-  restoreFiltersFromUrl();
-  filterStories();
+  // Keep the skip link from replacing the fragment that stores the filters.
+  const skip = document.querySelector('.skip');
+  const main = document.getElementById('inhalt');
+  if (skip && main) {
+    skip.addEventListener('click', event => {
+      event.preventDefault();
+      main.setAttribute('tabindex', '-1');
+      main.focus({ preventScroll: true });
+      main.scrollIntoView();
+    });
+  }
 
+  restoreAndFilter();
 })();
