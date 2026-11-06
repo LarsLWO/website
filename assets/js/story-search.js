@@ -57,6 +57,27 @@
     return (start ? '… ' : '') + text.slice(start, end).trim() + (end < text.length ? ' …' : '');
   }
 
+  function highlightExcerpt(preview, text, terms) {
+    preview.replaceChildren();
+    if (!text) return;
+    const content = text.normalize('NFC');
+    const escapedTerms = [...new Set(terms)]
+      .sort((a, b) => b.length - a.length)
+      .map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const pattern = new RegExp(escapedTerms.join('|'), 'giu');
+    const fragment = document.createDocumentFragment();
+    let position = 0;
+    for (const match of content.matchAll(pattern)) {
+      fragment.appendChild(document.createTextNode(content.slice(position, match.index)));
+      const highlight = document.createElement('mark');
+      highlight.textContent = match[0];
+      fragment.appendChild(highlight);
+      position = match.index + match[0].length;
+    }
+    fragment.appendChild(document.createTextNode(content.slice(position)));
+    preview.appendChild(fragment);
+  }
+
   function restoreFiltersFromUrl() {
     const params = new URLSearchParams(window.location.search);
     search.value = params.get('q') || '';
@@ -103,7 +124,7 @@
         (!activeTag || tags.includes(activeTag));
       article.hidden = !show;
       const preview = article.querySelector('.search-excerpt');
-      preview.textContent = show && terms.length ? excerpt(content, terms) : '';
+      highlightExcerpt(preview, show && terms.length ? excerpt(content, terms) : '', terms);
       preview.hidden = !preview.textContent;
       if (show) visible++;
       const score = terms.reduce((sum, term) => sum + (title.includes(term) ? 10 : metadata.includes(term) ? 3 : 1), 0);

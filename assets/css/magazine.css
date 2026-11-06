@@ -229,3 +229,6 @@
     --type-ui:16px;
   }
 }
+
+/* Highlight literal search matches without changing the excerpt typography. */
+.search-excerpt mark{color:var(--accent);background:transparent;font:inherit}
