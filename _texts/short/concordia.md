@@ -76,7 +76,9 @@ Concordia. Gemeinsam in Eintracht.“
 
 Der Arbeitstag hat begonnen.
 
+
 * * *
+
 
 „Auch heute leisten Sie mit Ihrer Arbeit einen wertvollen Beitrag zum Fortbestand unserer Gemeinschaft.“
 
@@ -136,7 +138,9 @@ Die schwarze Fläche erlischt. Der Mann bleibt davor stehen. Seine Hand liegt no
 
 „Die Versorgungssicherheit ist weiterhin gewährleistet.“
 
+
 * * *
+
 
 Als Jonas am Abend den Lift verlässt, ist es 21:37 Uhr.
 
@@ -195,7 +199,9 @@ Korab hebt den Becher.
 
 Die Tür fällt hinter Jonas ins Schloss.
 
+
 * * *
+
 
 05:41 Uhr.
 
@@ -361,7 +367,9 @@ Jonas küsst sie auf die Haare.
 „Ich bin schon dabei.“
 Liv grinst und kriecht unter ihre Decke.
 
+
 * * *
+
 
 04:31 Uhr.
 
@@ -414,7 +422,9 @@ Drei Sicherheitskräfte stürmen herein. Jonas beugt sich zum Mikrofon. „Korab
 
 Ein Stiefel zertrümmert das Mikrofon.
 
+
 * * *
+
 
 Als die Sicherheitskräfte Jonas zum Lift führen, ist seine Meldung bereits verschwunden. Auf den Projektoren steht:
 
