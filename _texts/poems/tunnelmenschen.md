@@ -5,7 +5,6 @@ text_type: "Gedicht"
 genre: "Lyrik"
 tags:
   - Gesellschaft
-  - Großstadt
   - Entfremdung
 description: "Eine kritische, metaphorische Beobachtung – angeregt durch Eindrücke in den Tunneln des Frankfurter Hauptbahnhofs."
 image: /assets/images/stories/tunnelmenschen-randlos.jpeg

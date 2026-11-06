@@ -4,7 +4,6 @@ title: "Schneewartezeit"
 genre: "Erzählung"
 tags:
   - "Verbundenheit"
-  - "Begegnung"
   - "Erinnerung"
 description: "Eine zufällige Begegnung im Schnee wird zum Beginn einer besonderen Verbindung. Ihre Leben führen sie auf unterschiedliche Wege. Doch der erste Schnee bringt sie jedes Jahr wieder zusammen."
 image: /assets/images/stories/schneewartezeit-zeichnung-farbig-small.jpeg

@@ -4,7 +4,6 @@ title: "Gesäßbewusstsein"
 genre: "Satire"
 tags:
   - Humor
-  - Alltag
   - Zusammenleben
 description: "Eine groteske Kleingartensatire, in der Gesundheitswahn, Nachbarschaftspolizei und deutsche Spießigkeit in einer Kette immer absurderer Ereignisse aufeinanderprallen."
 image: /assets/images/stories/gesaessbewusstsein-buntstift.jpeg

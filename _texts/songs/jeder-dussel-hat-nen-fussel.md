@@ -7,7 +7,6 @@ audio: /assets/audio/jeder-dussel-hat-nen-fussel-lars-wollny-128.mp3
 tags:
   - Kinder
   - Humor
-  - Tiere
 description: "Auf Wunsch meiner Töchter und beim liebevollen gemeinsamen Tüfteln ist das nachfolgende Lied entstanden."
 image: /assets/images/stories/jeder-dussel-hat-nen-fussel-randlos.jpeg
 image_webp_base: /assets/images/optimized/jeder-dussel-hat-nen-fussel-randlos
