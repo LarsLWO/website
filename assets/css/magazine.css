@@ -159,7 +159,7 @@
 .about-section{max-width:740px;margin-bottom:44px}
 .about-section>p{margin:0 0 20px}
 .about-section>.text-link{margin-top:2px}
-.about-section .background-copy .author-portrait{margin-top:4px}
+.about-section .background-copy .author-portrait{margin-top:24px}
 @media(max-width:700px){.about-section{margin-bottom:36px}}
 @media print{.about-section{max-width:none;margin-bottom:12pt}.about-section>p{margin:0 0 7pt}}
 
