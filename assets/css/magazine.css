@@ -154,3 +154,11 @@
 /* Visible rights notice for the author's texts, including printed copies. */
 .article-body .story-rights{margin:24px 0 0;color:var(--muted);font:14px/1.65 Arial,sans-serif}
 @media print{.article-body .story-rights{margin-top:8pt;font-size:8pt;line-height:1.4}}
+
+/* Space the author's writing themes and biography into readable sections. */
+.about-section{max-width:740px;margin-bottom:44px}
+.about-section>p{margin:0 0 20px}
+.about-section>.text-link{margin-top:2px}
+.about-section .background-copy .author-portrait{margin-top:4px}
+@media(max-width:700px){.about-section{margin-bottom:36px}}
+@media print{.about-section{max-width:none;margin-bottom:12pt}.about-section>p{margin:0 0 7pt}}
