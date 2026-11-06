@@ -147,7 +147,7 @@
 .song-info-heading h2{margin:0;font-size:28px;line-height:1.2}
 .song-info-heading form{margin:0}
 .song-info-close{font:28px/1 Arial,sans-serif}
-.song-info-dialog p,.song-player .song-info-fallback{margin:0;font:16px/1.7 Arial,sans-serif}
+.song-info-dialog p,.song-player .song-info-fallback{margin:0;font:14px/1.7 Arial,sans-serif}
 @media(max-width:380px){.song-player-controls{gap:6px}.song-info-dialog{padding:20px}}
 @media print{.song-player,.song-info-dialog{display:none!important}}
 
@@ -199,8 +199,7 @@
     font-weight:700;
     line-height:1.4;
   }
-  .intro,.reading .lead,.article-header .deck,.article-body,.story-card p,
-  .song-info-dialog p,.song-player .song-info-fallback {
+  .intro,.reading .lead,.article-header .deck,.article-body,.story-card p {
     font-size:var(--type-body);
   }
   nav,.site-header nav,.site-header nav a,.text-link,.article-end .text-link,
@@ -212,7 +211,7 @@
   .eyebrow,.meta,.story-card .meta,.label,.section-head .label,.caption,
   .story-dates,.story-card .story-dates,.byline,.site-footer,.site-footer nav,
   .site-footer nav a,.story-share .share-status,.song-player .song-player-label,
-  .article-body .story-rights {
+  .article-body .story-rights,.song-info-dialog p,.song-player .song-info-fallback {
     font-family:Arial,sans-serif;
     font-size:var(--type-meta);
     line-height:1.6;
