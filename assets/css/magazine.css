@@ -170,3 +170,63 @@
 .related-texts a{padding:4px 0;text-decoration:underline;overflow-wrap:anywhere}
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
+
+/* Five shared type sizes per screen. Print keeps its compact reading layout. */
+@media screen {
+  :root {
+    --type-title:64px;
+    --type-heading:32px;
+    --type-body:20px;
+    --type-ui:18px;
+    --type-meta:14px;
+  }
+  body { font-size:var(--type-body); }
+  button,input,select,textarea { font:inherit; }
+  h1,.reading h1,.article-header h1 {
+    font-size:var(--type-title);
+    line-height:1.1;
+    letter-spacing:-.035em;
+  }
+  h2,.section-head h2,.reading h2,.about-body h2,.legal-body h2,
+  .about-teaser h2,.story-card h2,#stories h2,#stories .story-card h2,
+  .song-info-heading h2,.brand {
+    font-size:var(--type-heading);
+    line-height:1.2;
+    letter-spacing:-.025em;
+  }
+  h3,h4,h5,h6 {
+    font-size:var(--type-body);
+    font-weight:700;
+    line-height:1.4;
+  }
+  .intro,.reading .lead,.article-header .deck,.article-body,.story-card p,
+  .song-info-dialog p,.song-player .song-info-fallback {
+    font-size:var(--type-body);
+  }
+  nav,.site-header nav,.site-header nav a,.text-link,.article-end .text-link,
+  .filters,#search,#genre,#reset,.tag,#active-tag,.story-card .tag,#active-filters,
+  .story-share,.share-option,.share-copy-field,.copy-confirmation,.related-texts {
+    font-size:var(--type-ui);
+    line-height:1.5;
+  }
+  .eyebrow,.meta,.story-card .meta,.label,.section-head .label,.caption,
+  .story-dates,.story-card .story-dates,.byline,.site-footer,.site-footer nav,
+  .site-footer nav a,.story-share .share-status,.song-player .song-player-label,
+  .article-body .story-rights {
+    font-family:Arial,sans-serif;
+    font-size:var(--type-meta);
+    line-height:1.6;
+  }
+  .eyebrow,.meta,.label,.song-player .song-player-label { letter-spacing:.1em; }
+  .article-body .story-rights { font-weight:400; }
+  .song-info-button span { font-size:var(--type-meta); }
+  .song-info-close { font-size:var(--type-heading); }
+}
+@media screen and (max-width:700px) {
+  :root {
+    --type-title:40px;
+    --type-heading:28px;
+    --type-body:18px;
+    --type-ui:16px;
+  }
+}
