@@ -45,15 +45,17 @@
 
   function excerpt(text, terms) {
     const normalized = normalize(text);
-    const positions = terms.map(term => normalized.indexOf(term)).filter(position => position >= 0);
-    if (!positions.length) return '';
-    const first = Math.min(...positions);
-    let start = Math.max(0, first - 65);
+    const matches = terms.map(term => ({ position: normalized.indexOf(term), length: term.length }))
+      .filter(match => match.position >= 0);
+    if (!matches.length) return '';
+    const first = Math.min(...matches.map(match => match.position));
+    const matchLength = Math.max(...matches.filter(match => match.position === first).map(match => match.length));
+    let start = Math.max(0, first - 30);
     if (start) {
       const boundary = text.indexOf(' ', start);
       if (boundary >= 0 && boundary < first) start = boundary + 1;
     }
-    const end = Math.min(text.length, start + Math.max(210, first - start + terms[0].length));
+    const end = Math.min(text.length, start + Math.max(110, first - start + matchLength));
     return (start ? '… ' : '') + text.slice(start, end).trim() + (end < text.length ? ' …' : '');
   }
 
