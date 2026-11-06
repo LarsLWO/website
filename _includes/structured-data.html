@@ -38,12 +38,25 @@
       "inLanguage": "de-DE",
       "genre": {{ page.genre | jsonify }},
       "keywords": {{ page.tags | join: ', ' | jsonify }},
-      "image": {{ seo_image | jsonify }},
+{% if page.audio %}      "audio": {"@id": {{ canonical_url | append: '#audio' | jsonify }}},
+{% endif %}      "image": {{ seo_image | jsonify }},
       "author": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}},
       "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.published_on %},
       "datePublished": {{ page.published_on | date: '%Y-%m-%d' | jsonify }}{% endif %}{% if page.created_on %},
       "dateCreated": {{ page.created_on | date: '%Y-%m-%d' | jsonify }}{% endif %}
-    }{% endif %}
+    }{% if page.audio %},
+    {
+      "@type": "AudioObject",
+      "@id": {{ canonical_url | append: '#audio' | jsonify }},
+      "name": {{ page.title | jsonify }},
+      "description": {{ 'Musikalische Umsetzung zum Liedtext „' | append: page.title | append: '“.' | jsonify }},
+      "contentUrl": {{ page.audio | absolute_url | jsonify }},
+      "encodingFormat": "audio/mpeg",
+      "inLanguage": "de-DE",
+      "isBasedOn": {"@id": {{ canonical_url | append: '#story' | jsonify }}},
+      "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.audio_duration %},
+      "duration": {{ page.audio_duration | jsonify }}{% endif %}
+    }{% endif %}{% endif %}
   ]
 }
 </script>

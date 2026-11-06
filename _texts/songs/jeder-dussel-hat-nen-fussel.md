@@ -4,6 +4,7 @@ title: "Jeder Dussel hat ’nen Fussel"
 text_type: "Liedtext"
 genre: "Kinderlied"
 audio: /assets/audio/jeder-dussel-hat-nen-fussel-lars-wollny-128.mp3
+audio_duration: "PT3M39S"
 tags:
   - Kinder
   - Humor
