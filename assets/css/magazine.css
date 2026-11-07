@@ -149,7 +149,7 @@
 .song-player audio{display:block;flex:1;min-width:0;width:100%;height:54px;color-scheme:light}
 .song-info-button,.song-info-close{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
 .song-info-button{width:28px;height:28px;border:0}
-.song-info-button:focus-visible,.song-info-close:focus-visible{outline:2px solid var(--muted);outline-offset:3px}
+.song-info-button:focus,.song-info-close:focus{outline:none}
 .song-info-button span{display:flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid currentColor;border-radius:50%;font:bold 12px/1 Georgia,serif}
 
 .song-player audio:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
