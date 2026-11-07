@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  document.querySelectorAll('[data-print]').forEach(function (button) {
+    button.hidden = false;
+    button.addEventListener('click', function () { window.print(); });
+  });
+
   const shareMenus = Array.from(document.querySelectorAll('.story-share'));
   const copyConfirmation = document.querySelector('[data-copy-confirmation]');
   const copyAnnouncement = document.querySelector('[data-copy-announcement]');

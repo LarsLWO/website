@@ -24,7 +24,7 @@
 .share-copy-field{width:100%;margin-top:8px;padding:9px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:14px/1.5 Arial,sans-serif}
 .story-share .share-status{margin:0;padding:0 12px;color:var(--muted);font:14px/1.5 Arial,sans-serif}
 .story-share .share-status:not(:empty){padding-top:8px;padding-bottom:8px}
-.article-body .story-signature{margin:36px 0 0;text-align:right;font-style:italic}
+.article-body .story-signature{margin:36px 0 0;text-align:right;font-style:normal}
 .about-hero{display:grid;grid-template-columns:minmax(0,1fr) clamp(210px,27vw,320px);align-items:center;gap:clamp(36px,6vw,80px);max-width:none}
 .author-portrait{width:100%;max-width:320px;margin:0;justify-self:end;padding:10px;border:1px solid var(--line)}
 .author-portrait img{width:100%;height:auto;aspect-ratio:auto}
@@ -239,3 +239,12 @@
 .back-to-top{flex:none;min-width:44px;text-decoration:none;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
 
 .page-actions{margin-bottom:40px}
+
+/* Trial layout: article metadata, actions and introduction. */
+.story-toolbar{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:12px;margin-top:20px;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
+.story-toolbar>.story-share{margin-left:0}
+.story-toolbar-bottom{margin-top:24px}
+.story-toolbar-bottom>.back-to-top{margin-left:auto}
+.story-print{font:inherit}
+.article-body .story-intro{font-weight:700}
+@media print{.story-toolbar{display:none!important}}
