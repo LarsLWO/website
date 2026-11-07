@@ -1,9 +1,19 @@
 {%- assign seo_description = page.description | default: site.description | strip_html | normalize_whitespace -%}
+{%- assign social_description = page.social_description | default: seo_description -%}
 {%- assign canonical_path = page.url | replace: 'index.html', '' -%}
 {%- assign canonical_url = canonical_path | absolute_url -%}
 {%- capture seo_title -%}{{ page.title }} | {{ site.title }}{%- endcapture -%}
 {%- assign seo_image_path = page.image | default: site.default_image -%}
 {%- assign seo_image = seo_image_path | absolute_url -%}
+{%- if page.image -%}
+  {%- assign seo_image_alt = page.image_alt | default: page.title -%}
+  {%- assign seo_image_width = page.image_width -%}
+  {%- assign seo_image_height = page.image_height -%}
+{%- else -%}
+  {%- assign seo_image_alt = site.default_image_alt -%}
+  {%- assign seo_image_width = site.default_image_width -%}
+  {%- assign seo_image_height = site.default_image_height -%}
+{%- endif -%}
 <title>{{ seo_title | escape }}</title>
 <meta name="description" content="{{ seo_description | escape }}">
 <meta name="author" content="{{ site.author | escape }}">
@@ -17,17 +27,17 @@
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:type" content="{% if page.collection == 'texts' %}article{% else %}website{% endif %}">
 <meta property="og:title" content="{{ seo_title | escape }}">
-<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:description" content="{{ social_description | escape }}">
 <meta property="og:url" content="{{ canonical_url | escape }}">
 <meta property="og:image" content="{{ seo_image | escape }}">
-<meta property="og:image:alt" content="{{ page.image_alt | default: 'Lars Wollny' | escape }}">
-<meta property="og:image:width" content="{{ page.image_width | default: 480 }}">
-<meta property="og:image:height" content="{{ page.image_height | default: 640 }}">
-<meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+<meta property="og:image:alt" content="{{ seo_image_alt | escape }}">
+<meta property="og:image:width" content="{{ seo_image_width }}">
+<meta property="og:image:height" content="{{ seo_image_height }}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ seo_title | escape }}">
-<meta name="twitter:description" content="{{ seo_description | escape }}">
+<meta name="twitter:description" content="{{ social_description | escape }}">
 <meta name="twitter:image" content="{{ seo_image | escape }}">
-<meta name="twitter:image:alt" content="{{ page.image_alt | default: 'Lars Wollny' | escape }}">
+<meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}">
 {% if page.collection == 'texts' and page.published_on %}<meta property="article:published_time" content="{{ page.published_on | date: '%Y-%m-%d' }}">
 <meta property="article:author" content="{{ '/ueber-mich/' | absolute_url }}">{% endif %}
 {% unless page.noindex %}{% include structured-data.html %}{% endunless %}

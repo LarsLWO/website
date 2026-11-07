@@ -15,7 +15,7 @@
       "@id": {{ '/' | absolute_url | append: '#author' | jsonify }},
       "name": {{ site.author | jsonify }},
       "url": {{ '/ueber-mich/' | absolute_url | jsonify }},
-      "image": {{ site.default_image | absolute_url | jsonify }}
+      "image": {{ site.author_image | absolute_url | jsonify }}
     },
     {
       "@type": "{% if page.nav == 'about' %}ProfilePage{% elsif page.url == '/stories/' %}CollectionPage{% else %}WebPage{% endif %}",
