@@ -13,8 +13,9 @@
   let copyConfirmationOrigin;
 
   function closeMenu(menu, restoreFocus) {
-    menu.open = false;
-    if (restoreFocus) menu.querySelector('summary').focus();
+    const panel = menu.querySelector('[popover]');
+    if (typeof panel.hidePopover === 'function' && panel.matches(':popover-open')) panel.hidePopover();
+    if (restoreFocus) menu.querySelector('[popovertarget]').focus();
   }
 
   function dismissCopyConfirmation() {
@@ -28,7 +29,7 @@
 
   function showCopyConfirmation(menu) {
     window.clearTimeout(copyConfirmationTimer);
-    copyConfirmationOrigin = menu.querySelector('summary');
+    copyConfirmationOrigin = menu.querySelector('[popovertarget]');
     closeMenu(menu, true);
     if (!copyConfirmation) return;
     copyConfirmation.hidden = false;
@@ -47,13 +48,6 @@
     const status = menu.querySelector('.share-status');
     const url = menu.dataset.shareUrl;
     const title = menu.dataset.shareTitle;
-
-    menu.addEventListener('toggle', function () {
-      if (!menu.open) return;
-      shareMenus.forEach(function (other) {
-        if (other !== menu) closeMenu(other, false);
-      });
-    });
 
     copyButton.hidden = false;
     copyButton.addEventListener('click', async function () {
@@ -93,24 +87,12 @@
     });
   });
 
-  document.addEventListener('click', function (event) {
-    shareMenus.forEach(function (menu) {
-      if (menu.open && !menu.contains(event.target)) closeMenu(menu, false);
-    });
-  });
-
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
     if (copyConfirmation && !copyConfirmation.hidden) {
       event.preventDefault();
       dismissCopyConfirmation();
     }
-    shareMenus.forEach(function (menu) {
-      if (menu.open) {
-        event.preventDefault();
-        closeMenu(menu, true);
-      }
-    });
   });
 
   const storyText = document.querySelector('[data-story-text]');
