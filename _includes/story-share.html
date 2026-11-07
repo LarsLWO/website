@@ -8,13 +8,12 @@
 {% assign share_title = include.story.title | append: ' | ' | append: site.title %}
 {% endif %}
 {% assign share_message = share_title | append: ' ' | append: share_url %}
-{% capture share_menu_id %}share-menu-{% increment share_menu_counter %}{% endcapture %}
-<div class="story-share" data-share-title="{{ share_title | escape }}" data-share-url="{{ share_url | escape }}">
-  <button class="share-toggle" type="button" popovertarget="{{ share_menu_id }}">
+<details class="story-share" data-share-title="{{ share_title | escape }}" data-share-url="{{ share_url | escape }}">
+  <summary class="share-toggle">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg>
     Teilen<span class="visually-hidden">: {{ include.story.title | escape }}</span>
-  </button>
-  <div class="share-menu" id="{{ share_menu_id }}" popover="auto">
+  </summary>
+  <div class="share-menu">
     <button class="share-option" type="button" data-copy-link hidden>Link kopieren</button>
     <a class="share-option" href="mailto:?subject={{ share_title | url_encode | replace: '+', '%20' }}&amp;body={{ share_url | url_encode | replace: '+', '%20' }}">E-Mail</a>
     <a class="share-option" href="https://wa.me/?text={{ share_message | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -22,4 +21,4 @@
     <input class="share-copy-field" type="text" value="{{ share_url | escape }}" aria-label="Link zur Seite" readonly hidden>
     <p class="share-status" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
-</div>
+</details>

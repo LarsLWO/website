@@ -15,9 +15,10 @@
 .story-actions{margin-top:16px}
 .story-share{position:relative;flex:none;margin-left:auto;font:16px/1.5 Arial,sans-serif}
 .share-toggle{font:inherit;display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);list-style:none;cursor:pointer}
-.share-toggle:hover,.story-share:has(>.share-menu:popover-open)>.share-toggle{border-color:var(--accent);color:var(--accent)}
+.share-toggle::-webkit-details-marker{display:none}
+.share-toggle:hover,.story-share[open] .share-toggle{border-color:var(--accent);color:var(--accent)}
 .share-toggle:focus-visible,.share-option:focus-visible,.share-copy-field:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.share-menu{position:fixed;inset:0;margin:auto;width:230px;max-width:calc(100vw - 36px);max-height:calc(100dvh - 36px);overflow:auto;padding:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);box-shadow:0 8px 24px #242b281a}
+.share-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:20;width:230px;max-width:calc(100vw - 36px);padding:8px;border:1px solid var(--line);background:var(--paper);box-shadow:0 8px 24px #242b281a}
 .share-option{display:block;width:100%;min-height:44px;padding:10px 12px;border:0;background:transparent;color:var(--ink);font:16px/1.5 Arial,sans-serif;text-align:left;cursor:pointer}
 .share-option:hover{background:#943f300c;color:var(--accent)}
 .share-copy-field{width:100%;margin-top:8px;padding:9px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:14px/1.5 Arial,sans-serif}
@@ -40,7 +41,9 @@
 /* Image actions. */
 .story-visual{position:relative}
 .story-visual>.story-share{position:absolute;right:12px;bottom:12px;z-index:2;margin:0}
+.story-visual>.story-share[open]{z-index:30}
 .story-visual .share-toggle{background:var(--paper);box-shadow:0 2px 10px #242b2826}
+.story-visual .share-menu{top:auto;bottom:calc(100% + 8px)}
 @media(max-width:700px){.site-header nav{column-gap:16px;row-gap:6px}}
 
 .about-section.about-contact{margin-bottom:0}
@@ -258,20 +261,8 @@
 .article-body .story-intro{font-weight:700}
 @media print{.story-toolbar{display:none!important}}
 
-/* Scope each native popover to its own sharing button.
-   Browsers without anchor positioning keep the accessible centered popover. */
-@supports (top:anchor(bottom)) and (anchor-scope:--share-trigger) {
-  .story-share{anchor-scope:--share-trigger}
-  .story-share>[popovertarget]{anchor-name:--share-trigger}
-  .share-menu{position-anchor:--share-trigger;inset:auto;top:calc(anchor(bottom) + 8px);right:anchor(right);margin:0;position-try-fallbacks:flip-block,flip-inline}
-  .story-visual .share-menu{top:auto;bottom:calc(anchor(top) + 8px)}
-  .story-toolbar .share-menu,.page-actions .share-menu{left:anchor(left);right:auto}
-}
-/* Older browsers without popovers retain direct access to the share links. */
-@supports not selector(:popover-open) {
-  .story-share>[popovertarget]{display:none}
-  .share-menu{position:static;inset:auto;margin:0;max-height:none}
-}
+/* Menus follow the left edge of sharing buttons in action bars. */
+.story-toolbar .share-menu,.page-actions .share-menu{left:0;right:auto}
 
 /* Match the original 24-unit SVG at 18px: 1.2px strokes and rounded ends. */
 .back-to-top-icon{position:relative;display:block;flex:none;width:18px;height:18px}
