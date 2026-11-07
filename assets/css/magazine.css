@@ -90,6 +90,16 @@
 @media(max-width:700px){.story-filters{grid-template-columns:minmax(0,1fr) auto}.story-filters #search{grid-column:1 / -1}}
 @media(max-width:380px){.story-filters{grid-template-columns:minmax(0,1fr)}}
 
+/* Preserve the responsive filter, result and tag geometry during initialization.
+   visibility:hidden also keeps the controls out of keyboard and accessibility navigation. */
+@media screen {
+  .story-filters[hidden]{display:grid!important;visibility:hidden}
+  #stories .story-tags[hidden]{display:flex!important;visibility:hidden}
+  #search-status{min-height:1.75em}
+  #search-status[hidden]{display:block!important;visibility:hidden}
+}
+
+
 /* Print as a compact reading copy rather than a screenshot of the website. */
 .print-source{display:none}
 @page{size:A4;margin:18mm 20mm}

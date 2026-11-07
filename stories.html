@@ -10,7 +10,10 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
 <section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
 
 
-  <p id="filter-fallback">Alle Texte findest du unten. Suche und Filter sind nur verfügbar, wenn JavaScript aktiviert ist und geladen werden kann.</p>
+  <noscript>
+    <link rel="stylesheet" href="{{ '/assets/css/no-script.css' | relative_url }}">
+    <p>Alle Texte findest du unten. Aktiviere JavaScript, um Suche und Filter zu nutzen.</p>
+  </noscript>
 
   <div class="story-filters" role="group" aria-label="Geschichten filtern" hidden>
   <input
@@ -90,4 +93,4 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
     Keine passenden Geschichten gefunden.
   </p>
 
-  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=progressive-filters-20261107" defer></script>
+  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=stable-filter-layout-20261107" defer></script>

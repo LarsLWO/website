@@ -239,7 +239,6 @@
     document.querySelector('.story-filters').hidden = false;
     document.querySelectorAll('#stories .story-tags').forEach(tags => { tags.hidden = false; });
     searchStatus.hidden = false;
-    document.getElementById('filter-fallback').hidden = true;
   } catch (error) {
     // Keep the static overview usable if initialization fails partway through.
     articles.forEach(article => { article.hidden = false; });
