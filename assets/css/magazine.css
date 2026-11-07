@@ -46,8 +46,8 @@
 .story-visual .share-menu{top:auto;bottom:calc(100% + 8px)}
 @media(max-width:700px){.site-header nav{column-gap:16px;row-gap:6px}}
 
-.about-contact{max-width:740px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
-.about-contact h2{margin-bottom:16px}.about-contact p{margin:0}
+.about-section.about-contact{margin-bottom:0}
+.about-section.about-contact>p:last-child{margin-bottom:0}
 
 /* Story headings precede their images on both overviews. */
 .story-card h2,#stories .story-card h2{margin:0 0 18px;font-size:34px;letter-spacing:-1px;line-height:1.15}
@@ -121,7 +121,6 @@
   .story-card p{font-size:11pt;line-height:1.45;color:inherit;margin:0 0 6pt}
   .story-card .story-dates{margin-bottom:5pt}
   .about-teaser{display:block;border-top:0;padding:0;margin-top:14pt}
-  .about-contact{margin-top:12pt;padding-top:8pt}
   .section-head{margin-bottom:8pt;padding-top:8pt}
   .print-source{display:block;margin:14pt 0 0;padding-top:6pt;border-top:.5pt solid #bbb;font:8pt/1.35 Arial,sans-serif;overflow-wrap:anywhere;break-inside:avoid;page-break-inside:avoid}
 }
