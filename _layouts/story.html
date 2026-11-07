@@ -6,7 +6,7 @@ nav: stories
   <header class="article-header">
     <p class="eyebrow">{{ page.text_type | default: 'Kurzgeschichte' | escape }} · {{ page.genre | escape }}</p>
     <h1>{{ page.title | escape }}</h1>
-    <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.created_on %}, {% include story-created.html story=page %}{% endif %}</p>
+    <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.created_on %}, geschrieben im {% include story-created.html story=page %}{% endif %}</p>
     {% include story-toolbar.html %}
   </header>
   {% if page.image %}<figure class="article-image">{% include responsive-image.html story=page priority=true sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc(100vw - 80px), 1180px' %}</figure>{% endif %}
