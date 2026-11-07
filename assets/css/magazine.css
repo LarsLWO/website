@@ -237,3 +237,5 @@
 .article-end{justify-content:flex-end;gap:12px;border-top:0;padding-top:0}
 .article-end>.story-share{margin-left:0}
 .back-to-top{flex:none;min-width:44px;text-decoration:none;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
+
+.page-actions{margin-bottom:40px}

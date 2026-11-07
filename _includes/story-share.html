@@ -1,6 +1,12 @@
 {% assign share_url = include.story.url | absolute_url %}
 {% assign share_type = include.story.text_type | default: 'Kurzgeschichte' %}
+{% if include.story.collection == 'texts' %}
 {% assign share_title = include.story.title | append: ' – ' | append: share_type | append: ' von Lars Wollny' %}
+{% elsif include.story.nav == 'home' %}
+{% assign share_title = site.title | append: ' – Geschriebenes' %}
+{% else %}
+{% assign share_title = include.story.title | append: ' | ' | append: site.title %}
+{% endif %}
 {% assign share_message = share_title | append: ' ' | append: share_url %}
 <details class="story-share" data-share-title="{{ share_title | escape }}" data-share-url="{{ share_url | escape }}">
   <summary class="share-toggle">
@@ -12,7 +18,7 @@
     <a class="share-option" href="mailto:?subject={{ share_title | url_encode | replace: '+', '%20' }}&amp;body={{ share_url | url_encode | replace: '+', '%20' }}">E-Mail</a>
     <a class="share-option" href="https://wa.me/?text={{ share_message | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     <button class="share-option" type="button" data-native-share hidden>Weitere Apps …</button>
-    <input class="share-copy-field" type="text" value="{{ share_url | escape }}" aria-label="Link zur Geschichte" readonly hidden>
+    <input class="share-copy-field" type="text" value="{{ share_url | escape }}" aria-label="Link zur Seite" readonly hidden>
     <p class="share-status" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
 </details>
