@@ -232,3 +232,10 @@
 
 /* Highlight literal search matches without changing the excerpt typography. */
 .search-excerpt mark{color:var(--accent);background:transparent;font:inherit}
+
+/* Actions above and below the reading text. */
+.article-start{display:flex;justify-content:flex-end;margin-bottom:24px}
+.article-end{justify-content:flex-end;gap:12px}
+.article-end>.story-share{margin-left:0}
+.back-to-top{flex:none;min-width:44px;text-decoration:none;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
+@media print{.article-start{display:none!important}}
