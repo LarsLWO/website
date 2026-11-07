@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
 
   const search = document.getElementById('search');
@@ -214,7 +214,7 @@
     restoreFiltersFromUrl();
     syncFiltersToUrl('replace');
     lastRestoredUrl = window.location.href;
-    filterStories();
+    return filterStories();
   }
   window.addEventListener('popstate', restoreAndFilter);
   window.addEventListener('hashchange', restoreAndFilter);
@@ -233,5 +233,19 @@
       });
     });
 
-  restoreAndFilter();
+  // Reveal interactive filters only after the initial results are ready.
+  try {
+    await restoreAndFilter();
+    document.querySelector('.story-filters').hidden = false;
+    document.querySelectorAll('#stories .story-tags').forEach(tags => { tags.hidden = false; });
+    searchStatus.hidden = false;
+    document.getElementById('filter-fallback').hidden = true;
+  } catch (error) {
+    // Keep the static overview usable if initialization fails partway through.
+    articles.forEach(article => { article.hidden = false; });
+    activeFilters.hidden = true;
+    empty.hidden = true;
+    grid.removeAttribute('aria-busy');
+    console.error('Story filters could not be initialized.', error);
+  }
 })();

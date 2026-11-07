@@ -10,7 +10,9 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
 <section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
 
 
-  <div class="story-filters" role="group" aria-label="Geschichten filtern">
+  <p id="filter-fallback">Alle Texte findest du unten. Suche und Filter sind nur verfügbar, wenn JavaScript aktiviert ist und geladen werden kann.</p>
+
+  <div class="story-filters" role="group" aria-label="Geschichten filtern" hidden>
   <input
     type="search"
     id="search"
@@ -43,7 +45,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
   </div>
 
   <!-- Geschichtenübersicht -->
-  <p id="search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <p id="search-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
 
   <div id="stories" class="story-grid" data-search-index="{{ '/search-index.json' | relative_url }}">
 
@@ -66,7 +68,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
         <p>{{ story.description | escape }}</p>
         <p class="search-excerpt" hidden></p>
 
-        <div class="story-tags">
+        <div class="story-tags" hidden>
         {% for tag in story.tags %}
           <button
             type="button"
@@ -88,4 +90,4 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
     Keine passenden Geschichten gefunden.
   </p>
 
-  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=preserve-scroll-filters-20261107" defer></script>
+  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=progressive-filters-20261107" defer></script>
