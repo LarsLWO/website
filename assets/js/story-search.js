@@ -219,17 +219,19 @@
   window.addEventListener('popstate', restoreAndFilter);
   window.addEventListener('hashchange', restoreAndFilter);
 
-  // Keep the skip link from replacing the fragment that stores the filters.
-  const skip = document.querySelector('.skip');
-  const main = document.getElementById('inhalt');
-  if (skip && main) {
-    skip.addEventListener('click', event => {
-      event.preventDefault();
-      main.setAttribute('tabindex', '-1');
-      main.focus({ preventScroll: true });
-      main.scrollIntoView();
+  // Move to page landmarks without replacing the fragment that stores filters.
+  document.querySelectorAll('.skip[href="#inhalt"], .back-to-top[href="#seitenanfang"]')
+    .forEach(link => {
+      const target = document.getElementById(link.hash.slice(1));
+      if (!target) return;
+      link.addEventListener('click', event => {
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.scrollIntoView();
+      });
     });
-  }
 
   restoreAndFilter();
 })();
