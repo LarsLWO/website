@@ -16,13 +16,18 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
   </noscript>
 
   <div class="story-filters" role="group" aria-label="Geschichten filtern" hidden>
+  <div class="filter-field filter-field-search">
+  <label for="search">Suche</label>
   <input
     type="search"
     id="search"
     placeholder="Alle Texte durchsuchen …"
-    aria-label="Alle Texte durchsuchen" aria-describedby="search-status">
+    aria-describedby="search-status">
+  </div>
 
-  <select id="genre" aria-label="Genre auswählen">
+  <div class="filter-field">
+  <label for="genre">Genre</label>
+  <select id="genre">
     <option value="">Alle Genres</option>
 
     {% assign short_stories = site.texts | sort: "created_on" | reverse %}
@@ -34,6 +39,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
       </option>
     {% endfor %}
   </select>
+  </div>
 
   <button type="button" id="reset">
     Filter zurücksetzen
@@ -93,4 +99,4 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
     Keine passenden Geschichten gefunden.
   </p>
 
-  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=stable-filter-layout-20261107" defer></script>
+  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=accessible-filters-20261107" defer></script>

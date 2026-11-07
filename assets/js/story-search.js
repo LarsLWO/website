@@ -155,6 +155,7 @@
     activeFilters.hidden = !activeTag;
     activeTagButton.textContent =
       activeTag ? `#${activeTag} ×` : '';
+    activeTagButton.setAttribute('aria-label', activeTag ? `#${activeTag} entfernen` : 'Tag-Filter entfernen');
 
     // Gewählten Tag optisch hervorheben
     document.querySelectorAll('.tag').forEach(button => {
