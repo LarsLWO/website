@@ -35,7 +35,7 @@
       "name": {{ page.title | jsonify }},
       "headline": {{ page.title | jsonify }},
       "description": {{ seo_description | jsonify }},
-      "inLanguage": "de-DE",
+      "inLanguage": {{ page.text_lang | default: site.lang | jsonify }},
       "genre": {{ page.genre | jsonify }},
       "keywords": {{ page.tags | join: ', ' | jsonify }},
 {% if page.audio %}      "audio": {"@id": {{ canonical_url | append: '#audio' | jsonify }}},
