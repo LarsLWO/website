@@ -4,7 +4,7 @@ nav: stories
 ---
 <article>
   <header class="article-header">
-    <p class="eyebrow">{{ page.text_type | default: 'Kurzgeschichte' | escape }} · {{ page.genre | escape }}</p>
+    <p class="eyebrow">{% include story-classification.html story=page %}</p>
     <h1>{{ page.title | escape }}</h1>
     <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.created_on %}, geschrieben im {% include story-created.html story=page %}{% endif %}</p>
     {% include story-toolbar.html %}

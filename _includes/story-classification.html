@@ -1,0 +1,4 @@
+{%- assign classification_type = include.story.text_type | default: 'Kurzgeschichte' | strip -%}
+{%- assign classification_genre = include.story.genre | default: '' | strip -%}
+{{- classification_type | escape -}}
+{%- if classification_genre != empty and classification_genre != classification_type %} · {{ classification_genre | escape }}{% endif -%}
