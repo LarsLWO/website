@@ -1,0 +1,9 @@
+{%- if include.story.description_link_text and include.story.description_link_url -%}
+  {%- assign description_parts = include.story.description | split: include.story.description_link_text -%}
+  {%- for part in description_parts -%}
+    {{- part | escape -}}
+    {%- unless forloop.last -%}<a href="{{ include.story.description_link_url | relative_url }}">{{ include.story.description_link_text | escape }}</a>{%- endunless -%}
+  {%- endfor -%}
+{%- else -%}
+  {{- include.story.description | escape -}}
+{%- endif -%}

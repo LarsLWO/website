@@ -72,9 +72,9 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
             {{ story.title }}
           </a>
         </h2>
-        <p class="meta">{{ story.genre | escape }}</p><div class="story-dates">{% include story-created.html story=story %}</div><div class="story-visual"><a class="image-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title | escape }} lesen">{% include responsive-image.html story=story priority=forloop.first sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc((100vw - 122px) / 2), 569px' %}</a>{% include story-share.html story=story %}</div>
+        <p class="meta">{{ story.genre | escape }}</p><div class="story-dates">{% include story-created.html story=story %}</div><div class="story-visual"><a class="image-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title | escape }} lesen">{% include responsive-image.html story=story priority=forloop.first sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc((100vw - 122px) / 2), 569px' %}</a>{% include story-card-actions.html story=story %}</div>
 
-        <p>{{ story.description | escape }}</p>
+        <p>{% include story-description.html story=story %}</p>
         <p class="search-excerpt" hidden></p>
 
         <div class="story-tags" hidden>

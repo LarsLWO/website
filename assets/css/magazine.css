@@ -40,8 +40,12 @@
 
 /* Image actions. */
 .story-visual{position:relative}
-.story-visual>.story-share{position:absolute;right:12px;bottom:12px;z-index:2;margin:0}
-.story-visual>.story-share[open]{z-index:30}
+.story-card-actions{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;align-items:center;gap:8px;font:16px/1.5 Arial,sans-serif}
+.story-card-actions:has(.story-share[open]){z-index:30}
+.story-card-actions>.story-share{margin:0}
+.story-card-actions .share-toggle{background:var(--paper);box-shadow:0 2px 10px #242b2826}
+.story-card-play[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.card-audio-status{position:absolute;right:0;bottom:calc(100% + 8px);width:min(280px,calc(100vw - 60px));padding:10px 12px;background:var(--paper);border:1px solid var(--control-border);font:14px/1.5 Arial,sans-serif;box-shadow:0 2px 10px #242b2826}
 .story-visual .share-toggle{background:var(--paper);box-shadow:0 2px 10px #242b2826}
 .story-visual .share-menu{top:auto;bottom:calc(100% + 8px)}
 @media(max-width:700px){.site-header nav{column-gap:16px;row-gap:6px}}

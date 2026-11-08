@@ -11,7 +11,7 @@ nav: stories
   </header>
   {% if page.image %}<figure class="article-image">{% include responsive-image.html story=page priority=true sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc(100vw - 80px), 1180px' %}</figure>{% endif %}
   <div class="reading article-body">
-    {% if page.description and page.show_description != false %}<p class="story-intro"><strong>{{ page.description | escape }}</strong></p>{% endif %}
+    {% if page.description and page.show_description != false %}<p class="story-intro"><strong>{% include story-description.html story=page %}</strong></p>{% endif %}
     {% if page.reading_note %}<p class="reading-note"><strong>Hinweis:</strong> {{ page.reading_note | escape }}</p>{% endif %}
     {% if page.audio %}{% include song-player.html %}{% endif %}
     <div class="story-text{% if page.text_type == 'Liedtext' %} song-text{% elsif page.text_type == 'Gedicht' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.published_on %} data-story-published-year="{{ page.published_on | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>

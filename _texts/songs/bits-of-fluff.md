@@ -2,12 +2,12 @@
 layout: story
 title: "Bits of Fluff"
 text_type: "Liedtext"
-genre: "Kinderlied"
+genre: "Liedtext"
 text_lang: en-GB
+description_link_text: "Fusselsong"
+description_link_url: /texts/songs/jeder-dussel-hat-nen-fussel/
 tags:
-  - Kinder
   - Humor
-  - Englisch
 description: 'Zwei Jahre nach dem Fusselsong gehen die Fussel auch auf Englisch auf Weltreise. „Bits of Fluff“ gibt es hier vorerst als Liedtext – noch ohne musikalische Interpretation.'
 image: /assets/images/stories/bits-of-fluff-gitarrenkoffer.jpeg
 image_webp_base: /assets/images/optimized/bits-of-fluff-gitarrenkoffer

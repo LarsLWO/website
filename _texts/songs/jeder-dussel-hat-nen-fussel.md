@@ -2,13 +2,13 @@
 layout: story
 title: "Jeder Dussel hat ’nen Fussel"
 text_type: "Liedtext"
-genre: "Kinderlied"
+genre: "Liedtext"
 audio: /assets/audio/jeder-dussel-hat-nen-fussel-lars-wollny-128.mp3
 audio_duration: "PT3M39S"
 tags:
-  - Kinder
   - Humor
-description: "Auf Wunsch meiner Töchter und beim liebevollen gemeinsamen Tüfteln ist das nachfolgende Lied entstanden."
+  - Kinder
+description: "Auf Wunsch meiner Töchter und beim gemeinsamen Tüfteln und Rumblödeln ist das nachfolgende Lied entstanden. Mit musikalischer Interpretation."
 image: /assets/images/stories/jeder-dussel-hat-nen-fussel-randlos.jpeg
 image_webp_base: /assets/images/optimized/jeder-dussel-hat-nen-fussel-randlos
 image_width: 1280

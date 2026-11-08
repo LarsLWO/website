@@ -1,0 +1,12 @@
+<div class="story-card-actions">
+  {% if include.story.audio %}
+  <button class="share-toggle story-card-play" type="button" data-card-play data-song-title="{{ include.story.title | escape }}" aria-label="{{ include.story.title | escape }} abspielen" aria-pressed="false" hidden>
+    <svg data-card-play-icon viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7z"/></svg>
+    <svg data-card-pause-icon viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false" hidden><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+    <span data-card-play-label>Abspielen</span>
+  </button>
+  <audio data-card-audio preload="none" src="{{ include.story.audio | relative_url }}" hidden></audio>
+  <span class="card-audio-status" data-card-audio-status role="status" aria-live="polite" hidden></span>
+  {% endif %}
+  {% include story-share.html story=include.story %}
+</div>
