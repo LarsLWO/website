@@ -40,8 +40,8 @@ Wir können Schlittschuhlaufen auf dem See.
 Doch schau mal die Kapuze an –  
 ein Fussel hängt auch dort noch dran!
 
-In China gibt’s den Drachentanz,  
-die Leute hüpfen froh im Glanz.  
+In China lässt man Drachen schwingen,  
+wenn Trommeln durch die Straßen klingen.  
 Doch schau nur hin, da wirbelt mehr,  
 ein Fussel tanzt im Wind umher!
 
