@@ -32,7 +32,7 @@ Chorus:
 Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
-in your socks on washing day—
+in your socks and on washing day—
 one, two bits of fluff—
 one, two bits of fluff—
 they’re with us every day!
@@ -54,7 +54,7 @@ Chorus:
 Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
-in your socks on washing day—
+in your socks and on washing day—
 one bit of fluff, two bits of fluff—
 they’re with us every day!
 One bit of fluff, two bits of fluff—
@@ -79,7 +79,7 @@ Chorus:
 Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
-in your socks on washing day—
+in your socks and on washing day—
 one bit of fluff, two bits of fluff—
 they’re with us every day!
 One bit of fluff, two bits of fluff—
@@ -94,7 +94,7 @@ Chorus:
 Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
-in your socks on washing day—
+in your socks and on washing day—
 one bit of fluff, two bits of fluff—
 they’re with us every day!
 One bit of fluff, two bits of fluff—
