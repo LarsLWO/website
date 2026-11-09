@@ -280,3 +280,7 @@
 
 /* Shared hover treatment for outlined actions; menu entries remain flat. */
 #reset:hover,.tag:not(.selected):hover,#active-tag:hover,.copy-confirmation-close:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Focus uses the existing control border, matching outlined action buttons. */
+#search:focus,#genre:focus,.share-copy-field:focus,#reset:focus-visible{border-color:var(--accent);outline:none;box-shadow:none}
+#reset:focus-visible{color:var(--accent)}
