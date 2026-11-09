@@ -19,23 +19,25 @@ created_on: "2026-11-08"
 ---
 
 In Africa there walks a gnu,
-a lion yawns, enjoys the view.
+a lion strolls, enjoys the view.
 He stops—and there, beneath his nose,
 a bit of fluff clings to his toes!
 
 In Australia, skies are blue,
 here comes a bouncing kangaroo!
-Inside her pouch, tucked out of sight,
-a lonely fluffball’s sitting tight!
+Inside her pouch, well out of sight,
+a little fluffball’s tucked in tight!
 
 Chorus:
-Every fool has got some fluff,
+Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks on washing day—
-one, two bits of fluff, one, two bits of fluff—
+one, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
-One, two bits of fluff, one, two bits of fluff—
+One, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 
 In Canada, the snow falls slow,
@@ -49,24 +51,24 @@ But something else is spinning round—
 a bit of fluff won’t touch the ground!
 
 Chorus:
-Every fool has got some fluff,
+Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
-in your socks on washing day —
-one, two bits of fluff, one, two bits of fluff—
+in your socks on washing day—
+one bit of fluff, two bits of fluff—
 they’re with us every day!
-One, two bits of fluff, one, two bits of fluff—
+One bit of fluff, two bits of fluff—
 they’re with us every day!
 
 In France, I buy a warm baguette,
-some cheese, an omelette — best one yet!
+some cheese, an omelette—best one yet!
 But what’s that on my plate today?
-A bit of fluff — Eww! No way!
+A bit of fluff—Eww! No way!
 
-In Germany, they pass the ball,
-“Goooal! Black, red and gold!” they call.
-Then in their shoes—what do they see?
-A bit of fluff! How can that be?
+In Germany, it’s time to play—
+a pass, a goal—hip, hip, hooray!
+But after the game, what’s in your shoe?
+A bit of fluff is in there too!
 
 “You won’t catch me!” comes a squeak,
 “Your T-shirt’s where I hide all week!
@@ -74,26 +76,26 @@ But when you wash it, off I go—
 into your pockets, don’t you know!”
 
 Chorus:
-Every fool has got some fluff,
+Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks on washing day—
-one, two bits of fluff, one, two bits of fluff—
+one bit of fluff, two bits of fluff—
 they’re with us every day!
-One, two bits of fluff, one, two bits of fluff—
+One bit of fluff, two bits of fluff—
 they’re with us every day!
 
-One, two bits of fluff, one, two bits of fluff—
+One bit of fluff, two bits of fluff—
 they always find a place to stay!
-One, two bits of fluff, one, two bits of fluff—
+One bit of fluff, two bits of fluff—
 we find them everywhere we play!
 
 Chorus:
-Every fool has got some fluff,
+Everybody’s got some fluff,
 all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks on washing day—
-one, two bits of fluff, one, two bits of fluff—
+one bit of fluff, two bits of fluff—
 they’re with us every day!
-One, two bits of fluff, one, two bits of fluff—
+One bit of fluff, two bits of fluff—
 they’re with us every day!

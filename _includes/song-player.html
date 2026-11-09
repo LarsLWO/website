@@ -14,8 +14,8 @@
       <h2 id="song-info-title">Über diesen Song</h2>
       <form method="dialog"><button class="song-info-close" aria-label="Informationen schließen" autofocus>×</button></form>
     </div>
-    <p id="song-info-credits">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste</p>
+    <p id="song-info-credits">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if page.song_idea_credit %}<br><br>{{ page.song_idea_credit | escape }}{% endif %}</p>
   </dialog>
-  <noscript><p class="song-info-fallback">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste</p></noscript>
+  <noscript><p class="song-info-fallback">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if page.song_idea_credit %}<br><br>{{ page.song_idea_credit | escape }}{% endif %}</p></noscript>
 </section>
 <script src="{{ '/assets/js/song-player.js' | relative_url }}" defer></script>
