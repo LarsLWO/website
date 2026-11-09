@@ -1,8 +1,10 @@
-{%- assign seo_description = page.description | default: site.description | strip_html | normalize_whitespace -%}
-{%- assign social_description = page.social_description | default: seo_description -%}
+{%- assign seo_description = page.seo_description | default: page.description | default: site.description | strip_html | normalize_whitespace -%}
+{%- assign social_description = page.social_description | default: page.description | default: site.description | strip_html | normalize_whitespace -%}
 {%- assign canonical_path = page.url | replace: 'index.html', '' -%}
 {%- assign canonical_url = canonical_path | absolute_url -%}
-{%- capture seo_title -%}{{ page.title }} | {{ site.title }}{%- endcapture -%}
+{%- capture default_title -%}{{ page.title }} | {{ site.title }}{%- endcapture -%}
+{%- assign seo_title = page.seo_title | default: default_title -%}
+{%- assign social_title = page.social_title | default: default_title -%}
 {%- assign seo_image_path = page.image | default: site.default_image -%}
 {%- assign seo_image = seo_image_path | absolute_url -%}
 {%- if page.image -%}
@@ -26,7 +28,7 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:type" content="{% if page.collection == 'texts' %}article{% else %}website{% endif %}">
-<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:title" content="{{ social_title | escape }}">
 <meta property="og:description" content="{{ social_description | escape }}">
 <meta property="og:url" content="{{ canonical_url | escape }}">
 <meta property="og:image" content="{{ seo_image | escape }}">
@@ -34,7 +36,7 @@
 <meta property="og:image:width" content="{{ seo_image_width }}">
 <meta property="og:image:height" content="{{ seo_image_height }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:title" content="{{ social_title | escape }}">
 <meta name="twitter:description" content="{{ social_description | escape }}">
 <meta name="twitter:image" content="{{ seo_image | escape }}">
 <meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}">

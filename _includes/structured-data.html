@@ -24,7 +24,12 @@
       "name": {{ seo_title | jsonify }},
       "description": {{ seo_description | jsonify }},
       "inLanguage": "de-DE",
-      "isPartOf": {"@id": {{ '/' | absolute_url | append: '#website' | jsonify }}}{% if page.nav == 'about' %},
+      "isPartOf": {"@id": {{ '/' | absolute_url | append: '#website' | jsonify }}}{% if page.nav == 'home' or page.nav == 'about' %},
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": {{ site.author_image | absolute_url | jsonify }},
+        "caption": "Lars Wollny"
+      }{% endif %}{% if page.nav == 'about' %},
       "mainEntity": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}}{% elsif page.collection == 'texts' %},
       "mainEntity": {"@id": {{ canonical_url | append: '#story' | jsonify }}}{% endif %}
     }{% if page.collection == 'texts' %},

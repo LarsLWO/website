@@ -2,14 +2,18 @@
 layout: magazine
 footer_actions: top
 title: Home
+seo_title: "Lars Wollny – Kurzgeschichten und andere Texte"
+seo_description: "Kurzgeschichten, Gedichte und Liedtexte von Lars Wollny. Über Menschen, ihre Eigenheiten und die kleinen Abgründe des Alltags."
+sitemap_image: /assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg
 nav: home
 social_description: "Geschriebenes. Irgendwo müssen die Worte ja hin."
 description: "Was uns verbindet. Was uns zum Lachen bringt. Und was wir lieber nicht wahrhaben wollen. Kurzgeschichten über Menschen und ihre ganz eigenen Abgründe."
 ---
 <section class="hero"><p class="eyebrow">Geschriebenes. Irgendwo müssen die Worte ja hin.</p><h1>Der Alltag hat<br>seine <em>Abgründe.</em></h1><p class="intro">{{ page.description | escape }}</p></section><section aria-label="Texte"><div class="story-grid">{% assign short_stories = site.texts | sort: "created_on" | reverse %}{% for story in short_stories %}{% include story-card.html story=story priority=forloop.first %}{% endfor %}</div></section><section class="about-teaser" aria-labelledby="ueber">
   <div><h2 id="ueber">Alles beginnt mit einer Beobachtung.</h2></div>
-  <div>
-    <p>Mich interessieren Menschen mit ihren Eigenheiten, familiäre Spannungen und die Regeln unseres Zusammenlebens. Daraus entstehen Geschichten über den vertrauten Alltag und über eine mögliche Zukunft. Einige Texte schreibe ich auch für meine Kinder.</p>
+  <div class="background-copy">
+    <figure class="author-portrait"><a href="{{ '/ueber-mich/' | relative_url }}"><picture><source type="image/webp" srcset="{{ '/assets/images/optimized/lars-wollny-240.webp' | relative_url }} 240w, {{ '/assets/images/optimized/lars-wollny-480.webp' | relative_url }} 480w" sizes="(max-width: 700px) 120px, 170px"><img src="{{ '/assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg' | relative_url }}" alt="Sepiazeichnung von Lars Wollny im braunen Poloshirt" width="480" height="640" loading="lazy" decoding="async"></picture></a></figure>
+    <p>Ich bin Lars Wollny. Mich interessieren Menschen mit ihren Eigenheiten, familiäre Spannungen und die Regeln unseres Zusammenlebens. Daraus entstehen Geschichten über den vertrauten Alltag und über eine mögliche Zukunft. Einige Texte schreibe ich auch für meine Kinder.</p>
     <a class="text-link" href="{{ '/ueber-mich/' | relative_url }}">Mehr über mich und mein Schreiben</a>
   </div>
 </section>
