@@ -24,7 +24,7 @@ der Löwe gähnt und schaut ihm zu.
 Doch plötzlich bleibt das Gnu mal steh‘n –  
 ein Fussel hängt an seinen Zeh‘n!
 
-In Australien kommt’s nie zur Ruh,  
+In Australien – schau mal zu –  
 da hüpft und springt ein Känguru!  
 Doch schau mal in den Beutel rein,  
 da sitzt ein Fussel ganz allein!
@@ -37,7 +37,7 @@ in den Socken und beim Waschen –
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
 
 In Kanada, da fällt viel Schnee,  
-Wir können Schlittschuhlaufen auf dem See.  
+Wir flitzen übers Eis am See.  
 Doch schau mal die Kapuze an –  
 ein Fussel hängt auch dort noch dran!
 
