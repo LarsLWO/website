@@ -56,8 +56,10 @@ all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks and on washing day—
 one, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 One, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 
 In France, I buy a warm baguette,
@@ -81,13 +83,17 @@ all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks and on washing day—
 one, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 One, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 
 One, two bits of fluff—
+one, two bits of fluff—
 they always find a place to stay!
 One, two bits of fluff—
+one, two bits of fluff—
 we find them everywhere we play!
 
 Chorus:
@@ -96,6 +102,8 @@ all around the world—sure enough!
 In your shoes and pockets, hey,
 in your socks and on washing day—
 one, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
 One, two bits of fluff—
+one, two bits of fluff—
 they’re with us every day!
