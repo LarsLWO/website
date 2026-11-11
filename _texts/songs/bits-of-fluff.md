@@ -6,6 +6,7 @@ genre: "Liedtext"
 text_lang: en-GB
 audio: /assets/audio/bits-of-fluff-lars-wollny-128.mp3
 audio_duration: "PT3M58S"
+song_idea_credit: "Danke an meine Töchter für die Idee zu diesem Lied!"
 description_link_text: "Fusselsong"
 description_link_url: /texts/songs/jeder-dussel-hat-nen-fussel/
 tags:
