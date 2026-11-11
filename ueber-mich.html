@@ -4,7 +4,7 @@ footer_actions: top
 title: Hinter den Worten
 nav: about
 permalink: /ueber-mich/
-sitemap_image: /assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg
+sitemap_image: /assets/images/lars-wollny-portrait.jpg
 description: "Ich bin Lars Wollny. Ich schreibe über familiäre Spannungen, Stereotype und Machtverhältnisse – und Geschichten für meine Kinder."
 ---
 <article>
@@ -38,7 +38,7 @@ description: "Ich bin Lars Wollny. Ich schreibe über familiäre Spannungen, Ste
     <section class="about-section" aria-labelledby="hintergrund">
       <h2 id="hintergrund">Mein Hintergrund.</h2>
       <div class="background-copy">
-        <figure class="author-portrait"><picture><source type="image/webp" srcset="{{ '/assets/images/optimized/lars-wollny-240.webp' | relative_url }} 240w, {{ '/assets/images/optimized/lars-wollny-480.webp' | relative_url }} 480w" sizes="(max-width: 700px) 120px, 170px"><img src="{{ '/assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg' | relative_url }}" alt="Sepiazeichnung von Lars Wollny im braunen Poloshirt" width="480" height="640" loading="lazy" decoding="async"></picture></figure>
+        <figure class="author-portrait">{% include author-portrait.html %}</figure>
         <p>Moin! Ich bin Lars und lebe seit {% include elapsed-years.html since=site.data.author.hamburg_since %} Jahren in Hamburg. Das Schreiben begleitet mich schon deutlich länger.</p>
         <p>Beruflich komme ich aus der IT. Ich habe Webanwendungen entwickelt, digitale Produkte begleitet und Entwicklungsteams geführt. Beim Schreiben beschäftigt mich besonders, was Menschen bewegt und wie sie Entscheidungen treffen.</p>
       </div>

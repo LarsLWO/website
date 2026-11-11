@@ -70,15 +70,16 @@
 /* Small portrait within the background text. */
 .about-intro{display:block;max-width:850px}
 .background-copy{display:flow-root;max-width:740px}
-.background-copy .author-portrait{float:left;width:170px;max-width:40%;margin:4px 24px 14px 0;padding:5px}
-.background-copy .author-portrait img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:center top}
+.background-copy .author-portrait{float:left;width:170px;max-width:40%;margin:24px 24px 14px 0;padding:0;border:0}
+.background-copy .author-portrait a,.background-copy .author-portrait picture{display:block}
+.background-copy .author-portrait picture{position:relative;overflow:hidden;aspect-ratio:2/3}
+.background-copy .author-portrait img{position:absolute;top:-24%;left:0;width:200%;max-width:none;height:auto}
 @media(max-width:700px){.background-copy .author-portrait{width:120px;margin-right:16px}}
 
 /* Align the teaser footers despite different description lengths. */
 .story-card{display:flex;flex-direction:column}
 .story-card>.story-tags{margin-top:auto;padding-top:8px}
 .story-card>.text-link{align-self:flex-start}
-.background-copy .author-portrait{margin-top:24px}
 
 /* Responsive story images and consistent card heading semantics. */
 .story-visual picture,.article-image picture{display:block}
@@ -175,7 +176,6 @@
 .about-section{max-width:740px;margin-bottom:44px}
 .about-section>p{margin:0 0 20px}
 .about-section>.text-link{margin-top:2px}
-.about-section .background-copy .author-portrait{margin-top:24px}
 @media(max-width:700px){.about-section{margin-bottom:36px}}
 @media print{.about-section{max-width:none;margin-bottom:12pt}.about-section>p{margin:0 0 7pt}}
 

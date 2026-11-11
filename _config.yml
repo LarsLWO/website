@@ -20,7 +20,7 @@ default_image: /assets/images/lars-wollny-geschriebenes.png
 default_image_alt: "Lars Wollny · Geschriebenes. Irgendwo müssen die Worte ja hin."
 default_image_width: 1200
 default_image_height: 630
-author_image: /assets/images/lars-wollny-portrait-sepia-web-mirrored.jpeg
+author_image: /assets/images/lars-wollny-portrait.jpg
 
 # Private working resources are ignored by Git and excluded from the website.
 # Keep build tools, caches and local documentation out of the published output.
