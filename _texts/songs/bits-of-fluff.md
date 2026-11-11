@@ -4,11 +4,13 @@ title: "Bits of Fluff"
 text_type: "Liedtext"
 genre: "Liedtext"
 text_lang: en-GB
+audio: /assets/audio/bits-of-fluff-lars-wollny-128.mp3
+audio_duration: "PT3M58S"
 description_link_text: "Fusselsong"
 description_link_url: /texts/songs/jeder-dussel-hat-nen-fussel/
 tags:
   - Humor
-description: 'Zwei Jahre nach dem Fusselsong gehen die Fussel auch auf Englisch auf Weltreise. Dabei tauchen sie wieder in Schuhen, Socken und Taschen auf. „Bits of Fluff“ gibt es hier als Liedtext – vorerst noch ohne musikalische Interpretation.'
+description: 'Zwei Jahre nach dem Fusselsong gehen die Fussel auch auf Englisch auf Weltreise. Dabei tauchen sie wieder in Schuhen, Socken und Taschen auf.'
 image: /assets/images/stories/bits-of-fluff-gitarrenkoffer.jpeg
 image_webp_base: /assets/images/optimized/bits-of-fluff-gitarrenkoffer
 image_width: 1280
