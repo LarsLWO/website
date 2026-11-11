@@ -73,7 +73,7 @@
 .background-copy .author-portrait{float:left;width:170px;max-width:40%;margin:24px 24px 14px 0;padding:0;border:0}
 .background-copy .author-portrait a,.background-copy .author-portrait picture{display:block}
 .background-copy .author-portrait picture{position:relative;overflow:hidden;aspect-ratio:2/3}
-.background-copy .author-portrait img{position:absolute;top:-24%;left:0;width:200%;max-width:none;height:auto}
+.background-copy .author-portrait img{position:absolute;top:-24%;left:0;width:185%;max-width:none;height:auto}
 @media(max-width:700px){.background-copy .author-portrait{width:120px;margin-right:16px}}
 
 /* Align the teaser footers despite different description lengths. */
