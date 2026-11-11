@@ -12,8 +12,7 @@ image_webp_base: /assets/images/optimized/concordia-v2
 image_width: 1280
 image_height: 853
 image_alt: "Farbige Federzeichnung eines gigantischen, verrosteten Wohnschiffs mit Dutzenden übereinanderliegenden Decks im dunklen Meer. Ein einzelner Mann steht auf einem schmalen Außensteg vor der turmhohen Schiffswand."
-created_on: "2026-09-01"
-published_on: "2026-10-16"
+date: "2026-09-01"
 ---
 
 Sirenen.

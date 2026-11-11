@@ -15,8 +15,7 @@ image_webp_base: /assets/images/optimized/jeder-dussel-hat-nen-fussel-randlos
 image_width: 1280
 image_height: 853
 image_alt: "Farbige Zeichnung eines Kängurus mit einem kleinen Fussel im Beutel und eines Gnus mit einem Fussel am Huf; davor ein roter Turnschuh und ein gestreifter Socken, im Hintergrund ein ruhender Löwe."
-published_on: "2026-11-05"
-created_on: "2025-01-09"
+date: "2025-01-09"
 ---
 
 In Afrika läuft stolz ein Gnu,  

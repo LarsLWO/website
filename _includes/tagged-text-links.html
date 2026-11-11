@@ -1,4 +1,4 @@
-{%- assign related_texts = site.texts | where_exp: 'text', 'text.tags contains include.tag' | where_exp: 'text', 'text.published != false' | sort: 'created_on' | reverse -%}
+{%- assign related_texts = site.texts | where_exp: 'text', 'text.tags contains include.tag' | where_exp: 'text', 'text.published != false' | sort: 'date' | reverse -%}
 {%- if related_texts.size > 0 -%}
 <nav class="related-texts" aria-label="{{ include.label | escape }}">
   <ul role="list">

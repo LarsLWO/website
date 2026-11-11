@@ -11,8 +11,7 @@ image: /assets/images/stories/tunnelmenschen-randlos.jpeg
 image_webp_base: /assets/images/optimized/tunnelmenschen-randlos
 image_width: 1280
 image_height: 853
-created_on: "2025-07-18"
-published_on: "2025-07-21"
+date: "2025-07-18"
 image_alt: "Farbige Federzeichnung eines schmutzigen Bahnhofstunnels mit Treppen links und rechts: Menschen in gleichen grauen Anzügen hasten an einer ruhig stehenden Rückenfigur mit rostroter Jacke vorbei."
 ---
 

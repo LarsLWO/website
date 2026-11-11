@@ -11,8 +11,7 @@ image_webp_base: /assets/images/optimized/gesaessbewusstsein-buntstift
 image_width: 1280
 image_height: 853
 image_alt: "Buntstiftzeichnung eines kleinen, grimmigen Gartenzwergs mit roter Mütze und blauer Latzhose. Eine Hand hält eine Schaufel mit geradem Stiel, die andere stemmt er in die Hüfte; dahinter eine Gartenliege und ein Fernglas über der Hecke."
-published_on: "2026-06-12"
-created_on: "2025-05-29"
+date: "2025-05-29"
 ---
 
 Seit nunmehr zwölf Jahren stand er regungslos am Rand von Günthers Rasen. Spitzhut, blaue Latzhose, grantiges Gesicht und ein sich nie ändernder Auftrag: Schweigen. Und beobachten. "Willi der Wachende" wurde er genannt. Als Gartenzwerg hatte er Stürme überlebt, Bierduschen, zwei Rasenmäher-Kollisionen und letztes Jahr sogar Günthers missglückten Versuch, mit einem Laubbläser Igel zu vertreiben. Den Igeln ging es gut. Günthers Hand weniger.

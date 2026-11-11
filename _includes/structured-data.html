@@ -46,9 +46,8 @@
 {% if page.audio %}      "audio": {"@id": {{ canonical_url | append: '#audio' | jsonify }}},
 {% endif %}      "image": {{ seo_image | jsonify }},
       "author": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}},
-      "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.published_on %},
-      "datePublished": {{ page.published_on | date: '%Y-%m-%d' | jsonify }}{% endif %}{% if page.created_on %},
-      "dateCreated": {{ page.created_on | date: '%Y-%m-%d' | jsonify }}{% endif %}
+      "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.date %},
+      "datePublished": {{ page.date | date: '%Y-%m-%d' | jsonify }}{% endif %}
     }{% if page.audio %},
     {
       "@type": "AudioObject",

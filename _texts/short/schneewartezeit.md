@@ -11,8 +11,7 @@ image_webp_base: /assets/images/optimized/schneewartezeit
 image_width: 1280
 image_height: 853
 image_alt: "Farbige Federzeichnung einer leeren Bank unter einer verschneiten Linde, mit warm leuchtenden Laternen und Häusern im blauen Abendlicht."
-published_on: "2026-11-04"
-created_on: "2026-10-05"
+date: "2026-10-05"
 ---
 
 Die ersten Schneeflocken waren mir immer die liebsten. Sie fielen so zögernd, blieben einen Augenblick in der Luft hängen und ließen sich noch einmal vom Wind zurücktragen. Als müssten sie sich erst daran erinnern, wie das ging. Schon als kleines Mädchen hatte ich am Fenster gestanden und jeder einzelnen nachgesehen, in der Hoffnung, dass sie liegen blieb.

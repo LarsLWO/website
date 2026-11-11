@@ -17,8 +17,7 @@ image_webp_base: /assets/images/optimized/bits-of-fluff-gitarrenkoffer
 image_width: 1280
 image_height: 853
 image_alt: "Eine gebrauchte Westerngitarre liegt in einem offenen braunen Gitarrenkoffer. Auf dem dunkelblauen Stofffutter haben sich helle Fussel gesammelt; seitliches Fensterlicht fällt auf den Holzboden."
-published_on: "2026-11-08"
-created_on: "2026-11-08"
+date: "2026-11-08"
 ---
 
 In Africa there walks a gnu,

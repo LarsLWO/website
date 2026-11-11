@@ -1,0 +1,5 @@
+{%- if include.story.date -%}
+{%- assign german_months = 'Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember' | split: '|' -%}
+{%- assign month_index = include.story.date | date: '%m' | minus: 1 -%}
+<time datetime="{{ include.story.date | date: '%Y-%m-%d' }}">{{ german_months[month_index] }} {{ include.story.date | date: '%Y' }}</time>
+{%- endif -%}
