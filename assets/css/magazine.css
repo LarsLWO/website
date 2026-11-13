@@ -313,18 +313,17 @@
   .story-carousel [data-carousel-next]{right:12px}
 }
 @media screen and (max-width:700px) {
+  .story-carousel-stage{padding-block:0}
   .story-carousel-arrow{border:0}
-  .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto "date" auto "tags" 1fr / minmax(0,1fr);overflow-wrap:anywhere}
-  .story-carousel .story-card>p{display:none}
-  .story-carousel.is-active .story-carousel-stage{grid-template-rows:[image] auto [type] auto [date] auto [tags] auto [end]}
+  .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto / minmax(0,1fr);overflow-wrap:anywhere}
+  .story-carousel .story-card>:is(p,.story-dates,.story-tags){display:none}
+  .story-carousel.is-active .story-carousel-stage{grid-template-rows:[image] auto [type] auto [end]}
   .story-carousel.is-active .story-grid,.story-carousel.is-active .story-card{grid-area:image / 1 / end / 2}
   .story-carousel .story-carousel-controls{grid-area:image / 1 / type / 2}
   .story-carousel .story-card>h2,.story-carousel .story-visual{grid-column:1}
   .story-carousel.is-active .story-card>h2,.story-carousel .story-card>h2{grid-row:image;align-self:end;z-index:1;margin:0;background:rgb(255 255 255 / 50%);color:#000}
   .story-carousel .story-card h2 a{display:block;padding:8px 18px;color:inherit}
-  .story-carousel .story-card .meta{grid-row:type;margin-block:12px 4px}
-  .story-carousel .story-dates{grid-row:date;margin-block:0 10px}
-  .story-carousel .story-tags{grid-row:tags;align-self:start;margin-block:0;padding:0}
+  .story-carousel .story-card .meta{grid-row:type;margin-block:0;padding-block:6px}
   .story-carousel .story-card-actions{top:8px;bottom:auto;right:8px}
   .story-carousel .story-visual .share-menu{top:calc(100% + 8px);bottom:auto}
   /* Let every card size the same grid cell so the arrows stay centered. */
