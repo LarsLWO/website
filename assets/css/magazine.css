@@ -17,7 +17,7 @@
 .share-toggle{font:inherit;display:flex;align-items:center;justify-content:center;gap:9px;min-height:var(--control-height);border-radius:0;padding:8px 14px;border:1px solid var(--control-border);background:transparent;color:var(--ink);list-style:none;cursor:pointer}
 .share-toggle::-webkit-details-marker{display:none}
 .share-toggle:hover,.story-share[open] .share-toggle{border-color:var(--accent);color:var(--accent)}
-#search:focus-visible,#genre:focus-visible,#reset:focus-visible,.tag:focus-visible,#active-tag:focus-visible,.share-toggle:focus-visible,.share-option:focus-visible,.share-copy-field:focus-visible,.copy-confirmation-close:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#search:focus-visible,#genre:focus-visible,#reset:focus-visible,.tag:focus-visible,#active-tag:focus-visible,.share-toggle:focus-visible,.share-option:focus-visible,.share-copy-field:focus-visible,.copy-confirmation-close:focus-visible,.song-info-button:focus-visible,.song-info-close:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .share-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:20;width:230px;max-width:calc(100vw - 36px);padding:8px;border:1px solid var(--line);background:var(--paper);box-shadow:0 8px 24px #242b281a}
 .share-option{display:block;width:100%;min-height:var(--control-height);padding:8px 12px;border:0;background:transparent;color:var(--ink);font:16px/1.5 Arial,sans-serif;text-align:left;cursor:pointer}
 .share-option:hover{background:#943f300c;color:var(--accent)}
@@ -87,7 +87,6 @@
 
 /* Keep story titles inside narrow reading layouts. */
 .article-header h1{overflow-wrap:anywhere;hyphens:auto}
-@media(max-width:380px){.article-header h1{font-size:clamp(32px,10vw,38px);letter-spacing:-1.5px}}
 
 /* A full-width search field and aligned filters on every screen size. */
 .story-filters{display:grid;grid-template-columns:minmax(0,400px) max-content max-content;align-items:end;gap:12px;margin-bottom:24px}
@@ -155,7 +154,6 @@
 .song-player audio{display:block;flex:1;min-width:0;width:100%;height:54px;color-scheme:light}
 .song-info-button,.song-info-close{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
 .song-info-button{width:28px;height:28px;border:0}
-.song-info-button:focus,.song-info-close:focus{outline:none}
 .song-info-button span{display:flex;align-items:center;justify-content:center;width:17px;height:17px;border:1px solid currentColor;border-radius:50%;font:bold 12px/1 Georgia,serif}
 
 .song-player audio:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
@@ -273,7 +271,7 @@
 #reset:hover,.tag:not(.selected):hover,#active-tag:hover,.copy-confirmation-close:hover{border-color:var(--accent);color:var(--accent)}
 
 /* Focus uses the existing control border, matching outlined action buttons. */
-#search:focus,#genre:focus,.share-copy-field:focus,#reset:focus-visible{border-color:var(--accent);outline:none;box-shadow:none}
+#search:focus,#genre:focus,.share-copy-field:focus,#reset:focus-visible{border-color:var(--accent)}
 #reset:focus-visible{color:var(--accent)}
 
 @media screen {
@@ -303,6 +301,7 @@
   .story-carousel.is-active .story-card>.meta{grid-row:type}
   .story-carousel.is-active .story-card>.story-dates{grid-row:date}
   .story-carousel .story-visual{grid-row:image;margin:0}
+  .story-carousel .story-card>p{color:#5c6258}
   .story-carousel.is-active .story-card>p{grid-row:description;margin-top:18px}
   .story-carousel.is-active .story-card>.story-tags{grid-row:tags}
   .story-carousel .story-carousel-controls{position:absolute;grid-area:image / 1 / description / 2;inset:0;z-index:3;pointer-events:none}
@@ -311,6 +310,22 @@
   .story-carousel-arrow:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   .story-carousel [data-carousel-previous]{left:12px}
   .story-carousel [data-carousel-next]{right:12px}
+}
+@media screen and (width > 700px) {
+  #stories>.story-card{display:grid;grid-row:span 7;grid-template-rows:subgrid;row-gap:0}
+  #stories>.story-card>h2{grid-row:1}
+  #stories .story-card>.meta{grid-row:2}
+  #stories .story-dates{grid-row:3}
+  #stories .story-visual{grid-row:4}
+  #stories .story-card>p:not(.search-excerpt){grid-row:5}
+  #stories .search-excerpt{grid-row:6}
+  #stories .story-tags{grid-row:7}
+
+  /* Offscreen titles also size the shared title row. */
+  .story-carousel.is-active .story-card{grid-column:1}
+  .story-carousel.is-active .story-card:nth-child(2){grid-column:2}
+  .story-carousel.is-active .story-card[hidden]{display:grid!important;visibility:hidden}
+  .story-carousel.is-active .story-card[hidden]>:not(h2){display:none}
 }
 @media screen and (max-width:700px) {
   #stories .story-visual{margin-inline:calc((100% - 100cqw) / 2)}
@@ -329,6 +344,9 @@
   .story-carousel .story-visual .share-menu{top:calc(100% + 8px);bottom:auto}
   /* Let every card size the same grid cell so the arrows stay centered. */
   .story-carousel.is-active .story-card[hidden]{display:grid!important;visibility:hidden}
+}
+@media screen and (max-width:380px) {
+  .article-header h1{font-size:clamp(30px,9.5vw,36px);letter-spacing:-.035em}
 }
 @media print {
   .story-carousel-controls,.story-filter-panel{display:none!important}

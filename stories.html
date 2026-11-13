@@ -71,7 +71,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
         data-title="{{ story.title | escape }}"
         data-description="{{ story.description | escape }}">
 
-        <h2>
+        <h2{% if story.title_lang %} lang="{{ story.title_lang | escape }}"{% endif %}>
           <a href="{{ story.url | relative_url }}">
             {{ story.title }}
           </a>
