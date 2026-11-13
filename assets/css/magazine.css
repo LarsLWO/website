@@ -312,7 +312,9 @@
   .story-carousel [data-carousel-next]{right:12px}
 }
 @media screen and (width > 700px) {
-  #stories>.story-card{display:grid;grid-row:span 7;grid-template-rows:subgrid;row-gap:0}
+  /* Keep the 42px gap between cards out of their shared content rows. */
+  #stories{row-gap:0;margin-bottom:28px}
+  #stories>.story-card{display:grid;grid-row:span 7;grid-template-rows:subgrid;margin-bottom:42px}
   #stories>.story-card>h2{grid-row:1}
   #stories .story-card>.meta{grid-row:2}
   #stories .story-dates{grid-row:3}
