@@ -16,7 +16,7 @@ nav: stories
     {% if page.audio %}{% include song-player.html %}{% endif %}
     <div class="story-text{% if page.text_type == 'Liedtext' %} song-text{% elsif page.text_type == 'Gedicht' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
     <p class="story-signature">~ Lars Wollny</p>
-    {% include story-toolbar.html back_to_top=true %}
+    {% include story-toolbar.html bottom=true %}
     <p class="story-rights">{% if page.date %}{{ page.date | date: '%Y' }} · {% endif %}Alle Rechte vorbehalten. Für Nutzungsanfragen bitte <a href="{{ '/ueber-mich/#kontakt' | relative_url }}">Kontakt aufnehmen</a>.</p>
   </div>
 </article>

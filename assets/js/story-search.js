@@ -221,7 +221,7 @@
   window.addEventListener('hashchange', restoreAndFilter);
 
   // Move to page landmarks without replacing the fragment that stores filters.
-  document.querySelectorAll('.skip[href="#inhalt"], .back-to-top[href="#seitenanfang"]')
+  document.querySelectorAll('.skip[href="#inhalt"]')
     .forEach(link => {
       const target = document.getElementById(link.hash.slice(1));
       if (!target) return;

@@ -253,29 +253,19 @@
 /* Actions below the reading text. */
 .article-end{justify-content:flex-end;gap:12px;border-top:0;padding-top:0}
 .article-end>.story-share{margin-left:0}
-.back-to-top{flex:none;min-width:44px;text-decoration:none;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
 
 .page-actions{justify-content:flex-start;gap:12px;margin-top:24px;margin-bottom:40px}
-.page-actions>.back-to-top{margin-left:auto}
 
 /* Trial layout: article metadata, actions and introduction. */
 .story-toolbar{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:12px;margin-top:20px;font:var(--type-ui,16px)/1.5 Arial,sans-serif}
 .story-toolbar>.story-share{margin-left:0}
 .story-toolbar-bottom{margin-top:24px}
-.story-toolbar-bottom>.back-to-top{margin-left:auto}
 .story-print{font:inherit}
 .article-body .story-intro{font-weight:700}
 @media print{.story-toolbar{display:none!important}}
 
 /* Menus follow the left edge of sharing buttons in action bars. */
 .story-toolbar .share-menu,.page-actions .share-menu{left:0;right:auto}
-
-/* Match the original 24-unit SVG at 18px: 1.2px strokes and rounded ends. */
-.back-to-top-icon{position:relative;display:block;flex:none;width:18px;height:18px}
-.back-to-top-icon>span{position:absolute;left:8.4px;top:2.4px;width:1.2px;height:13.2px;border-radius:1px;background:currentColor}
-.back-to-top-icon>span::before,.back-to-top-icon>span::after{content:"";position:absolute;left:0;top:0;width:1.2px;height:8.6246px;border-radius:1px;background:currentColor;transform-origin:.6px .6px}
-.back-to-top-icon>span::before{transform:rotate(45deg)}
-.back-to-top-icon>span::after{transform:rotate(-45deg)}
 
 @media print{.share-menu{display:none!important}}
 
@@ -289,7 +279,8 @@
 @media screen {
   :root{--sand:#eae2d4;--linen:#f1eee7;--frame:#ece4d7}
   .site-header-band,.site-footer{background:var(--frame)}
-  .site-header,.site-footer{border:0}
+  .site-header{border:0}
+  .site-footer{border-top:2px solid var(--paper)}
   .about-teaser{border-top:0}
   body:has(:is(.story-carousel,.stories-intro,.about-closing)){container-type:inline-size}
   .story-carousel-stage,.stories-intro,.about-closing{margin-inline:calc((100% - 100cqw) / 2)}
@@ -300,7 +291,7 @@
   .story-filter-panel #active-filters:not([hidden]){margin-top:16px}
   .about-body .about-section{margin-bottom:clamp(40px,5vw,64px)}
   .about-closing{background:var(--sand);padding-block:clamp(32px,6vw,72px)}
-  .about-closing .about-contact,.about-closing .page-actions{margin-bottom:0}
+  .about-closing .about-contact{margin-bottom:0}
   .song-player{border:0;padding:clamp(16px,3vw,24px);background:var(--linen)}
   .story-carousel-stage{position:relative;padding-block:clamp(24px,5vw,56px);background:var(--sand);overflow-x:clip}
   .story-carousel .story-grid{margin-bottom:0;column-gap:clamp(20px,3vw,42px)}
