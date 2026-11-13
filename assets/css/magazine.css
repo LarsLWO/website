@@ -287,41 +287,46 @@
 #reset:focus-visible{color:var(--accent)}
 
 @media screen {
+  body:has(.story-carousel){container-type:inline-size}
   .story-carousel{margin-bottom:70px}
-  .story-carousel-stage{position:relative}
-  .story-carousel .story-grid{margin-bottom:16px}
-  .story-carousel-all{margin:0;text-align:left}
+  .story-carousel-stage{position:relative;margin-inline:calc((100% - 100cqw) / 2);overflow-x:clip}
+  .story-carousel .story-grid{margin-bottom:0;column-gap:clamp(20px,3vw,42px)}
+  .story-carousel .story-card>:is(h2,.meta,.story-dates,p,.story-tags){margin-inline:clamp(18px,3vw,40px)}
+  .story-carousel.is-active .story-carousel-stage{display:grid;grid-template-rows:[title] auto [type] auto [date] auto [image] auto [description] auto [tags] auto [end]}
+  .story-carousel.is-active .story-grid{grid-area:title / 1 / end / 2;grid-template-rows:subgrid;row-gap:0}
+  .story-carousel.is-active .story-card{display:grid;grid-row:title / end;grid-template-rows:subgrid}
+  .story-carousel.is-active .story-card>h2{grid-row:title}
+  .story-carousel.is-active .story-card>.meta{grid-row:type}
+  .story-carousel.is-active .story-card>.story-dates{grid-row:date}
+  .story-carousel .story-visual{grid-row:image;margin:0}
+  .story-carousel.is-active .story-card>p{grid-row:description;margin-top:18px}
+  .story-carousel.is-active .story-card>.story-tags{grid-row:tags}
+  .story-carousel .story-carousel-controls{position:absolute;grid-area:image / 1 / description / 2;inset:0;z-index:3;pointer-events:none}
+  .story-carousel-all{margin:16px 0 0;text-align:left}
   .story-carousel-all .text-link{text-decoration:underline}
-  .story-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:1;display:grid;place-items:center;width:36px;height:46px;padding:0;border:1px solid var(--control-border);background:transparent;color:var(--ink);cursor:pointer}
+  .story-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:46px;padding:0;border:1px solid var(--control-border);background:var(--paper);color:var(--ink);cursor:pointer;pointer-events:auto}
   .story-carousel-arrow:hover{color:var(--accent);border-color:var(--accent)}
   .story-carousel-arrow:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-  [data-carousel-previous]{right:100%;margin-right:2px}
-  [data-carousel-next]{left:100%;margin-left:2px}
-}
-@media screen and (min-width:701px) {
-  .story-carousel.is-active .story-grid{padding-inline:20px}
-  .story-carousel [data-carousel-previous]{margin-right:0}
-  .story-carousel [data-carousel-next]{margin-left:0}
+  .story-carousel [data-carousel-previous]{left:12px}
+  .story-carousel [data-carousel-next]{right:12px}
 }
 @media screen and (max-width:700px) {
   .story-carousel{margin-bottom:45px}
-  .story-carousel.is-active .story-grid{padding-inline:34px}
-  .story-carousel-arrow{width:44px;border:0}
+  .story-carousel-arrow{border:0}
   .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto "date" auto "tags" 1fr / minmax(0,1fr);overflow-wrap:anywhere}
   .story-carousel .story-card>p{display:none}
-  .story-carousel.is-active .story-card{grid-area:1 / 1}
-  .story-carousel .story-card h2{grid-area:image;align-self:end;z-index:1;margin:0;background:rgb(255 255 255 / 50%);color:#000}
-  .story-carousel .story-card h2 a{display:block;padding:8px 12px;color:inherit}
-  .story-carousel .story-visual{grid-area:image;margin:0}
-  .story-carousel .story-card .meta{grid-area:type;margin:12px 0 4px}
-  .story-carousel .story-dates{grid-area:date;margin:0 0 10px}
-  .story-carousel .story-tags{grid-area:tags;align-self:start;margin:0;padding:0}
+  .story-carousel.is-active .story-carousel-stage{grid-template-rows:[image] auto [type] auto [date] auto [tags] auto [end]}
+  .story-carousel.is-active .story-grid,.story-carousel.is-active .story-card{grid-area:image / 1 / end / 2}
+  .story-carousel .story-carousel-controls{grid-area:image / 1 / type / 2}
+  .story-carousel.is-active .story-card>h2,.story-carousel .story-card>h2{grid-row:image;align-self:end;z-index:1;margin:0;background:rgb(255 255 255 / 50%);color:#000}
+  .story-carousel .story-card h2 a{display:block;padding:8px 18px;color:inherit}
+  .story-carousel .story-card .meta{grid-row:type;margin-block:12px 4px}
+  .story-carousel .story-dates{grid-row:date;margin-block:0 10px}
+  .story-carousel .story-tags{grid-row:tags;align-self:start;margin-block:0;padding:0}
   .story-carousel .story-card-actions{top:8px;bottom:auto;right:8px}
   .story-carousel .story-visual .share-menu{top:calc(100% + 8px);bottom:auto}
   /* Let every card size the same grid cell so the arrows stay centered. */
   .story-carousel.is-active .story-card[hidden]{display:grid!important;visibility:hidden}
-  [data-carousel-previous]{left:-14px;right:auto;margin:0}
-  [data-carousel-next]{right:-14px;left:auto;margin:0}
 }
 @media print {
   .story-carousel-controls,.story-carousel-all{display:none!important}
