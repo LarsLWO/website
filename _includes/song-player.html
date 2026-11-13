@@ -11,8 +11,8 @@
   </div>
   <dialog class="song-info-dialog" id="song-info" aria-labelledby="song-info-title" aria-describedby="song-info-credits">
     <div class="song-info-heading">
-      <h2 id="song-info-title">Über diesen Song</h2>
-      <form method="dialog"><button class="song-info-close" aria-label="Informationen schließen" autofocus>×</button></form>
+      <h2 id="song-info-title" tabindex="-1" autofocus>Über diesen Song</h2>
+      <form method="dialog"><button class="song-info-close" aria-label="Informationen schließen">×</button></form>
     </div>
     <p id="song-info-credits">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if page.song_idea_credit %}<br><br>{{ page.song_idea_credit | escape }}{% endif %}</p>
   </dialog>
