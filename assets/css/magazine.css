@@ -298,6 +298,11 @@
   [data-carousel-previous]{right:100%;margin-right:2px}
   [data-carousel-next]{left:100%;margin-left:2px}
 }
+@media screen and (min-width:701px) {
+  .story-carousel.is-active .story-grid{padding-inline:20px}
+  .story-carousel [data-carousel-previous]{margin-right:0}
+  .story-carousel [data-carousel-next]{margin-left:0}
+}
 @media screen and (max-width:700px) {
   .story-carousel{margin-bottom:45px}
   .story-carousel.is-active .story-grid{padding-inline:34px}
