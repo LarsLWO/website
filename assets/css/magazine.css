@@ -313,6 +313,7 @@
   .story-carousel [data-carousel-next]{right:12px}
 }
 @media screen and (max-width:700px) {
+  #stories .story-visual{margin-inline:calc((100% - 100cqw) / 2)}
   .story-carousel-stage{padding-block:0}
   .story-carousel-arrow{border:0}
   .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto / minmax(0,1fr);overflow-wrap:anywhere}
