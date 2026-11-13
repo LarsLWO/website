@@ -161,6 +161,7 @@
 .song-info-dialog::backdrop{background:#242b2873}
 .song-info-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
 .song-info-heading h2{margin:0;font-size:28px;line-height:1.2}
+.song-info-heading h2:focus{outline:none}
 .song-info-heading form{margin:0}
 .song-info-close{font:28px/1 Arial,sans-serif}
 .song-info-dialog p,.song-player .song-info-fallback{margin:0;font:14px/1.7 Arial,sans-serif}
