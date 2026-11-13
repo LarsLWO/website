@@ -1,6 +1,5 @@
 ---
 layout: magazine
-footer_actions: top
 title: Hinter den Worten
 nav: about
 permalink: /ueber-mich/
@@ -35,19 +34,24 @@ description: "Ich bin Lars Wollny. Ich schreibe über familiäre Spannungen, Ste
       {% include tagged-text-links.html tag='Kinder' label='Texte für Kinder' %}
     </section>
 
-    <section class="about-section" aria-labelledby="hintergrund">
-      <h2 id="hintergrund">Mein Hintergrund.</h2>
-      <div class="background-copy">
-        <figure class="author-portrait">{% include author-portrait.html %}</figure>
-        <p>Moin! Ich bin Lars und lebe seit {% include elapsed-years.html since=site.data.author.hamburg_since %} Jahren in Hamburg. Das Schreiben begleitet mich schon deutlich länger.</p>
-        <p>Beruflich komme ich aus der IT. Ich habe Webanwendungen entwickelt, digitale Produkte begleitet und Entwicklungsteams geführt. Beim Schreiben beschäftigt mich besonders, was Menschen bewegt und wie sie Entscheidungen treffen.</p>
-      </div>
-    </section>
+    <div class="about-closing">
+      <div class="wrap">
+        <section class="about-section" aria-labelledby="hintergrund">
+          <h2 id="hintergrund">Mein Hintergrund.</h2>
+          <div class="background-copy">
+            <figure class="author-portrait">{% include author-portrait.html %}</figure>
+            <p>Moin! Ich bin Lars und lebe seit {% include elapsed-years.html since=site.data.author.hamburg_since %} Jahren in Hamburg. Das Schreiben begleitet mich schon deutlich länger.</p>
+            <p>Beruflich komme ich aus der IT. Ich habe Webanwendungen entwickelt, digitale Produkte begleitet und Entwicklungsteams geführt. Beim Schreiben beschäftigt mich besonders, was Menschen bewegt und wie sie Entscheidungen treffen.</p>
+          </div>
+        </section>
 
-    <section class="about-section about-contact" aria-labelledby="kontakt">
-      <h2 id="kontakt">Kontakt</h2>
-      <p>Schreib mir gerne per E-Mail an {% include contact-email.html %}.</p>
-    </section>
+        <section class="about-section about-contact" aria-labelledby="kontakt">
+          <h2 id="kontakt">Kontakt</h2>
+          <p>Schreib mir gerne per E-Mail an {% include contact-email.html %}.</p>
+        </section>
+        {% include page-actions.html %}
+      </div>
+    </div>
   </div>
 </article>
 <script src="{{ '/assets/js/elapsed-years.js' | relative_url }}" defer></script>

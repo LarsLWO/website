@@ -7,51 +7,56 @@ analytics: false
 permalink: /stories/
 description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen Brüchen im Alltag. Hier findest du meine Texte – mal leise, mal komisch, mal mit einem Blick in den Abgrund."
 ---
-<section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
+<div class="stories-intro">
+  <div class="wrap">
+    <section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
 
+    <noscript>
+      <link rel="stylesheet" href="{{ '/assets/css/no-script.css' | relative_url }}">
+      <p>Alle Texte findest du unten. Aktiviere JavaScript, um Suche und Filter zu nutzen.</p>
+    </noscript>
 
-  <noscript>
-    <link rel="stylesheet" href="{{ '/assets/css/no-script.css' | relative_url }}">
-    <p>Alle Texte findest du unten. Aktiviere JavaScript, um Suche und Filter zu nutzen.</p>
-  </noscript>
+    <div class="story-filter-panel">
+      <div class="story-filters" role="group" aria-label="Geschichten filtern" hidden>
+        <div class="filter-field filter-field-search">
+          <label for="search">Suche</label>
+          <input
+            type="search"
+            id="search"
+            placeholder="Alle Texte durchsuchen …"
+            aria-describedby="search-status">
+        </div>
 
-  <div class="story-filters" role="group" aria-label="Geschichten filtern" hidden>
-  <div class="filter-field filter-field-search">
-  <label for="search">Suche</label>
-  <input
-    type="search"
-    id="search"
-    placeholder="Alle Texte durchsuchen …"
-    aria-describedby="search-status">
+        <div class="filter-field">
+          <label for="genre">Genre</label>
+          <select id="genre">
+            <option value="">Alle Genres</option>
+
+            {% assign short_stories = site.texts | sort: "date" | reverse %}
+            {% assign genres = short_stories | map: "genre" | uniq | sort %}
+
+            {% for genre in genres %}
+              <option value="{{ genre | escape }}">
+                {{ genre }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="button" id="reset">
+          Filter zurücksetzen
+        </button>
+      </div>
+
+      <!-- Anzeige des aktiven Tags -->
+      <div id="active-filters" hidden>
+        <span>Aktive Filter:</span>
+        <button type="button" id="active-tag"
+                aria-label="Tag-Filter entfernen"></button>
+      </div>
+    </div>
   </div>
-
-  <div class="filter-field">
-  <label for="genre">Genre</label>
-  <select id="genre">
-    <option value="">Alle Genres</option>
-
-    {% assign short_stories = site.texts | sort: "date" | reverse %}
-    {% assign genres = short_stories | map: "genre" | uniq | sort %}
-
-    {% for genre in genres %}
-      <option value="{{ genre | escape }}">
-        {{ genre }}
-      </option>
-    {% endfor %}
-  </select>
-  </div>
-
-  <button type="button" id="reset">
-    Filter zurücksetzen
-  </button>
-  </div>
-
-  <!-- Anzeige des aktiven Tags -->
-  <div id="active-filters" hidden>
-    <span>Aktive Filter:</span>
-    <button type="button" id="active-tag"
-            aria-label="Tag-Filter entfernen"></button>
-  </div>
+</div>
 
   <!-- Geschichtenübersicht -->
   <p id="search-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>

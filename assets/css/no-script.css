@@ -1,4 +1,4 @@
 /* Loaded only by the stories page when JavaScript is disabled. */
-.story-filters[hidden],
+.story-filter-panel,
 #search-status[hidden],
 #stories .story-tags[hidden]{display:none!important}
