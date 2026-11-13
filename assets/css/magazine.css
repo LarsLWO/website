@@ -285,7 +285,7 @@
   body:has(:is(.story-carousel,.stories-intro,.about-closing)){container-type:inline-size}
   .story-carousel-stage,.stories-intro,.about-closing{margin-inline:calc((100% - 100cqw) / 2)}
   .stories-intro{background:var(--linen);padding-bottom:clamp(28px,5vw,52px);margin-bottom:clamp(28px,5vw,52px)}
-  .stories-intro .hero,.about-hero{padding-top:clamp(56px,7vw,96px)}
+  .hero,.article-header{padding-top:clamp(56px,7vw,96px)}
   .story-filter-panel .story-filters{margin-bottom:0}
   .story-filter-panel :is(#search,#genre,#reset){background-color:var(--paper)}
   .story-filter-panel #active-filters:not([hidden]){margin-top:16px}
