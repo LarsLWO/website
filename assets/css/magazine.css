@@ -285,3 +285,40 @@
 /* Focus uses the existing control border, matching outlined action buttons. */
 #search:focus,#genre:focus,.share-copy-field:focus,#reset:focus-visible{border-color:var(--accent);outline:none;box-shadow:none}
 #reset:focus-visible{color:var(--accent)}
+
+@media screen {
+  .story-carousel{margin-bottom:70px}
+  .story-carousel-stage{position:relative}
+  .story-carousel .story-grid{margin-bottom:16px}
+  .story-carousel-all{margin:0;text-align:left}
+  .story-carousel-all .text-link{text-decoration:underline}
+  .story-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:1;display:grid;place-items:center;width:36px;height:46px;padding:0;border:1px solid var(--control-border);background:transparent;color:var(--ink);cursor:pointer}
+  .story-carousel-arrow:hover{color:var(--accent);border-color:var(--accent)}
+  .story-carousel-arrow:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  [data-carousel-previous]{right:100%;margin-right:2px}
+  [data-carousel-next]{left:100%;margin-left:2px}
+}
+@media screen and (max-width:700px) {
+  .story-carousel{margin-bottom:45px}
+  .story-carousel.is-active .story-grid{padding-inline:34px}
+  .story-carousel-arrow{width:44px;border:0}
+  .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto "date" auto "tags" 1fr / minmax(0,1fr);overflow-wrap:anywhere}
+  .story-carousel .story-card>p{display:none}
+  .story-carousel.is-active .story-card{grid-area:1 / 1}
+  .story-carousel .story-card h2{grid-area:image;align-self:end;z-index:1;margin:0;background:rgb(255 255 255 / 50%);color:#000}
+  .story-carousel .story-card h2 a{display:block;padding:8px 12px;color:inherit}
+  .story-carousel .story-visual{grid-area:image;margin:0}
+  .story-carousel .story-card .meta{grid-area:type;margin:12px 0 4px}
+  .story-carousel .story-dates{grid-area:date;margin:0 0 10px}
+  .story-carousel .story-tags{grid-area:tags;align-self:start;margin:0;padding:0}
+  .story-carousel .story-card-actions{top:8px;bottom:auto;right:8px}
+  .story-carousel .story-visual .share-menu{top:calc(100% + 8px);bottom:auto}
+  /* Let every card size the same grid cell so the arrows stay centered. */
+  .story-carousel.is-active .story-card[hidden]{display:grid!important;visibility:hidden}
+  [data-carousel-previous]{left:-14px;right:auto;margin:0}
+  [data-carousel-next]{right:-14px;left:auto;margin:0}
+}
+@media print {
+  .story-carousel-controls,.story-carousel-all{display:none!important}
+  .story-carousel .story-card[hidden]{display:block!important}
+}
