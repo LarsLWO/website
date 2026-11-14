@@ -1,0 +1,10 @@
+{% assign card_publication_title = include.story.publication_title | default: '' | strip %}
+{% assign card_shop_name = include.story.publication_shop_name | default: '' | strip %}
+{% assign card_shop_url = include.story.publication_shop_url | default: '' | strip %}
+<div class="story-dates">
+  {%- include story-date.html story=include.story -%}
+  {%- if card_publication_title != empty -%}
+    {%- if include.inline_publication and include.story.date %}, {% endif -%}
+    <span class="story-card-publication">Erschienen in: {{ card_publication_title | escape }}{% if card_shop_name != empty and card_shop_url != empty %} · <a href="{{ card_shop_url | escape }}" target="_blank" rel="noopener noreferrer">{% if card_shop_name == 'Bei Amazon ansehen' %}Amazon{% else %}{{ card_shop_name | escape }}{% endif %}</a>{% endif %}</span>
+  {% endif %}
+</div>

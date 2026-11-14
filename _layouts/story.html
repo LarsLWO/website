@@ -7,6 +7,17 @@ nav: stories
     <p class="eyebrow">{% include story-classification.html story=page %}</p>
     <h1{% if page.title_lang %} lang="{{ page.title_lang | escape }}"{% endif %}>{{ page.title | escape }}</h1>
     <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.date %}, {% include story-date.html story=page %}{% endif %}</p>
+    {% assign publication_title = page.publication_title | default: '' | strip %}
+    {% if publication_title != empty %}
+      {% assign publication_shop_name = page.publication_shop_name | default: '' | strip %}
+      {% assign publication_shop_url = page.publication_shop_url | default: '' | strip %}
+      <p class="byline">
+        Erschienen in: <em>{{ publication_title | escape }}</em>
+        {% if publication_shop_name != empty and publication_shop_url != empty %}
+          · <a href="{{ publication_shop_url | escape }}" target="_blank" rel="noopener noreferrer">{{ publication_shop_name | escape }}</a>
+        {% endif %}
+      </p>
+    {% endif %}
     {% include story-toolbar.html %}
   </header>
   {% if page.image %}<figure class="article-image">{% include responsive-image.html story=page priority=true sizes='(max-width: 700px) calc(100vw - 36px), (max-width: 1260px) calc(100vw - 80px), 1180px' %}</figure>{% endif %}

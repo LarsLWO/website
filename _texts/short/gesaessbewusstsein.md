@@ -12,6 +12,9 @@ image_width: 1280
 image_height: 853
 image_alt: "Buntstiftzeichnung eines kleinen, grimmigen Gartenzwergs mit roter Mütze und blauer Latzhose. Eine Hand hält eine Schaufel mit geradem Stiel, die andere stemmt er in die Hüfte; dahinter eine Gartenliege und ein Fernglas über der Hecke."
 date: "2025-05-29"
+publication_title: "12. Bubenreuther Anthologie"
+publication_shop_name: "Bei Amazon ansehen"
+publication_shop_url: "https://www.amazon.de/dp/3696752177"
 ---
 
 Seit nunmehr zwölf Jahren stand er regungslos am Rand von Günthers Rasen. Spitzhut, blaue Latzhose, grantiges Gesicht und ein sich nie ändernder Auftrag: Schweigen. Und beobachten. "Willi der Wachende" wurde er genannt. Als Gartenzwerg hatte er Stürme überlebt, Bierduschen, zwei Rasenmäher-Kollisionen und letztes Jahr sogar Günthers missglückten Versuch, mit einem Laubbläser Igel zu vertreiben. Den Igeln ging es gut. Günthers Hand weniger.

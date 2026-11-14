@@ -65,6 +65,7 @@
 @media(max-width:700px){.about-intro{grid-template-columns:minmax(0,1fr) minmax(100px,32%);column-gap:16px}.about-intro>.eyebrow,.about-intro>h1{grid-column:1 / -1}.about-intro>.author-portrait{grid-row:3;align-self:start;padding:5px}.about-intro>.intro{grid-row:3}.story-card h2,#stories .story-card h2{font-size:32px}}
 
 /* Teaser metadata sits above the image. */
+.story-card-publication{flex-basis:100%;overflow-wrap:anywhere}
 .story-card .meta{margin-top:0}.story-visual{margin-bottom:18px}
 
 /* Small portrait within the background text. */
@@ -300,6 +301,7 @@
   .story-carousel.is-active .story-card{display:grid;grid-row:title / end;grid-template-rows:subgrid}
   .story-carousel.is-active .story-card>h2{grid-row:title}
   .story-carousel.is-active .story-card>.meta{grid-row:type}
+  .story-carousel .story-card>.story-dates{display:block}
   .story-carousel.is-active .story-card>.story-dates{grid-row:date}
   .story-carousel .story-visual{grid-row:image;margin:0}
   .story-carousel .story-card>p{color:#5c6258}
@@ -334,9 +336,10 @@
   #stories .story-visual{margin-inline:calc((100% - 100cqw) / 2)}
   .story-carousel-stage{padding-block:0}
   .story-carousel-arrow{border:0}
-  .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto / minmax(0,1fr);overflow-wrap:anywhere}
-  .story-carousel .story-card>:is(p,.story-dates,.story-tags){display:none}
-  .story-carousel.is-active .story-carousel-stage{grid-template-rows:[image] auto [type] auto [end]}
+  .story-carousel .story-card{display:grid;grid-template:"image" auto "type" auto "date" auto / minmax(0,1fr);overflow-wrap:anywhere}
+  .story-carousel .story-card>:is(p,.story-tags){display:none}
+  .story-carousel .story-card>.story-dates{grid-row:date}
+  .story-carousel.is-active .story-carousel-stage{grid-template-rows:[image] auto [type] auto [date] auto [end]}
   .story-carousel.is-active .story-grid,.story-carousel.is-active .story-card{grid-area:image / 1 / end / 2}
   .story-carousel .story-carousel-controls{grid-area:image / 1 / type / 2}
   .story-carousel .story-card>h2,.story-carousel .story-visual{grid-column:1}
