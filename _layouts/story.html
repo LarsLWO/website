@@ -9,14 +9,7 @@ nav: stories
     <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.date %}, {% include story-date.html story=page %}{% endif %}</p>
     {% assign publication_title = page.publication_title | default: '' | strip %}
     {% if publication_title != empty %}
-      {% assign publication_shop_name = page.publication_shop_name | default: '' | strip %}
-      {% assign publication_shop_url = page.publication_shop_url | default: '' | strip %}
-      <p class="byline">
-        Erschienen in: <em>{{ publication_title | escape }}</em>
-        {% if publication_shop_name != empty and publication_shop_url != empty %}
-          · <a href="{{ publication_shop_url | escape }}" target="_blank" rel="noopener noreferrer">{{ publication_shop_name | escape }}</a>
-        {% endif %}
-      </p>
+      <p class="byline">{% include story-publication.html story=page %}</p>
     {% endif %}
     {% include story-toolbar.html %}
   </header>

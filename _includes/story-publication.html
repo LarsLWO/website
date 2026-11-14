@@ -1,0 +1,8 @@
+{%- assign publication_title = include.story.publication_title | default: '' | strip -%}
+{%- assign publication_shop_name = include.story.publication_shop_name | default: '' | strip -%}
+{%- assign publication_shop_url = include.story.publication_shop_url | default: '' | strip -%}
+Erschienen in: {% if publication_shop_name != empty and publication_shop_url != empty -%}
+  <span class="publication-desktop">{{ publication_title | escape }} · <a href="{{ publication_shop_url | escape }}" target="_blank" rel="noopener noreferrer">{% if include.short_shop_name and publication_shop_name == 'Bei Amazon ansehen' %}Amazon{% else %}{{ publication_shop_name | escape }}{% endif %}</a></span><a class="publication-mobile" href="{{ publication_shop_url | escape }}" target="_blank" rel="noopener noreferrer">{{ publication_title | escape }}</a>
+{%- else -%}
+  {{ publication_title | escape }}
+{%- endif -%}

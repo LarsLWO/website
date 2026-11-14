@@ -66,6 +66,11 @@
 
 /* Teaser metadata sits above the image. */
 .story-card-publication{flex-basis:100%;overflow-wrap:anywhere}
+.publication-mobile{display:none}
+@media screen and (max-width:700px){
+  .publication-desktop{display:none}
+  .publication-mobile{display:inline}
+}
 .story-card .meta{margin-top:0}.story-visual{margin-bottom:18px}
 
 /* Small portrait within the background text. */
