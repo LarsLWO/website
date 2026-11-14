@@ -313,7 +313,7 @@ Nera Valen.
 Die Verbindung bricht ab.
 
 „Papa?“
-Jonas fährt herum. Liv sitzt auf seinem Bett.
+Jonas fährt herum. Liv sitzt auf ihrem Bett.
 „Du solltest schlafen.“
 „Du auch.“
 Sie hält ihm ihre Schüssel mit einem Rest der braunen Masse hin.
@@ -334,9 +334,9 @@ Sie rückt näher.
 „Angeblich.“
 „Unsere Lehrerin sagt, die alten Länder konnten sich nie einigen. Obwohl die Menschen dort ihre Regierungen selbst gewählt haben.“
 Mara bewegt sich unter ihrer Decke.
-„In manchen Ländern“, murmelt sie, „haben sie sie selbst gewählt.“
+„In manchen Ländern“, murmelt er, „haben sie sie selbst gewählt.“
 „Und als die Katastrophen kamen, war es zu spät“, fährt Liv fort.
-„Damit hat deine Lehrerin nicht ganz unrecht“, sagt Jonas.
+„Damit hat deine Lehrerin nicht ganz unrecht“, sagt Mara unvermittelt.
 Liv dreht sich zu Mara um. „Mama, du bist ja wach.“
 „Bei eurem Gequatsche?“ Mara richtet sich auf.
 „Musst du morgen wieder so früh raus?“
@@ -354,7 +354,7 @@ Liv wendet sich wieder an Jonas.
 „Natürlich“, sagt Jonas. „Aber manchmal muss man darauf vertrauen, dass die Verantwortlichen wissen, was sie tun.“
 Liv betrachtet ihn.
 „Du sagst sonst immer, ich soll nicht alles glauben, was mir jemand erzählt.“
-Jonas öffnet den Mund. Schließt ihn wieder. Ein kleines Grinsen erscheint auf ihrem Gesicht.
+Jonas öffnet den Mund. Dann schließt er ihn wieder. Ein kleines Grinsen erscheint auf ihrem Gesicht.
 „Hab dich.“
 Mara lacht leise. „Da hat sie dich erwischt.“
 „Du bist unmöglich“, sagt Jonas. Er legt einen Arm um Liv und zieht sie an sich. Für einen Moment legt sie den Kopf an seine Schulter.
