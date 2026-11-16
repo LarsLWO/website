@@ -206,12 +206,12 @@
   :is(.site-header, .site-footer) nav a {
     color: var(--ink);
     --link-underline-start: 0px;
-    --link-underline-base-width: 0%;
+    --link-underline-base-color: transparent;
   }
 
   :is(.site-header, .site-footer) nav a:is([aria-current=page], [aria-current=location], :hover, :focus-visible) {
     color: var(--accent);
-    --link-underline-base-width: 100%;
+    --link-underline-base-color: #ac6659;
   }
 }
 
@@ -231,10 +231,10 @@
   a:not(:where(.site-header a, .site-footer a, .image-link, .story-tags .tag, .author-portrait a, .share-option, :has(> .link-label))),
   a > .link-label {
     padding-bottom: 4px;
-    background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(#ac6659, #ac6659);
+    background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--link-underline-base-color, #ac6659), var(--link-underline-base-color, #ac6659));
     background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: var(--link-underline-width, var(--link-underline-start, 50px)) 3px, var(--link-underline-base-width, 100%) 1px;
+    background-size: var(--link-underline-width, var(--link-underline-start, 50px)) 3px, 100% 1px;
   }
 
   :where(p, .article-body li, .related-texts) a {
