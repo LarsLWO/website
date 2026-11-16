@@ -194,8 +194,12 @@
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 
 @media screen {
-  a[href] {
+  a[href]:not(:where(.site-header a, .site-footer a, .tag)) {
     color: var(--accent);
+  }
+
+  .site-header .brand {
+    color: var(--ink);
   }
 }
 
@@ -309,7 +313,33 @@
 @media print{.share-menu{display:none!important}}
 
 /* Shared hover treatment for outlined actions; menu entries remain flat. */
-#reset:hover,.tag:not(.selected):hover,#active-tag:hover,.copy-confirmation-close:hover{border-color:var(--accent);color:var(--accent)}
+#reset:hover,.copy-confirmation-close:hover{border-color:var(--accent);color:var(--accent)}
+
+@media screen {
+  .tag:not(.selected), #active-tag {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+@media screen and (forced-colors: none) {
+  .tag, #active-tag {
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+  }
+
+  :is(.tag, #active-tag):is(:hover, :focus-visible) {
+    background-size: 100% 2px;
+  }
+}
+
+@media screen and (forced-colors: none) and (prefers-reduced-motion: no-preference) {
+  .tag, #active-tag {
+    transition: background-size 220ms ease;
+  }
+}
 
 /* Focus uses the existing control border, matching outlined action buttons. */
 #search:focus,#genre:focus,.share-copy-field:focus,#reset:focus-visible{border-color:var(--accent)}
