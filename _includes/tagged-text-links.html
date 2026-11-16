@@ -3,7 +3,7 @@
 <nav class="related-texts" aria-label="{{ include.label | escape }}">
   <ul role="list">
     {%- for text in related_texts -%}
-    <li>{% unless forloop.first %}<span class="related-text-separator" aria-hidden="true">·</span>{% endunless %}<a href="{{ text.url | relative_url }}">{{ text.title | escape }}</a></li>
+    <li>{% unless forloop.first %}<span class="related-text-separator" aria-hidden="true">·</span>{% endunless %}<a href="{{ text.url | relative_url }}"><span class="link-label">{{ text.title | escape }}</span></a></li>
     {%- endfor -%}
   </ul>
 </nav>
