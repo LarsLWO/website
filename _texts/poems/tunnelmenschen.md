@@ -57,19 +57,16 @@ songtext: |
 
   tunnelmenschen
   unter kaltem neonlicht
-
   tausend leere augen
   doch sie sehen sich nicht
 
   tunnelmenschen
   gehen weiter durch die nacht
-
   keiner weiß wohin
   keiner weiß, was ihn noch wach macht
 
   beton und urin
   und die welt zieht vorbei
-
   alle laufen weiter
   doch keiner ist frei
 
@@ -99,20 +96,18 @@ songtext: |
   und das licht flackert
   immer wieder
   an und aus
+  
   und die schritte hallen
-
   durch den beton
   wie ein letzter applaus
-
+  
   tunnelmenschen
   unter kaltem neonlicht
-
   tausend leere augen
   doch sie sehen sich nicht
-
+  
   tunnelmenschen
   gehen weiter durch die nacht
-
   keiner weiß wohin
   keiner weiß, was ihn noch wach macht
 
@@ -140,19 +135,16 @@ songtext: |
   [Refrain]
   tunnelmenschen
   unter kaltem neonlicht
-
   tausend leere augen
   doch sie sehen sich nicht
 
   tunnelmenschen
   gehen weiter durch die nacht
-
   keiner weiß wohin
   keiner weiß, was ihn noch wach macht
 
   beton und urin
   und die welt zieht vorbei
-
   alle laufen weiter
   doch keiner ist frei
 
