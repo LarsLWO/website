@@ -18,6 +18,7 @@ image_alt: "Farbige Zeichnung eines Kängurus mit einem kleinen Fussel im Beutel
 date: "2025-01-09"
 ---
 
+[Vers 1]
 In Afrika läuft stolz ein Gnu,  
 der Löwe gähnt und schaut ihm zu.  
 Doch plötzlich bleibt das Gnu mal steh‘n –  
@@ -28,13 +29,14 @@ da hüpft und springt ein Känguru!
 Doch schau mal in den Beutel rein,  
 da sitzt ein Fussel ganz allein!
 
-Refrain:  
+[Refrain]
 Jeder Dussel hat ’nen Fussel,  
 auf der ganzen Welt, oh ja!  
 Ob in Schuh’n, in den Taschen,  
 in den Socken und beim Waschen –  
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
 
+[Vers 2]
 In Kanada, da fällt viel Schnee,  
 Wir flitzen übers Eis am See.  
 Doch schau mal die Kapuze an –  
@@ -45,13 +47,14 @@ wenn Trommeln durch die Straßen klingen.
 Doch schau nur hin, da wirbelt mehr,  
 ein Fussel tanzt im Wind umher!
 
-Refrain:  
+[Refrain]
 Jeder Dussel hat ’nen Fussel,  
 auf der ganzen Welt, oh ja!  
 Ob in Schuh’n, in den Taschen,  
 in den Socken und beim Waschen –  
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
 
+[Vers 3]
 In Frankreich gibt es ein Baguette,  
 dazu noch Käse und Omelett.  
 Doch plötzlich werd’ ich mäkelig:  
@@ -62,12 +65,13 @@ ein Pass, ein Tor für Schwarz-Rot-Gold!
 Doch nach dem Spiel, was steckt im Schuh?  
 Ein Fussel – der gehört dazu!
 
+[Bridge]
 „Ihr kriegt mich nicht!“, ruft’s winzig klein,
 „ich kuschle mich ins T-Shirt rein!
 Doch wollt ihr dann das T-Shirt waschen,
 hüpf ich schnell in eure Taschen!“
 
-Refrain:  
+[Refrain]
 Jeder Dussel hat ’nen Fussel,  
 auf der ganzen Welt, oh ja!  
 Ob in Schuh’n, in den Taschen,  

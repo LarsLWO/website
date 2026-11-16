@@ -14,6 +14,7 @@ image_height: 853
 date: "2025-07-18"
 image_alt: "Farbige Federzeichnung eines schmutzigen Bahnhofstunnels mit Treppen links und rechts: Menschen in gleichen grauen Anzügen hasten an einer ruhig stehenden Rückenfigur mit rostroter Jacke vorbei."
 songtext: |
+  [Intro]
   dieser tunnel
   dieser unterirdische gang
   zwischen den gleisen
@@ -22,6 +23,7 @@ songtext: |
   dieser abschnitt einer welt
   die sich selbst längst aufgegeben hat
 
+  [Vers 1]
   eine welt aus beton
   und pisslachen
   graue wände
@@ -42,7 +44,7 @@ songtext: |
   als wären sie noch lebendig
   doch sie sind längst vergessen
 
-  Chorus:
+  [Refrain]
   und das licht flackert
   immer wieder
   an und aus
@@ -69,6 +71,7 @@ songtext: |
   alle laufen weiter
   doch keiner ist frei
 
+  [Vers 2]
   dabei sind sie längst
   teil des tunnels
   teil dieser betonblase
@@ -90,7 +93,7 @@ songtext: |
   vor dem, was er in sich trägt
   und doch niemals sieht
 
-  Chorus:
+  [Refrain]
   und das licht flackert
   immer wieder
   an und aus
@@ -116,6 +119,7 @@ songtext: |
   alle laufen weiter
   doch keiner ist frei
 
+  [Bridge]
   und ich stehe mittendrin
   zwischen all diesen gesichtern
   und ich weiß nicht mehr
@@ -131,7 +135,7 @@ songtext: |
   (und ich gehe)
   (und ich gehe)
 
-  [Chorus]
+  [Refrain]
   tunnelmenschen
   unter kaltem neonlicht
 
@@ -150,6 +154,7 @@ songtext: |
   alle laufen weiter
   doch keiner ist frei
 
+  [Outro]
   beton
   urin
   und das flackern des lichts
