@@ -45,8 +45,6 @@
     const nativeButton = menu.querySelector('[data-native-share]');
     const copyField = menu.querySelector('.share-copy-field');
     const status = menu.querySelector('.share-status');
-    const url = menu.dataset.shareUrl;
-    const title = menu.dataset.shareTitle;
 
     menu.addEventListener('toggle', function () {
       if (!menu.open) return;
@@ -61,7 +59,7 @@
         if (!navigator.clipboard || !navigator.clipboard.writeText) {
           throw new Error('Clipboard unavailable');
         }
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(menu.dataset.shareUrl);
         copyField.hidden = true;
         status.textContent = '';
         showCopyConfirmation(menu);
@@ -77,7 +75,7 @@
       nativeButton.hidden = false;
       nativeButton.addEventListener('click', async function () {
         try {
-          await navigator.share({ title: title, url: url });
+          await navigator.share({ title: menu.dataset.shareTitle, url: menu.dataset.shareUrl });
           closeMenu(menu, true);
         } catch (error) {
           if (error.name === 'AbortError') return;
@@ -113,8 +111,81 @@
     });
   });
 
-  const storyText = document.querySelector('[data-story-text]');
-  if (!storyText) return;
+  const variants = document.querySelector('[data-story-variants]');
+  if (variants) {
+    const tabList = variants.querySelector('.story-variant-tabs');
+    const tabs = Array.from(tabList.querySelectorAll('a'));
+    const panels = tabs.map(function (tab) { return document.querySelector(tab.hash); });
+    const originalShare = shareMenus.map(function (menu) {
+      return { url: menu.dataset.shareUrl, title: menu.dataset.shareTitle };
+    });
+
+    tabList.setAttribute('role', 'tablist');
+    tabs.forEach(function (tab, index) {
+      const panel = panels[index];
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panel.id);
+      panel.setAttribute('role', 'tabpanel');
+      panel.tabIndex = 0;
+      tab.addEventListener('click', function (event) {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        selectTab(index, true);
+      });
+    });
+
+    function selectTab(active, updateUrl) {
+      const selected = tabs[active];
+      tabs.forEach(function (tab, index) {
+        tab.setAttribute('aria-selected', String(index === active));
+        tab.tabIndex = index === active ? 0 : -1;
+        panels[index].hidden = index !== active;
+      });
+
+      if (updateUrl && window.location.hash !== selected.hash) {
+        window.history.pushState(null, '', selected.hash);
+      }
+
+      shareMenus.forEach(function (menu, index) {
+        const original = originalShare[index];
+        const isSong = selected.hash === '#songtext';
+        const url = isSong ? original.url + selected.hash : original.url;
+        const title = isSong ? panels[active].querySelector('[data-story-text]').dataset.storyTitle +
+          ' von Lars Wollny' : original.title;
+        menu.dataset.shareUrl = url;
+        menu.dataset.shareTitle = title;
+        menu.querySelector('.share-copy-field').value = url;
+        menu.querySelector('a[href^="mailto:"]').href =
+          'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(url);
+        menu.querySelector('a[href^="https://wa.me/"]').href =
+          'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
+      });
+    }
+
+    function selectFromHash() {
+      const active = tabs.findIndex(function (tab) { return tab.hash === window.location.hash; });
+      selectTab(Math.max(0, active), false);
+    }
+
+    tabList.addEventListener('keydown', function (event) {
+      const current = tabs.indexOf(event.target);
+      if (current === -1) return;
+      const next = {
+        ArrowLeft: (current + tabs.length - 1) % tabs.length,
+        ArrowRight: (current + 1) % tabs.length,
+        ' ': current,
+        Home: 0,
+        End: tabs.length - 1
+      }[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      selectTab(next, true);
+      tabs[next].focus();
+    });
+
+    window.addEventListener('hashchange', selectFromHash);
+    selectFromHash();
+  }
 
   document.addEventListener('copy', function (event) {
     if (!event.clipboardData || event.defaultPrevented) return;
@@ -126,6 +197,11 @@
 
     const selectedText = selection.toString();
     if (Array.from(selectedText.trim()).length < 200) return;
+
+    const start = selection.getRangeAt(0).startContainer;
+    const parent = start instanceof Element ? start : start.parentElement;
+    const storyText = parent && parent.closest('[data-story-text]');
+    if (!storyText) return;
 
     const fragment = document.createElement('div');
     for (let index = 0; index < selection.rangeCount; index += 1) {
