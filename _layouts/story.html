@@ -6,7 +6,7 @@ nav: stories
   <header class="article-header">
     <p class="eyebrow">{% include story-classification.html story=page %}</p>
     <h1{% if page.title_lang %} lang="{{ page.title_lang | escape }}"{% endif %}>{{ page.title | escape }}</h1>
-    <p class="byline">Von <a href="{{ '/ueber-mich/' | relative_url }}" rel="author">Lars Wollny</a>{% if page.date %}, {% include story-date.html story=page %}{% endif %}</p>
+    <p class="byline">Von Lars Wollny{% if page.date %}, {% include story-date.html story=page %}{% endif %}</p>
     {% assign publication_title = page.publication_title | default: '' | strip %}
     {% if publication_title != empty %}
       <p class="byline">{% include story-publication.html story=page %}</p>

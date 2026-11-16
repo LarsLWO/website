@@ -216,7 +216,11 @@
     background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(#ac6659, #ac6659);
     background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: var(--link-underline-width, 50px) 3px, 100% 1px;
+    background-size: var(--link-underline-width, var(--link-underline-start, 50px)) 3px, 100% 1px;
+  }
+
+  :where(p, .article-body li) a {
+    --link-underline-start: 0px;
   }
 
   a:is(:hover, :focus-visible) {
