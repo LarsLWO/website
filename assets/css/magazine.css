@@ -193,6 +193,12 @@
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 
+@media screen {
+  a[href] {
+    color: var(--accent);
+  }
+}
+
 /* Keep the underline on the text even when a link has a larger hit area. */
 @media screen and (forced-colors: none) {
   a:not(:where(.site-header a, .site-footer a, .image-link, .story-tags .tag, .author-portrait a)),
@@ -206,7 +212,18 @@
     background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(#ac6659, #ac6659);
     background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: min(50px, 100%) 3px, 100% 1px;
+    background-size: var(--link-underline-width, 50px) 3px, 100% 1px;
+  }
+
+  a:is(:hover, :focus-visible) {
+    --link-underline-width: 100%;
+  }
+}
+
+@media screen and (forced-colors: none) and (prefers-reduced-motion: no-preference) {
+  a:not(:where(.site-header a, .site-footer a, .image-link, .story-tags .tag, .author-portrait a, :has(> .link-label))),
+  a > .link-label {
+    transition: background-size 220ms ease;
   }
 }
 
@@ -366,7 +383,7 @@
   .story-carousel .story-carousel-controls{grid-area:image / 1 / type / 2}
   .story-carousel .story-card>h2,.story-carousel .story-visual{grid-column:1}
   .story-carousel.is-active .story-card>h2,.story-carousel .story-card>h2{grid-row:image;align-self:end;z-index:1;margin:0;background:rgb(255 255 255 / 50%);color:#000}
-  .story-carousel .story-card h2 a{display:block;padding:8px 18px;color:inherit}
+  .story-carousel .story-card h2 a{display:block;padding:8px 18px}
   .story-carousel .story-card .meta{grid-row:type;margin-block:0;padding-block:6px}
   .story-carousel .story-card-actions{top:8px;bottom:auto;right:8px}
   .story-carousel .story-visual .share-menu{top:calc(100% + 8px);bottom:auto}
