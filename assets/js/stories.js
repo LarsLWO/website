@@ -135,21 +135,21 @@
     });
 
     function selectTab(active, updateUrl) {
-      const selected = tabs[active];
+      const fragment = tabs[active].dataset.fragment;
       tabs.forEach(function (tab, index) {
         tab.setAttribute('aria-selected', String(index === active));
         tab.tabIndex = index === active ? 0 : -1;
         panels[index].hidden = index !== active;
       });
 
-      if (updateUrl && window.location.hash !== selected.hash) {
-        window.history.pushState(null, '', selected.hash);
+      if (updateUrl && window.location.hash !== fragment) {
+        window.history.pushState(null, '', fragment);
       }
 
       shareMenus.forEach(function (menu, index) {
         const original = originalShare[index];
-        const isSong = selected.hash === '#songtext';
-        const url = isSong ? original.url + selected.hash : original.url;
+        const isSong = fragment === '#songtext';
+        const url = isSong ? original.url + fragment : original.url;
         const title = isSong ? panels[active].querySelector('[data-story-text]').dataset.storyTitle +
           ' von Lars Wollny' : original.title;
         menu.dataset.shareUrl = url;
@@ -163,7 +163,7 @@
     }
 
     function selectFromHash() {
-      const active = tabs.findIndex(function (tab) { return tab.hash === window.location.hash; });
+      const active = tabs.findIndex(function (tab) { return tab.dataset.fragment === window.location.hash; });
       selectTab(Math.max(0, active), false);
     }
 

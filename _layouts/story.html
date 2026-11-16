@@ -21,15 +21,15 @@ nav: stories
     {% if page.songtext %}
     <div class="story-variants" data-story-variants>
       <div class="eyebrow story-variant-tabs" aria-label="Textfassung">
-        <a id="gedicht-tab" href="#gedicht">Gedicht</a>
-        <a id="songtext-tab" href="#songtext">Songtext</a>
+        <a id="gedicht-tab" href="#fassung-gedicht" data-fragment="#gedicht">Gedicht</a>
+        <a id="songtext-tab" href="#fassung-songtext" data-fragment="#songtext">Songtext</a>
       </div>
-      <section id="gedicht" aria-labelledby="gedicht-tab">
+      <section id="fassung-gedicht" aria-labelledby="gedicht-tab">
     {% endif %}
     <div class="story-text{% if page.text_type == 'Liedtext' %} song-text{% elsif page.text_type == 'Gedicht' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
     {% if page.songtext %}
       </section>
-      <section id="songtext" aria-labelledby="songtext-tab">
+      <section id="fassung-songtext" aria-labelledby="songtext-tab">
         <h2 class="story-variant-heading">Songtext</h2>
         <div class="story-text song-text" data-story-text data-story-title="{{ page.title | escape }} – Songtext"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}#songtext">{{ page.songtext | markdownify }}</div>
       </section>
