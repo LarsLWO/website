@@ -195,6 +195,14 @@
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 
 @media screen {
+  a {
+    text-underline-offset: calc(.2em - var(--link-underline-shift, 2px));
+  }
+
+  .story-card h2 a {
+    --link-underline-shift: 0px;
+  }
+
   a[href]:not(:where(.site-header a, .site-footer a, .tag, .story-card-songtext, .share-option)) {
     color: var(--accent);
   }
@@ -232,7 +240,7 @@
   a > .link-label {
     padding-bottom: 4px;
     background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--link-underline-base-color, #ac6659), var(--link-underline-base-color, #ac6659));
-    background-position: left bottom;
+    background-position: left bottom var(--link-underline-shift, 2px);
     background-repeat: no-repeat;
     background-size: var(--link-underline-width, var(--link-underline-start, 50px)) 3px, 100% 1px;
   }
