@@ -201,6 +201,7 @@
 
   .story-card h2 a {
     --link-underline-shift: 0px;
+    --link-underline-start: 50px;
   }
 
   a[href]:not(:where(.site-header a, .site-footer a, .tag, .story-card-songtext, .share-option)) {
@@ -242,11 +243,7 @@
     background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--link-underline-base-color, #ac6659), var(--link-underline-base-color, #ac6659));
     background-position: left bottom var(--link-underline-shift, 2px);
     background-repeat: no-repeat;
-    background-size: var(--link-underline-width, var(--link-underline-start, 50px)) 3px, 100% 1px;
-  }
-
-  :where(p, .article-body li, .related-texts) a {
-    --link-underline-start: 0px;
+    background-size: var(--link-underline-width, var(--link-underline-start, 0px)) 3px, 100% 1px;
   }
 
   a:is(:hover, :focus-visible) {
