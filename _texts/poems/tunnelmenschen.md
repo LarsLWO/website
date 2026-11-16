@@ -14,6 +14,8 @@ image_height: 853
 date: "2025-07-18"
 image_alt: "Farbige Federzeichnung eines schmutzigen Bahnhofstunnels mit Treppen links und rechts: Menschen in gleichen grauen Anzügen hasten an einer ruhig stehenden Rückenfigur mit rostroter Jacke vorbei."
 songtext: |
+  (Im Oktober 2026 als Songtext neu verfasst.)
+  
   [Intro]
   dieser tunnel
   dieser unterirdische gang
