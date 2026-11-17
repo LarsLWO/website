@@ -407,6 +407,7 @@
   .story-carousel .story-card>p{color:#5c6258}
   .story-carousel.is-active .story-card>p{grid-row:description;margin-top:18px}
   .story-carousel.is-active .story-card>.story-tags{grid-row:tags}
+  /* Keep navigation below cards raised for an open sharing menu (z-index: 4). */
   .story-carousel .story-carousel-controls{position:absolute;grid-area:image / 1 / description / 2;inset:0;z-index:3;pointer-events:none}
   .story-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:46px;padding:0;border:1px solid var(--control-border);background:var(--paper);color:var(--ink);cursor:pointer;pointer-events:auto}
   .story-carousel-arrow:hover{color:var(--accent);border-color:var(--accent)}
