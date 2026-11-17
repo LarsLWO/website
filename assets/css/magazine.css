@@ -374,7 +374,7 @@
 #reset:focus-visible{color:var(--accent)}
 
 @media screen {
-  :root{--sand:#eae2d4;--linen:#f1eee7;--frame:#ece4d7}
+  :root{--sand:#eae2d4;--linen:#f1eee7;--frame:#ece4d7;--radius:10px}
   .site-header-band,.site-footer{background:var(--sand)}
   .site-header{border:0}
   .site-footer{border-top:2px solid var(--paper)}
@@ -484,9 +484,35 @@
 
 /* Extend the title link across the teaser, including a small outer gutter. */
 @media screen {
+  .site-header-band,.site-footer,.story-carousel-stage,.stories-stage,.stories-intro,
+  .about-closing,.song-player,.song-info-dialog,.author-portrait,.author-portrait picture,
+  .author-portrait img,.article-image,.article-image img,
+  .story-card .image-link,.story-card .image-link img,
+  .share-toggle,.share-menu,.share-option,.share-copy-field,
+  .copy-confirmation,.copy-confirmation-close,.card-audio-status,.story-carousel-arrow,
+  .tag,#active-tag,#search,#genre,#reset {
+    border-radius: var(--radius);
+  }
+
   .story-card {
     --card-gutter: 16px;
     position: relative;
+    border-radius: var(--radius);
+    isolation: isolate;
+  }
+
+  .story-card::before {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--card-gutter));
+    z-index: -1;
+    border-radius: var(--radius);
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  .story-card:has(.story-share[open]) {
+    z-index: 4;
   }
 
   .story-card > h2 a::after {
@@ -494,6 +520,7 @@
     position: absolute;
     inset: calc(-1 * var(--card-gutter));
     z-index: 1;
+    border-radius: var(--radius);
   }
 
   /* Keep tag filters above the card link, like the existing image actions. */
@@ -502,9 +529,8 @@
     z-index: 2;
   }
 
-  .story-card:is(:hover, :has(> h2 a:focus-visible)) {
+  .story-card:is(:hover, :has(> h2 a:focus-visible))::before {
     background-color: rgb(0 0 0 / 5%);
-    box-shadow: 0 0 0 var(--card-gutter) rgb(0 0 0 / 5%);
   }
 
   .story-card:is(:hover, :has(> h2 a:focus-visible)) > h2 a {
@@ -517,8 +543,8 @@
 }
 
 @media screen and (prefers-reduced-motion: no-preference) {
-  .story-card {
-    transition: background-color 220ms ease, box-shadow 220ms ease;
+  .story-card::before {
+    transition: background-color 220ms ease;
   }
 }
 
