@@ -32,7 +32,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
             <option value="">Alle Genres</option>
 
             {% assign short_stories = site.texts | sort: "date" | reverse %}
-            {% assign genres = short_stories | map: "genre" | uniq | sort %}
+            {% assign genres = short_stories | map: "genre" | join: '|' | split: '|' | uniq | sort %}
 
             {% for genre in genres %}
               <option value="{{ genre | escape }}">
@@ -69,7 +69,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
 
       <article class="story-card"
         data-url="{{ story.url | relative_url }}"
-        data-genre="{{ story.genre | escape }}"
+        data-genre="{{ story.genre | join: '|' | escape }}"
         data-tags="{{ story.tags | join: ',' | escape }}"
         data-title="{{ story.title | escape }}"
         data-description="{{ story.description | escape }}">
@@ -108,4 +108,4 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
   </div>
 </div>
 
-  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=accessible-filters-clean-footer" defer></script>
+  <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=multiple-genres-20261117" defer></script>

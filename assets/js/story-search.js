@@ -126,13 +126,13 @@
     let visible = 0;
     const results = articles.map((article, order) => {
       const title = normalize(article.dataset.title);
-      const storyGenre = article.dataset.genre;
+      const storyGenres = article.dataset.genre.split('|');
       const tags = article.dataset.tags.split(',');
-      const metadata = normalize([title, storyGenre, article.dataset.description || '', ...tags].join(' '));
+      const metadata = normalize([title, ...storyGenres, article.dataset.description || '', ...tags].join(' '));
       const content = index.get(article.dataset.url) || '';
       const fullText = metadata + ' ' + normalize(content);
       const matchesSearch = terms.every(term => fullText.includes(term));
-      const show = matchesSearch && (!genre.value || storyGenre === genre.value) &&
+      const show = matchesSearch && (!genre.value || storyGenres.includes(genre.value)) &&
         (!activeTag || tags.includes(activeTag));
       article.hidden = !show;
       const preview = article.querySelector('.search-excerpt');

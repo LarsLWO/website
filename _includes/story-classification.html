@@ -1,4 +1,7 @@
 {%- assign classification_type = include.story.text_type | default: 'Kurzgeschichte' | strip -%}
-{%- assign classification_genre = include.story.genre | default: '' | strip -%}
+{%- assign classification_genres = include.story.genre | join: '|' | split: '|' | uniq -%}
 {{- classification_type | escape -}}
-{%- if classification_genre != empty and classification_genre != classification_type %} · {{ classification_genre | escape }}{% endif -%}
+{%- for classification_genre in classification_genres -%}
+{%- assign classification_genre_name = classification_genre | strip -%}
+{%- if classification_genre_name != empty and classification_genre_name != classification_type %} · {{ classification_genre_name | escape }}{% endif -%}
+{%- endfor -%}

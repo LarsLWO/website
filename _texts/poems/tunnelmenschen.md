@@ -2,7 +2,9 @@
 layout: story
 title: "Tunnelmenschen"
 text_type: "Gedicht"
-genre: "Lyrik"
+genre:
+  - Lyrik
+  - Liedtext
 tags:
   - Gesellschaft
   - Entfremdung
