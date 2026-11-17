@@ -47,6 +47,8 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
         </button>
       </div>
 
+      <p id="search-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+
       <!-- Anzeige des aktiven Tags -->
       <div id="active-filters" hidden>
         <span>Aktive Filter:</span>
@@ -57,8 +59,9 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
   </div>
 </div>
 
+<div class="stories-stage">
+  <div class="wrap">
   <!-- Geschichtenübersicht -->
-  <p id="search-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
 
   <div id="stories" class="story-grid" data-search-index="{{ '/search-index.json' | relative_url }}">
 
@@ -102,5 +105,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
   <p id="empty" hidden>
     Keine passenden Geschichten gefunden.
   </p>
+  </div>
+</div>
 
   <script src="{{ '/assets/js/story-search.js' | relative_url }}?v=accessible-filters-clean-footer" defer></script>

@@ -375,22 +375,25 @@
 
 @media screen {
   :root{--sand:#eae2d4;--linen:#f1eee7;--frame:#ece4d7}
-  .site-header-band,.site-footer{background:var(--frame)}
+  .site-header-band,.site-footer{background:var(--sand)}
   .site-header{border:0}
   .site-footer{border-top:2px solid var(--paper)}
   .about-teaser{border-top:0}
   body:has(:is(.story-carousel,.stories-intro,.about-closing)){container-type:inline-size}
-  .story-carousel-stage,.stories-intro,.about-closing{margin-inline:calc((100% - 100cqw) / 2)}
-  .stories-intro{background:var(--linen);padding-bottom:clamp(28px,5vw,52px);margin-bottom:clamp(28px,5vw,52px)}
+  .story-carousel-stage,.stories-stage,.stories-intro,.about-closing{margin-inline:calc((100% - 100cqw) / 2)}
+  .stories-intro{background:var(--paper);padding-bottom:clamp(28px,5vw,52px);margin-bottom:0}
   .hero,.article-header{padding-top:clamp(56px,7vw,96px)}
   .story-filter-panel .story-filters{margin-bottom:0}
+  .story-filter-panel #search-status{margin:16px 0 0}
   .story-filter-panel :is(#search,#genre,#reset){background-color:var(--paper)}
   .story-filter-panel #active-filters:not([hidden]){margin-top:16px}
   .about-body .about-section{margin-bottom:clamp(40px,5vw,64px)}
   .about-closing{background:var(--sand);padding-block:clamp(32px,6vw,72px)}
   .about-closing .about-contact{margin-bottom:0}
   .song-player{border:0;padding:clamp(16px,3vw,24px);background:var(--linen)}
-  .story-carousel-stage{position:relative;padding-block:clamp(24px,5vw,56px);background:var(--sand);overflow-x:clip}
+  .story-carousel-stage,.stories-stage{padding-block:clamp(24px,5vw,56px);background:var(--sand)}
+  .story-carousel-stage{position:relative;overflow-x:clip}
+  .stories-stage .story-grid{margin-bottom:0}
   .story-carousel .story-grid{margin-bottom:0;column-gap:clamp(20px,3vw,42px)}
   .story-carousel .story-card>:is(h2,.meta,.story-dates,p,.story-tags){margin-inline:clamp(18px,3vw,40px)}
   .story-carousel.is-active .story-carousel-stage{display:grid;grid-template-rows:[title] auto [type] auto [date] auto [image] auto [description] auto [tags] auto [end]}
@@ -413,7 +416,7 @@
 }
 @media screen and (width > 700px) {
   /* Keep the 42px gap between cards out of their shared content rows. */
-  #stories{row-gap:0;margin-bottom:28px}
+  #stories{row-gap:0;margin-bottom:0}
   #stories>.story-card{display:grid;grid-row:span 7;grid-template-rows:subgrid;margin-bottom:42px}
   #stories>.story-card>h2{grid-row:1}
   #stories .story-card>.meta{grid-row:2}
@@ -477,6 +480,46 @@
 .story-variant-tabs [aria-selected="true"] {
   border-bottom-color: var(--accent);
   color: var(--accent);
+}
+
+/* Extend the title link across the teaser, including a small outer gutter. */
+@media screen {
+  .story-card {
+    --card-gutter: 16px;
+    position: relative;
+  }
+
+  .story-card > h2 a::after {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--card-gutter));
+    z-index: 1;
+  }
+
+  /* Keep tag filters above the card link, like the existing image actions. */
+  .story-card .story-tags .tag {
+    position: relative;
+    z-index: 2;
+  }
+
+  .story-card:is(:hover, :has(> h2 a:focus-visible)) {
+    background-color: rgb(0 0 0 / 5%);
+    box-shadow: 0 0 0 var(--card-gutter) rgb(0 0 0 / 5%);
+  }
+
+  .story-card:is(:hover, :has(> h2 a:focus-visible)) > h2 a {
+    --link-underline-width: 100%;
+  }
+
+  .story-card:is(:hover, :has(> h2 a:focus-visible)) .image-link img {
+    transform: scale(1.025);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .story-card {
+    transition: background-color 220ms ease, box-shadow 220ms ease;
+  }
 }
 
 .story-variants [role="tabpanel"] > .story-variant-heading {
