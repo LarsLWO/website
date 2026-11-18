@@ -1,7 +1,7 @@
 ---
 layout: story
 title: "Tunnelmenschen"
-text_type: "Gedicht"
+text_type: "Lyrik"
 genre:
   - Lyrik
   - Songtext
