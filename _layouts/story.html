@@ -38,5 +38,6 @@ nav: stories
     <p class="story-signature">~ Lars Wollny</p>
     {% include story-toolbar.html bottom=true %}
     <p class="story-rights">{% if page.date %}{{ page.date | date: '%Y' }} · {% endif %}Alle Rechte vorbehalten. Für Nutzungsanfragen bitte <a href="{{ '/ueber-mich/#kontakt' | relative_url }}">Kontakt aufnehmen</a>.</p>
+    {% include story-recommendations.html %}
   </div>
 </article>

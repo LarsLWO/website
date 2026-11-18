@@ -12,6 +12,8 @@ description_link_text: "Fusselsong"
 description_link_url: /texts/songs/jeder-dussel-hat-nen-fussel/
 tags:
   - Humor
+recommendation_tags:
+  - Humor
 description: 'Zwei Jahre nach dem Fusselsong gehen die Fussel auch auf Englisch auf Weltreise. Dabei tauchen sie wieder in Schuhen, Socken und Taschen auf.'
 image: /assets/images/stories/bits-of-fluff-gitarrenkoffer.jpeg
 image_webp_base: /assets/images/optimized/bits-of-fluff-gitarrenkoffer

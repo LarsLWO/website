@@ -8,6 +8,9 @@ genre:
 tags:
   - Gesellschaft
   - Entfremdung
+recommendation_tags:
+  - Gesellschaft
+  - Entfremdung
 description: "Eine kritische, metaphorische Beobachtung – angeregt durch Eindrücke in den Tunneln des Frankfurter Hauptbahnhofs."
 image: /assets/images/stories/tunnelmenschen-randlos.jpeg
 image_webp_base: /assets/images/optimized/tunnelmenschen-randlos

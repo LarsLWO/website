@@ -191,6 +191,10 @@
 .related-texts ul{display:flex;flex-wrap:wrap;gap:4px 0;list-style:none;padding:0;margin:0}
 .related-texts li{display:flex;align-items:baseline;min-width:0;max-width:100%}
 .related-texts a{padding:4px 0;text-decoration:underline;overflow-wrap:anywhere}
+.story-recommendations{border-top:1px solid var(--line);margin-top:32px;padding-top:20px;font:16px/1.5 Arial,sans-serif}
+.story-recommendations h2{margin:0 0 12px;font:600 16px/1.4 Arial,sans-serif}
+.story-recommendations ul{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;padding:0}
+.story-recommendations a{overflow-wrap:anywhere}
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 

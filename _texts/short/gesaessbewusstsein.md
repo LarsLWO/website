@@ -5,6 +5,8 @@ genre: "Satire"
 tags:
   - Humor
   - Zusammenleben
+recommendation_tags:
+  - Humor
 description: "Eine groteske Kleingartensatire, in der Gesundheitswahn, Nachbarschaftspolizei und deutsche Spießigkeit in einer Kette immer absurderer Ereignisse aufeinanderprallen."
 image: /assets/images/stories/gesaessbewusstsein-buntstift.jpeg
 image_webp_base: /assets/images/optimized/gesaessbewusstsein-buntstift

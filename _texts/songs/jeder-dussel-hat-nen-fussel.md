@@ -9,6 +9,9 @@ song_idea_credit: "Danke an meine Töchter für die Idee zu diesem Lied!"
 tags:
   - Humor
   - Kinder
+recommendation_tags:
+  - Humor
+  - Kinder
 description: "Auf Wunsch meiner Töchter und beim gemeinsamen Tüfteln und Rumblödeln ist das nachfolgende Lied entstanden. Mit musikalischer Interpretation."
 image: /assets/images/stories/jeder-dussel-hat-nen-fussel-randlos.jpeg
 image_webp_base: /assets/images/optimized/jeder-dussel-hat-nen-fussel-randlos

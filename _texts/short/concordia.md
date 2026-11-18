@@ -6,6 +6,10 @@ tags:
   - Gesellschaft
   - Verantwortung
   - Macht
+recommendation_tags:
+  - Gesellschaft
+  - Verantwortung
+  - Macht
 description: "Auf einem Schiff, das Millionen Menschen Zuflucht bietet, hat alles seinen Platz: die Arbeit, der Hunger und die Wahrheit. Jonas gibt der Ordnung seine Stimme – und dem Zweifel keinen Raum."
 image: /assets/images/stories/concordia-zeichnung-v2.jpeg
 image_webp_base: /assets/images/optimized/concordia-v2
