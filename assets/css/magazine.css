@@ -191,15 +191,18 @@
 .related-texts ul{display:flex;flex-wrap:wrap;gap:4px 0;list-style:none;padding:0;margin:0}
 .related-texts li{display:flex;align-items:baseline;min-width:0;max-width:100%}
 .related-texts a{padding:4px 0;text-decoration:underline;overflow-wrap:anywhere}
-.story-recommendations{margin-top:clamp(32px,5vw,52px);padding-top:clamp(20px,3vw,28px);border-top:1px solid var(--line)}
-.story-recommendations h2{margin:0 0 18px;font-size:clamp(24px,3vw,30px);letter-spacing:-.03em}
-.story-recommendations ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;list-style:none;margin:0;padding:0}
-.story-recommendations li{min-width:0}
-.story-recommendations a{display:block;height:100%;padding:14px 16px;border:1px solid var(--line);background:var(--sand,#eae2d4);font:16px/1.5 Arial,sans-serif;text-decoration:none;overflow-wrap:anywhere}
-.story-recommendations a:hover{border-color:var(--accent);color:var(--accent)}
+.story-recommendations{margin-top:clamp(36px,6vw,64px);padding-top:clamp(22px,3vw,32px);border-top:1px solid var(--line)}
+.story-recommendations h2{margin:0 0 22px;color:var(--ink);font:400 clamp(26px,3.5vw,36px)/1.15 Georgia,serif;letter-spacing:-.035em}
+.story-recommendations ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));column-gap:clamp(20px,4vw,48px);list-style:none;margin:0;padding:0}
+.story-recommendations li{min-width:0;border-top:1px solid var(--line)}
+.story-recommendations a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;color:var(--ink);font:18px/1.45 Georgia,serif;text-decoration:none;overflow-wrap:anywhere}
+.story-recommendations a::after{content:"↗";flex:none;color:var(--accent);font:16px/1 Arial,sans-serif;transition:transform 160ms ease}
+.story-recommendations a:hover{color:var(--accent)}
+.story-recommendations a:hover::after{transform:translate(2px,-2px)}
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 @media print{.story-recommendations{display:none!important}}
+@media(prefers-reduced-motion:reduce){.story-recommendations a::after{transition:none}}
 
 @media screen {
   a {
