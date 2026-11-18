@@ -529,8 +529,10 @@
     inset: calc(-1 * var(--card-gutter));
     z-index: -1;
     border-radius: var(--radius);
+    border: 1px solid transparent;
     background-color: transparent;
     pointer-events: none;
+    transition: background-color 220ms ease, border-color 220ms ease;
   }
 
   .story-card:has(.story-share[open]) {
@@ -562,6 +564,7 @@
 
   .story-card:is(:hover, :has(> h2 a:focus-visible))::before {
     background-color: rgb(0 0 0 / 5%);
+    border-color: rgb(36 43 40 / 18%);
   }
 
   .story-card:is(:hover, :has(> h2 a:focus-visible)) > h2 a {
@@ -573,9 +576,9 @@
   }
 }
 
-@media screen and (prefers-reduced-motion: no-preference) {
+@media screen and (prefers-reduced-motion: reduce) {
   .story-card::before {
-    transition: background-color 220ms ease;
+    transition: none;
   }
 }
 
