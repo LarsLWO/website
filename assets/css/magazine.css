@@ -192,7 +192,7 @@
 .related-texts li{display:flex;align-items:baseline;min-width:0;max-width:100%}
 .related-texts a{padding:4px 0;text-decoration:underline;overflow-wrap:anywhere}
 .reading:has(.story-recommendations){padding-bottom:0}
-.story-recommendations{margin-top:clamp(36px,6vw,64px);padding-block:clamp(32px,5vw,56px);border-bottom:2px solid var(--paper);background:var(--sand,#eae2d4)}
+.story-recommendations{margin-top:clamp(36px,6vw,64px);margin-bottom:0;padding-block:clamp(32px,5vw,56px);background:var(--sand,#eae2d4)}
 .story-recommendations-inner{width:min(900px,calc(100% - 36px));margin-inline:auto}
 .story-recommendations h2{margin:0 0 26px;font-size:30px;line-height:1.2;letter-spacing:-.025em}
 .story-recommendations-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px}
@@ -561,6 +561,11 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 
   /* Keep tag filters above the card link, like the existing image actions. */
   .story-card .story-tags .tag {
+    position: relative;
+    z-index: 2;
+  }
+
+  .story-card .story-dates a {
     position: relative;
     z-index: 2;
   }
