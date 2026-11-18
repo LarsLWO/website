@@ -1,0 +1,25 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }} – Neue Texte</title>
+    <link>{{ '/' | absolute_url | xml_escape }}</link>
+    <description>{{ site.description | xml_escape }}</description>
+    <language>{{ site.lang | default: 'de-DE' | xml_escape }}</language>
+    <atom:link href="{{ '/feed.xml' | absolute_url | xml_escape }}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% assign feed_texts = site.texts | where_exp: 'text', 'text.published != false' | sort: 'date' | reverse %}
+    {% for text in feed_texts limit:20 %}
+    <item>
+      <title>{{ text.title | xml_escape }}</title>
+      <link>{{ text.url | absolute_url | xml_escape }}</link>
+      <guid isPermaLink="true">{{ text.url | absolute_url | xml_escape }}</guid>
+      {% if text.date %}<pubDate>{{ text.date | date_to_rfc822 }}</pubDate>{% endif %}
+      {% if text.description %}<description>{{ text.description | xml_escape }}</description>{% endif %}
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
