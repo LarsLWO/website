@@ -4,7 +4,7 @@ title: "Tunnelmenschen"
 text_type: "Gedicht"
 genre:
   - Lyrik
-  - Liedtext
+  - Songtext
 tags:
   - Gesellschaft
   - Entfremdung

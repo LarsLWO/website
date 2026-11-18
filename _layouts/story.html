@@ -26,7 +26,7 @@ nav: stories
       </div>
       <section id="fassung-gedicht" aria-labelledby="gedicht-tab">
     {% endif %}
-    <div class="story-text{% if page.text_type == 'Liedtext' %} song-text{% elsif page.text_type == 'Gedicht' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
+    <div class="story-text{% if page.text_type == 'Songtext' %} song-text{% elsif page.text_type == 'Gedicht' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
     {% if page.songtext %}
       </section>
       <section id="fassung-songtext" aria-labelledby="songtext-tab">

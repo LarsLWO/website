@@ -34,7 +34,7 @@
       "mainEntity": {"@id": {{ canonical_url | append: '#story' | jsonify }}}{% endif %}
     }{% if page.collection == 'texts' %},
     {
-      "@type": "{% if page.text_type == 'Liedtext' or page.text_type == 'Gedicht' %}CreativeWork{% else %}ShortStory{% endif %}",
+      "@type": "{% if page.text_type == 'Songtext' or page.text_type == 'Gedicht' %}CreativeWork{% else %}ShortStory{% endif %}",
       "@id": {{ canonical_url | append: '#story' | jsonify }},
       "url": {{ canonical_url | jsonify }},
       "name": {{ page.title | jsonify }},
@@ -53,7 +53,7 @@
       "@type": "AudioObject",
       "@id": {{ canonical_url | append: '#audio' | jsonify }},
       "name": {{ page.title | jsonify }},
-      "description": {{ 'Musikalische Umsetzung zum Liedtext „' | append: page.title | append: '“.' | jsonify }},
+      "description": {{ 'Musikalische Umsetzung zum Songtext „' | append: page.title | append: '“.' | jsonify }},
       "contentUrl": {{ page.audio | absolute_url | jsonify }},
       "encodingFormat": "audio/mpeg",
       "inLanguage": "de-DE",

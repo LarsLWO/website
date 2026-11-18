@@ -1,8 +1,8 @@
 ---
 layout: story
 title: "Bits of Fluff"
-text_type: "Liedtext"
-genre: "Liedtext"
+text_type: "Songtext"
+genre: "Songtext"
 title_lang: en-GB
 text_lang: en-GB
 audio: /assets/audio/bits-of-fluff-lars-wollny-128.mp3
