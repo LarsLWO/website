@@ -387,10 +387,27 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
   :is(.tag, #active-tag):is(:hover, :focus-visible) {
     background-size: 100% 2px;
   }
+
+  .story-card-actions .share-toggle {
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+  }
+
+  :is(.story-card-actions .share-toggle):is(:hover, :focus-visible),
+  .story-card-actions .story-share[open] .share-toggle,
+  .story-card-actions .story-card-play[aria-pressed="true"] {
+    background-size: 100% 2px;
+  }
 }
 
 @media screen and (forced-colors: none) and (prefers-reduced-motion: no-preference) {
   .tag, #active-tag {
+    transition: background-size 220ms ease;
+  }
+
+  .story-card-actions .share-toggle {
     transition: background-size 220ms ease;
   }
 }
