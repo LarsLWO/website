@@ -530,7 +530,6 @@
     inset: calc(-1 * var(--card-gutter));
     z-index: -1;
     border-radius: var(--radius);
-    border-top: 1px solid rgb(36 43 40 / 18%);
     background-color: transparent;
     pointer-events: none;
     transition: background-color 220ms ease;
