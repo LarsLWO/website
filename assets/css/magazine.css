@@ -202,12 +202,13 @@
 .story-recommendation-copy{min-width:0}
 .story-recommendation-copy h3{margin:0 0 5px;font:400 20px/1.25 Georgia,serif;letter-spacing:-.02em}
 .story-recommendation-copy h3 a{text-decoration:none}
-.story-recommendation-copy h3 a::after{content:"";position:absolute;inset:0}
+.story-recommendation-copy h3 a::after{content:"";position:absolute;inset:0;z-index:0}
 .story-recommendation-copy h3 a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px;border-radius:var(--radius,10px)}
 .story-recommendation-copy .story-recommendation-classification{margin:0;color:var(--accent);font:11px/1.45 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .story-recommendation-copy .story-dates{display:block;margin:0 0 12px;font:12px/1.45 Arial,sans-serif}
 .story-recommendation-copy .story-card-publication{display:inline}
 .story-recommendation-description{margin:0;color:var(--muted);font:14px/1.5 Arial,sans-serif}
+.story-recommendation-description a{position:relative;z-index:1}
 .story-recommendation-publication{position:relative;z-index:1;margin:12px 0 0;color:var(--muted);font:12px/1.45 Arial,sans-serif}
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
@@ -546,6 +547,11 @@
     inset: calc(-1 * var(--card-gutter));
     z-index: 1;
     border-radius: var(--radius);
+  }
+
+  .story-card p a {
+    position: relative;
+    z-index: 2;
   }
 
   /* Keep tag filters above the card link, like the existing image actions. */
