@@ -6,9 +6,12 @@
   <div class="story-recommendation-copy">
     <h3><a href="{{ recommended_story.url | relative_url }}">{{ recommended_story.title | escape }}</a></h3>
     <p class="story-recommendation-classification">{% include story-classification.html story=recommended_story %}</p>
-    {% include story-card-dates.html story=recommended_story inline_publication=true %}
+    <div class="story-dates">{% include story-date.html story=recommended_story %}</div>
     {% if recommended_story.description %}
       <p class="story-recommendation-description">{% include story-description.html story=recommended_story %}</p>
+    {% endif %}
+    {% if recommended_story.publication_title %}
+      <p class="story-recommendation-publication">{% include story-publication.html story=recommended_story short_shop_name=true %}</p>
     {% endif %}
   </div>
 </article>

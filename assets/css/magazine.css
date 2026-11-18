@@ -195,17 +195,20 @@
 .story-recommendations-inner{width:min(900px,calc(100% - 36px));margin-inline:auto}
 .story-recommendations h2{margin:0 0 26px;font-size:30px;line-height:1.2;letter-spacing:-.025em}
 .story-recommendations-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px}
-.story-recommendation-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;min-width:0;padding:16px 8px 8px;margin-inline:-8px;border-top:1px solid rgb(36 43 40 / 18%);border-radius:var(--radius,10px);background-color:transparent;transition:background-color 220ms ease}
+.story-recommendation-card{position:relative;display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;min-width:0;padding:16px 8px 8px;margin-inline:-8px;border-top:1px solid rgb(36 43 40 / 18%);border-radius:var(--radius,10px);background-color:transparent;transition:background-color 220ms ease}
 .story-recommendation-card:hover,.story-recommendation-card:focus-within{background-color:rgb(0 0 0 / 5%)}
 .story-recommendation-image{display:block;align-self:start;overflow:hidden;border-radius:var(--radius,10px)}
 .story-recommendation-image img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .story-recommendation-copy{min-width:0}
 .story-recommendation-copy h3{margin:0 0 5px;font:400 20px/1.25 Georgia,serif;letter-spacing:-.02em}
 .story-recommendation-copy h3 a{text-decoration:none}
+.story-recommendation-copy h3 a::after{content:"";position:absolute;inset:0}
+.story-recommendation-copy h3 a:focus-visible::after{outline:3px solid var(--accent);outline-offset:3px;border-radius:var(--radius,10px)}
 .story-recommendation-copy .story-recommendation-classification{margin:0;color:var(--accent);font:11px/1.45 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .story-recommendation-copy .story-dates{display:block;margin:0 0 12px;font:12px/1.45 Arial,sans-serif}
 .story-recommendation-copy .story-card-publication{display:inline}
 .story-recommendation-description{margin:0;color:var(--muted);font:14px/1.5 Arial,sans-serif}
+.story-recommendation-publication{position:relative;z-index:1;margin:12px 0 0;color:var(--muted);font:12px/1.45 Arial,sans-serif}
 .related-text-separator{flex:none;margin:0 10px;color:var(--muted)}
 @media print{.related-texts{font-size:9pt;margin-top:6pt}.related-texts a{padding:0}}
 @media(max-width:480px){.story-recommendations-grid{gap:18px 20px}.story-recommendation-card{grid-template-columns:72px minmax(0,1fr);gap:10px}.story-recommendation-copy h3{font-size:17px}.story-recommendation-description{font-size:13px}}
