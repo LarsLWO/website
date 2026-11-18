@@ -13,37 +13,40 @@
   {%- endif -%}
 {%- endfor -%}
 
-{% if recommendation_count > 0 %}
-  {% assign recommendation_title = 'Das könnte dir auch gefallen' %}
-  <nav class="story-recommendations" aria-labelledby="story-recommendations-title">
-    <h2 id="story-recommendations-title">{{ recommendation_title }}</h2>
-    <ul>
-      {% assign recommendation_texts = site.texts | sort: 'date' | reverse %}
-      {% for text in recommendation_texts %}
-        {% if text.url != page.url and text.published != false %}
-          {% assign shared_tags = 0 %}
-          {% for tag in page.recommendation_tags %}
-            {% if text.recommendation_tags contains tag %}
-              {% assign shared_tags = shared_tags | plus: 1 %}
+{% if recommendation_count > 0 or page.fallback_texts %}
+  {% if recommendation_count > 0 %}
+    {% assign recommendation_title = 'Das könnte dir auch gefallen.' %}
+    {% assign recommendation_items = site.texts | sort: 'date' | reverse %}
+  {% else %}
+    {% assign recommendation_title = 'Lust auf was ganz anderes?' %}
+  {% endif %}
+  <section class="story-recommendations" aria-labelledby="story-recommendations-title">
+    <div class="story-recommendations-inner">
+      <h2 id="story-recommendations-title">{{ recommendation_title }}</h2>
+      <div class="story-recommendations-grid">
+        {% if recommendation_count > 0 %}
+          {% for text in recommendation_items %}
+            {% if text.url != page.url and text.published != false %}
+              {% assign shared_tags = 0 %}
+              {% for tag in page.recommendation_tags %}
+                {% if text.recommendation_tags contains tag %}
+                  {% assign shared_tags = shared_tags | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+              {% if shared_tags > 0 %}
+                {% include story-recommendation-card.html story=text %}
+              {% endif %}
             {% endif %}
           {% endfor %}
-          {% if shared_tags > 0 %}
-            <li><a href="{{ text.url | relative_url }}">{{ text.title | escape }}</a></li>
-          {% endif %}
+        {% else %}
+          {% for fallback_url in page.fallback_texts %}
+            {% assign fallback_text = site.texts | where: 'url', fallback_url | first %}
+            {% if fallback_text and fallback_text.published != false %}
+              {% include story-recommendation-card.html story=fallback_text %}
+            {% endif %}
+          {% endfor %}
         {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
-{% elsif page.fallback_texts %}
-  <nav class="story-recommendations" aria-labelledby="story-recommendations-title">
-    <h2 id="story-recommendations-title">Lust auf was ganz anderes?</h2>
-    <ul>
-      {% for fallback_url in page.fallback_texts %}
-        {% assign fallback_text = site.texts | where: 'url', fallback_url | first %}
-        {% if fallback_text and fallback_text.published != false %}
-          <li><a href="{{ fallback_text.url | relative_url }}">{{ fallback_text.title | escape }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
+      </div>
+    </div>
+  </section>
 {% endif %}

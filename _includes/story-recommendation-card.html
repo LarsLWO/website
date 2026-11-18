@@ -1,0 +1,14 @@
+{% assign recommended_story = include.story %}
+<article class="story-recommendation-card">
+  <a class="story-recommendation-image" href="{{ recommended_story.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {% include responsive-image.html story=recommended_story sizes='120px' %}
+  </a>
+  <div class="story-recommendation-copy">
+    <h3><a href="{{ recommended_story.url | relative_url }}">{{ recommended_story.title | escape }}</a></h3>
+    <p class="story-recommendation-classification">{% include story-classification.html story=recommended_story %}</p>
+    {% include story-card-dates.html story=recommended_story inline_publication=true %}
+    {% if recommended_story.description %}
+      <p class="story-recommendation-description">{% include story-description.html story=recommended_story %}</p>
+    {% endif %}
+  </div>
+</article>
