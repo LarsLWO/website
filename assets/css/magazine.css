@@ -587,29 +587,26 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     z-index: 2;
   }
 
-  .story-card:has(> h2 a:focus-visible)::before {
-    background-color: rgb(0 0 0 / 5%);
-  }
+}
 
-  .story-card:has(> h2 a:focus-visible) > h2 a {
-    --link-underline-width: 100%;
-  }
-
-  .story-card:has(> h2 a:focus-visible) .image-link img {
-    transform: scale(1.025);
+/* Keep the title underline unchanged in the single-column layout. */
+@media screen and (max-width: 700px) {
+  .story-card > h2 a:is(:hover, :focus-visible) {
+    --link-underline-width: var(--link-underline-start, 0px);
   }
 }
 
+/* Match the breakpoint used by the two-column teaser grids. */
 @media screen and (width > 700px) {
-  .story-card:hover::before {
+  .story-card:is(:hover, :has(> h2 a:focus-visible))::before {
     background-color: rgb(0 0 0 / 5%);
   }
 
-  .story-card:hover > h2 a {
+  .story-card:is(:hover, :has(> h2 a:focus-visible)) > h2 a {
     --link-underline-width: 100%;
   }
 
-  .story-card:hover .image-link img {
+  .story-card:is(:hover, :has(> h2 a:focus-visible)) .image-link img {
     transform: scale(1.025);
   }
 }
