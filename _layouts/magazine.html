@@ -15,7 +15,7 @@
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3c887d5a920445238cf8ddb31729c0d4"}'></script><!-- End Cloudflare Web Analytics -->
 {% endif %}
 {% include copy-confirmation.html %}
-<script src="{{ '/assets/js/contact.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/stories.js' | relative_url }}?v=story-variant-fragments" defer></script>
-<script src="{{ '/assets/js/story-card-audio.js' | relative_url }}?v=card-audio-20261108" defer></script>
+<script src="{{ '/assets/js/contact.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/stories.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/story-card-audio.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body></html>
