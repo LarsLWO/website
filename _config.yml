@@ -31,6 +31,8 @@ exclude:
   - _resources
   - README.md
   - "**/README.md"
+  - readme.md
+  - "**/readme.md"
   - AGENTS.md
   - "**/AGENTS.md"
 
