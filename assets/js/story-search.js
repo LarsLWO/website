@@ -134,6 +134,10 @@
       const matchesSearch = terms.every(term => fullText.includes(term));
       const show = matchesSearch && (!genre.value || storyGenres.includes(genre.value)) &&
         (!activeTag || tags.includes(activeTag));
+      if (!show) {
+        article.querySelector('audio')?.pause();
+        article.querySelector('.story-share')?.removeAttribute('open');
+      }
       article.hidden = !show;
       const preview = article.querySelector('.search-excerpt');
       highlightExcerpt(preview, show && terms.length ? excerpt(content, terms) : '', terms);

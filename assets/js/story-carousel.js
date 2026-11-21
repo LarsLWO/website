@@ -80,7 +80,8 @@
 
   let swipeStart;
   grid.addEventListener('touchstart', function (event) {
-    swipeStart = event.touches.length === 1 && !controls.hidden
+    const interactive = event.target.closest('.story-card-actions, .story-tags, audio, input, select, textarea');
+    swipeStart = event.touches.length === 1 && !controls.hidden && !interactive
       ? event.touches[0]
       : null;
   }, { passive: true });

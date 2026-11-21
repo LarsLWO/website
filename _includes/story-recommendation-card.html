@@ -1,7 +1,7 @@
 {% assign recommended_story = include.story %}
 <article class="story-recommendation-card">
   <a class="story-recommendation-image" href="{{ recommended_story.url | relative_url }}" tabindex="-1" aria-hidden="true">
-    {% include responsive-image.html story=recommended_story sizes='120px' %}
+    {% include responsive-image.html story=recommended_story sizes='(max-width: 700px) 160px, 112px' %}
   </a>
   <div class="story-recommendation-copy">
     <h3><a href="{{ recommended_story.url | relative_url }}">{{ recommended_story.title | escape }}</a></h3>

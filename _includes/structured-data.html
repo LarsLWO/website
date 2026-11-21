@@ -56,7 +56,7 @@
       "description": {{ 'Musikalische Umsetzung zum Songtext „' | append: page.title | append: '“.' | jsonify }},
       "contentUrl": {{ page.audio | absolute_url | jsonify }},
       "encodingFormat": "audio/mpeg",
-      "inLanguage": "de-DE",
+      "inLanguage": {{ page.text_lang | default: site.lang | jsonify }},
       "isBasedOn": {"@id": {{ canonical_url | append: '#story' | jsonify }}},
       "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.audio_duration %},
       "duration": {{ page.audio_duration | jsonify }}{% endif %}
