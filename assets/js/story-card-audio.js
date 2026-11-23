@@ -1,3 +1,4 @@
+
 (function () {
   'use strict';
 
@@ -44,9 +45,19 @@
       }
     });
 
+    // Umami: Audiostarts erfassen
+    audio.addEventListener('play', function () {
+      if (typeof window.umami?.track === 'function') {
+        window.umami.track('audio-play', {
+          song: button.dataset.songTitle
+        });
+      }
+    });
+
     ['play', 'pause', 'ended', 'emptied'].forEach(function (event) {
       audio.addEventListener(event, update);
     });
+
     audio.addEventListener('error', showError);
     update();
   });
