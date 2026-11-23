@@ -9,7 +9,7 @@
   <span class="card-audio-status" data-card-audio-status role="status" aria-live="polite" hidden></span>
   {% endif %}
   {% if include.story.songtext %}
-  <a class="share-toggle story-card-songtext" href="{{ include.story.url | relative_url }}#songtext" aria-label="{{ include.story.title | escape }}: Songtext lesen">
+  <a class="share-toggle story-card-songtext" href="{{ include.story.url | relative_url }}#songtext" aria-label="{{ include.story.title | escape }}: Songtext lesen" data-umami-event="songtext-click" data-umami-event-song="{{ include.story.title | escape }}">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l3 3v15H6zM9 10h6m-6 4h6m-6 4h4"/></svg>
     Songtext
   </a>

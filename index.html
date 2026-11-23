@@ -8,14 +8,15 @@ nav: home
 social_description: "Geschriebenes. Irgendwo müssen die Worte ja hin."
 description: "Was uns verbindet. Was uns zum Lachen bringt. Und was wir lieber nicht wahrhaben wollen. Texte über Menschen und ihre ganz eigenen Abgründe."
 ---
+
 <section class="hero"><p class="eyebrow">Irgendwo müssen die Worte ja hin.</p><h1>Der Alltag hat<br>seine <em>Abgründe.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
 <section class="story-carousel" aria-label="Texte">
   <div class="story-carousel-stage">
     <div class="story-carousel-controls" hidden>
-      <button type="button" class="story-carousel-arrow" data-carousel-previous aria-label="Vorheriger Text" aria-controls="home-story-grid">
+      <button type="button" class="story-carousel-arrow" data-carousel-previous aria-label="Vorheriger Text" aria-controls="home-story-grid" data-umami-event="carousel-navigation" data-umami-event-direction="previous">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>
       </button>
-      <button type="button" class="story-carousel-arrow" data-carousel-next aria-label="Nächster Text" aria-controls="home-story-grid">
+      <button type="button" class="story-carousel-arrow" data-carousel-next aria-label="Nächster Text" aria-controls="home-story-grid" data-umami-event="carousel-navigation" data-umami-event-direction="next">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>
       </button>
     </div>
@@ -33,8 +34,8 @@ description: "Was uns verbindet. Was uns zum Lachen bringt. Und was wir lieber n
   <div><h2 id="ueber">Alles beginnt mit einer Beobachtung.</h2></div>
   <div class="background-copy">
     <figure class="author-portrait">
-      <a href="{{ '/ueber-mich/' | relative_url }}">{% include author-portrait.html %}</a>
+      <a href="{{ '/ueber-mich/' | relative_url }}" data-umami-event="about-click" data-umami-event-source="portrait">{% include author-portrait.html %}</a>
     </figure>
-    <p>Ich schreibe erst mal drauflos. Dabei finde ich heraus, wie meine Figuren ticken und was sie tun würden. Manchmal mache ich eine Figur beim Überarbeiten ein bisschen mutiger. Plötzlich sagt sie Ja, wo sie vorher Nein gesagt hat. Und schon geht die ganze Geschichte anders weiter. Genau das mag ich am Schreiben. <a href="{{ '/ueber-mich/' | relative_url }}">Über mich</a></p>
+    <p>Ich schreibe erst mal drauflos. Dabei finde ich heraus, wie meine Figuren ticken und was sie tun würden. Manchmal mache ich eine Figur beim Überarbeiten ein bisschen mutiger. Plötzlich sagt sie Ja, wo sie vorher Nein gesagt hat. Und schon geht die Geschichte anders weiter. Genau das mag ich am Schreiben. <a href="{{ '/ueber-mich/' | relative_url }}" data-umami-event="about-click" data-umami-event-source="text">Über mich</a></p>
   </div>
 </section>
