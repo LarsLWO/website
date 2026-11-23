@@ -12,6 +12,19 @@
     const label = button.querySelector('[data-card-play-label]');
     const status = actions.querySelector('[data-card-audio-status]');
 
+    // Umami: Fortschritt pro Wiedergabe erfassen
+    const milestones = [25, 50, 75];
+    const reached = new Set();
+
+    function trackEvent(eventName, properties) {
+      if (typeof window.umami?.track !== 'function') return;
+
+      window.umami.track(eventName, {
+        song: button.dataset.songTitle,
+        ...properties
+      });
+    }
+
     function update() {
       const playing = !audio.paused && !audio.ended;
       button.setAttribute('aria-pressed', String(playing));
@@ -29,15 +42,19 @@
     }
 
     button.hidden = false;
+
     button.addEventListener('click', async function () {
       status.hidden = true;
+
       if (!audio.paused) {
         audio.pause();
         return;
       }
+
       document.querySelectorAll('audio').forEach(function (other) {
         if (other !== audio) other.pause();
       });
+
       try {
         await audio.play();
       } catch (error) {
@@ -47,11 +64,34 @@
 
     // Umami: Audiostarts erfassen
     audio.addEventListener('play', function () {
-      if (typeof window.umami?.track === 'function') {
-        window.umami.track('audio-play', {
-          song: button.dataset.songTitle
-        });
+      trackEvent('audio-play', {});
+    });
+
+    // Umami: Wiedergabefortschritt erfassen
+    audio.addEventListener('timeupdate', function () {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
+        return;
       }
+
+      const percent = (audio.currentTime / audio.duration) * 100;
+
+      milestones.forEach(function (milestone) {
+        if (percent >= milestone && !reached.has(milestone)) {
+          reached.add(milestone);
+          trackEvent('audio-progress', {
+            percent: milestone
+          });
+        }
+      });
+    });
+
+    // Umami: Song vollständig abgespielt
+    audio.addEventListener('ended', function () {
+      trackEvent('audio-progress', {
+        percent: 100
+      });
+
+      reached.clear();
     });
 
     ['play', 'pause', 'ended', 'emptied'].forEach(function (event) {
@@ -59,6 +99,7 @@
     });
 
     audio.addEventListener('error', showError);
+
     update();
   });
 }());
