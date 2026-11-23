@@ -169,6 +169,11 @@
     });
   }
 
+  // Umami: Suchnutzung ohne Suchbegriffe erfassen
+  search.addEventListener('change', () => {
+    if (search.value.trim()) window.umami?.track?.('story-search');
+  });
+
   // Suchfeld
   search.addEventListener('input', () => {
     syncFiltersToUrl('replace');
@@ -177,6 +182,7 @@
 
   // Genre-Auswahl
   genre.addEventListener('change', () => {
+    window.umami?.track?.('genre-filter', { genre: genre.value || 'Alle Genres' });
     syncFiltersToUrl();
     filterStories();
   });
@@ -197,6 +203,7 @@
 
   // Einzelnen Tag-Filter entfernen
   activeTagButton.addEventListener('click', () => {
+    if (activeTag) window.umami?.track?.('tag-filter-remove', { tag: activeTag });
     activeTag = '';
     search.focus();
     syncFiltersToUrl();

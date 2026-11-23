@@ -6,6 +6,7 @@ document.querySelectorAll('.contact-email').forEach(function (element) {
   const link = document.createElement('a');
   link.href = 'mailto:' + address;
   link.textContent = address;
+  link.dataset.umamiEvent = 'email-click';
   element.replaceChildren(link);
   element.removeAttribute('data-email-user');
   element.removeAttribute('data-email-domain');

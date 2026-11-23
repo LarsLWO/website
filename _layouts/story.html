@@ -2,6 +2,7 @@
 layout: magazine
 nav: stories
 ---
+
 <article>
   <header class="article-header">
     <p class="eyebrow">{% include story-classification.html story=page %}</p>
@@ -21,8 +22,8 @@ nav: stories
     {% if page.songtext %}
     <div class="story-variants" data-story-variants>
       <div class="eyebrow story-variant-tabs" aria-label="Textfassung">
-        <a id="gedicht-tab" href="#fassung-gedicht" data-fragment="#gedicht">Gedicht</a>
-        <a id="songtext-tab" href="#fassung-songtext" data-fragment="#songtext">Songtext</a>
+        <a id="gedicht-tab" href="#fassung-gedicht" data-fragment="#gedicht" data-umami-event="story-variant-click" data-umami-event-variant="Gedicht" data-umami-event-story="{{ page.title | escape }}">Gedicht</a>
+        <a id="songtext-tab" href="#fassung-songtext" data-fragment="#songtext" data-umami-event="story-variant-click" data-umami-event-variant="Songtext" data-umami-event-story="{{ page.title | escape }}">Songtext</a>
       </div>
       <section id="fassung-gedicht" aria-labelledby="gedicht-tab">
     {% endif %}
@@ -37,7 +38,7 @@ nav: stories
     {% endif %}
     <p class="story-signature">~ Lars Wollny</p>
     {% include story-toolbar.html bottom=true %}
-    <p class="story-rights">{% if page.date %}{{ page.date | date: '%Y' }} · {% endif %}Alle Rechte vorbehalten. Für Nutzungsanfragen bitte <a href="{{ '/ueber-mich/#kontakt' | relative_url }}">Kontakt aufnehmen</a>.</p>
+    <p class="story-rights">{% if page.date %}{{ page.date | date: '%Y' }} · {% endif %}Alle Rechte vorbehalten. Für Nutzungsanfragen bitte <a href="{{ '/ueber-mich/#kontakt' | relative_url }}" data-umami-event="contact-link-click" data-umami-event-source="story" data-umami-event-story="{{ page.title | escape }}">Kontakt aufnehmen</a>.</p>
     {% include story-recommendations.html %}
   </div>
 </article>
