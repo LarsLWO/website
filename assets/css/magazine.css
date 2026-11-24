@@ -618,3 +618,14 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
   .story-variant-tabs { display: none; }
   .story-variants [role="tabpanel"] > .story-variant-heading { display: block; }
 }
+
+/* Section links for the privacy notice. */
+.legal-toc{display:block;margin:0 0 38px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:17px/1.5 Arial,sans-serif}
+.legal-toc .eyebrow{margin:0 0 14px}
+.legal-toc ol{display:grid;grid-template-columns:1fr 1fr;gap:2px 36px;margin:0;padding-left:24px}
+.legal-toc li{min-width:0;padding-left:3px}
+.legal-toc li::marker{color:var(--accent);font-size:14px}
+.legal-toc a{display:inline-block;padding:6px 0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.legal-body h2[id]{scroll-margin-top:28px}
+@media(max-width:700px){.legal-toc ol{grid-template-columns:1fr}}
+@media print{.legal-toc{font-size:10pt;margin-bottom:16pt;padding:10pt 0}.legal-toc a{padding:2pt 0}}

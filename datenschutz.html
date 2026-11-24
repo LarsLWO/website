@@ -15,7 +15,23 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
     <p class="legal-note">Entwurf: Kontaktdaten und Hosting-Konfiguration müssen vor Veröffentlichung bestätigt werden.</p>
     {% endunless %}
 
-    <h2>1. Verantwortlicher</h2>
+    <nav class="legal-toc" aria-labelledby="legal-toc-title">
+      <p class="eyebrow" id="legal-toc-title">Inhaltsverzeichnis</p>
+      <ol>
+        <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+        <li><a href="#hosting">Bereitstellung der Website über GitHub Pages</a></li>
+        <li><a href="#cloudflare">Cloudflare: Auslieferung und Sicherheit</a></li>
+        <li><a href="#suche-bilder-audio">Suche, Bilder und Audio</a></li>
+        <li><a href="#teilen-kopieren">Teilen und Kopieren</a></li>
+        <li><a href="#externe-links">Externe Links</a></li>
+        <li><a href="#nutzungsstatistik">Datensparsame Nutzungsstatistik</a></li>
+        <li><a href="#kontakt">Kontakt per E-Mail</a></li>
+        <li><a href="#deine-rechte">Deine Rechte</a></li>
+        <li><a href="#bereitstellung-daten">Bereitstellung von Daten</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="verantwortlicher">1. Verantwortlicher</h2>
     <address>
       {{ site.data.legal.name | escape }}<br>
       {% if site.data.legal.address %}
@@ -31,7 +47,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
       {% endif %}
     </address>
 
-    <h2>2. Bereitstellung der Website über GitHub Pages</h2>
+    <h2 id="hosting">2. Bereitstellung der Website über GitHub Pages</h2>
 
     <p>Die Website wird bei GitHub Pages gehostet. Anbieter ist GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Cloudflare ist als Reverse Proxy und Content Delivery Network vorgeschaltet und ruft die Inhalte bei Bedarf vom Hostinganbieter ab.</p>
 
@@ -41,7 +57,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Weitere Informationen: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub-Datenschutzhinweise</a> und <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informationen zu GitHub Pages</a>.</p>
 
-    <h2>3. Cloudflare: Auslieferung und Sicherheit</h2>
+    <h2 id="cloudflare">3. Cloudflare: Auslieferung und Sicherheit</h2>
 
     <p>Für diese Website nutze ich Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare verwaltet die DNS-Einträge und Nameserver der Domain und ist dem Hosting als Reverse Proxy und Content Delivery Network (CDN) vorgeschaltet. Dazu gehören die Zwischenspeicherung von Website-Inhalten, SSL/TLS-Verschlüsselung sowie der Schutz vor Angriffen und missbräuchlichen Anfragen.</p>
 
@@ -59,7 +75,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare-Datenschutzhinweise</a>, <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank" rel="noopener noreferrer">Cloudflare-Auftragsverarbeitungsbedingungen</a> und <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/" target="_blank" rel="noopener noreferrer">Cloudflare-Cookies</a>.</p>
 
-    <h2>4. Suche, Bilder und Audio</h2>
+    <h2 id="suche-bilder-audio">4. Suche, Bilder und Audio</h2>
 
     <p>Die Volltextsuche und die Filter der Geschichtenübersicht laufen im Browser. Der dafür benötigte Suchindex wird von dieser Website geladen; die Suche erfolgt anschließend auf deinem Gerät. Suchbegriffe, Genre- und Tagfilter werden im URL-Fragment gespeichert, also im Teil der Seitenadresse nach dem Rautezeichen (#). Dieser Teil wird beim Seitenaufruf und als HTTP-Herkunftsadresse nicht an das Hosting übertragen. Die Filter bleiben in der Browseradresse und gegebenenfalls im Browserverlauf erhalten und sind Bestandteil eines von dir kopierten Suchlinks.</p>
 
@@ -67,7 +83,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Auf einzelnen Seiten kannst du Audioaufnahmen über den integrierten Audioplayer deines Browsers anhören. Die MP3-Dateien werden wie die übrigen Website-Inhalte über GitHub Pages und Cloudflare ausgeliefert. Es sind keine externen Musikplattformen oder KI-Dienste eingebunden. Je nach Browser können bereits beim Aufruf der Seite Metadaten oder Teile der Audiodatei geladen werden, etwa zur Anzeige der Spieldauer.</p>
 
-    <h2>5. Teilen und Kopieren</h2>
+    <h2 id="teilen-kopieren">5. Teilen und Kopieren</h2>
 
     <p>Beim Öffnen des Teilen-Menüs wird durch diese Funktion keine Verbindung zu einem sozialen Netzwerk hergestellt. Die angebotenen Funktionen verwenden einfache Links sowie die Teilen- und Zwischenablagefunktionen deines Browsers beziehungsweise Geräts.</p>
 
@@ -77,11 +93,11 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>„Link kopieren“ schreibt den Geschichtenlink in deine Zwischenablage. Wenn du innerhalb einer Geschichte mindestens 200 Zeichen markierst und kopierst, ergänzt die Website den ausgewählten Text um Autor, Geschichtentitel und Quellenlink. Diese Kopierfunktionen übertragen den ausgewählten Text nicht an den Websitebetreiber oder einen externen Dienst. Der sonstige Inhalt deiner Zwischenablage wird nicht ausgelesen.</p>
 
-    <h2>6. Externe Links</h2>
+    <h2 id="externe-links">6. Externe Links</h2>
 
     <p>Einige Seiten enthalten Links zu externen Anbietern, zum Beispiel zu WhatsApp oder Amazon. Wenn du einen solchen Link auswählst, wird eine direkte Verbindung zum jeweiligen Anbieter hergestellt. Dabei werden insbesondere deine IP-Adresse, technische Browserdaten sowie die aufgerufene Adresse übermittelt. Die weitere Verarbeitung erfolgt durch den jeweiligen Anbieter in eigener Verantwortung und nach dessen Datenschutzhinweisen. Beim bloßen Besuch dieser Website werden die externen Zielseiten nicht geladen.</p>
 
-    <h2>7. Datensparsame Nutzungsstatistik</h2>
+    <h2 id="nutzungsstatistik">7. Datensparsame Nutzungsstatistik</h2>
 
     <p>Um zu erfahren, welche meiner Texte und Audioinhalte auf Interesse stoßen, erfasse ich statistisch die Aufrufe von Seiten, Abrufe von Dateien und den Beginn von Audiowiedergaben.</p>
 
@@ -95,7 +111,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Weitere Informationen: <a href="https://developers.cloudflare.com/d1/configuration/data-location/" target="_blank" rel="noopener noreferrer">D1-Datenstandorte</a>.</p>
     
-    <h2>8. Kontakt per E-Mail</h2>
+    <h2 id="kontakt">8. Kontakt per E-Mail</h2>
 
     <p>Wenn du per E-Mail Kontakt aufnimmst, werden deine E-Mail-Adresse und die von dir mitgeteilten Angaben zur Bearbeitung deiner Anfrage verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO, bei Anfragen zu einem Vertrag Art. 6 Abs. 1 lit. b DSGVO. Die Angaben werden gelöscht, sobald die Anfrage abgeschlossen ist und keine gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe für eine weitere Speicherung bestehen.</p>
 
@@ -106,7 +122,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
          target="_blank" rel="noopener noreferrer">Apple-Datenschutzrichtlinie</a>.
     </p>
 
-    <h2>9. Deine Rechte</h2>
+    <h2 id="deine-rechte">9. Deine Rechte</h2>
 
     <p>Nach Maßgabe der gesetzlichen Voraussetzungen hast du das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Soweit eine Verarbeitung auf einer Einwilligung beruht, kannst du diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
 
@@ -114,7 +130,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Du kannst dich außerdem bei einer Datenschutzaufsichtsbehörde beschweren, insbesondere in dem Mitgliedstaat deines gewöhnlichen Aufenthalts, deines Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für Anfragen an den Verantwortlichen nutze die oben angegebenen Kontaktdaten.</p>
 
-    <h2>10. Bereitstellung von Daten</h2>
+    <h2 id="bereitstellung-daten">10. Bereitstellung von Daten</h2>
 
     <p>Die Bereitstellung personenbezogener Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Ohne die technisch erforderlichen Verbindungsdaten können die Inhalte der Website jedoch nicht ausgeliefert werden. Eine automatisierte Entscheidungsfindung im Sinne des Art. 22 DSGVO findet nicht statt.</p>
     
