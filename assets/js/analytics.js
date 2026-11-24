@@ -2,11 +2,14 @@
   'use strict';
 
   const websiteId = document.currentScript?.dataset.websiteId;
-  const storageKey = 'umami.disabled';
+  const storageKey = 'umami-consent';
+  const prompt = document.querySelector('[data-analytics-consent]');
+  const promptStatus = prompt?.querySelector('[role="status"]');
   const controls = document.querySelector('[data-analytics-preference]');
-  const button = controls?.querySelector('button');
+  const manageButton = controls?.querySelector('button');
   const status = controls?.querySelector('[role="status"]');
-  let disabled = true;
+  const settingsLink = document.querySelector('[data-open-analytics-settings]');
+  let choice = null;
   let storageAvailable = true;
   let storageWriteFailed = false;
   let trackerLoaded = false;
@@ -18,11 +21,12 @@
       return;
     }
     try {
-      disabled = Boolean(window.localStorage.getItem(storageKey));
+      const stored = window.localStorage.getItem(storageKey);
+      choice = stored === 'accepted' || stored === 'rejected' ? stored : null;
       storageAvailable = true;
     } catch {
       // If the preference cannot be read, do not start analytics.
-      disabled = true;
+      choice = 'rejected';
       storageAvailable = false;
     }
   }
@@ -30,11 +34,11 @@
   // Also guards custom events and already open tabs after an opt-out.
   window.umamiBeforeSend = (_type, payload) => {
     readPreference();
-    return websiteId && !disabled ? payload : false;
+    return websiteId && choice === 'accepted' ? payload : false;
   };
 
   function loadTracker() {
-    if (!websiteId || disabled || trackerLoaded) return;
+    if (!websiteId || choice !== 'accepted' || trackerLoaded) return;
     trackerLoaded = true;
     const script = document.createElement('script');
     script.src = 'https://cloud.umami.is/script.js';
@@ -47,41 +51,64 @@
   }
 
   function render(message) {
-    if (!controls) return;
-    controls.hidden = false;
-    button.disabled = !websiteId;
-    button.textContent = disabled ? 'Statistik wieder zulassen' : 'Statistik deaktivieren';
-    status.textContent = message || (!websiteId
+    if (prompt) {
+      prompt.hidden = choice !== null || !websiteId;
+      if (promptStatus) promptStatus.textContent = message || 'Darf ich anonyme Nutzungsstatistiken mit Umami erfassen? Dabei werden technische Daten wie deine IP-Adresse an Umami übermittelt.';
+    }
+    if (controls) {
+      controls.hidden = choice === null || !websiteId;
+      manageButton.disabled = !websiteId;
+      manageButton.textContent = choice === 'accepted' ? 'Statistik widerrufen' : 'Statistik später erlauben';
+    }
+    if (status) status.textContent = message || (!websiteId
       ? 'Die statistische Auswertung ist auf dieser Website ausgeschaltet.'
       : !storageAvailable
-        ? 'Der Browser-Speicher ist nicht zugänglich. Die Statistik bleibt auf dieser Seite deaktiviert. Deine Einstellung kann nicht dauerhaft gespeichert werden.'
-        : disabled
-          ? 'Die statistische Auswertung ist für diesen Browser deaktiviert.'
-          : 'Die statistische Auswertung ist zugelassen. Browser-Erweiterungen können sie zusätzlich blockieren.');
+        ? 'Deine Auswahl konnte nicht gespeichert werden. Die Statistik bleibt vorsorglich ausgeschaltet.'
+        : choice === 'accepted'
+          ? 'Du hast der Statistik zugestimmt. Du kannst deine Zustimmung hier jederzeit widerrufen.'
+          : 'Du hast die Statistik abgelehnt. Du kannst sie hier später erlauben.');
   }
 
-  button?.addEventListener('click', () => {
-    const nextDisabled = !disabled;
+  function saveChoice(nextChoice) {
     try {
-      if (nextDisabled) window.localStorage.setItem(storageKey, '1');
-      else window.localStorage.removeItem(storageKey);
+      window.localStorage.setItem(storageKey, nextChoice);
     } catch {
-      disabled = true;
+      choice = 'rejected';
       storageAvailable = false;
-      // Keep the current page disabled even if a write fails but reads still work.
       storageWriteFailed = true;
-      render('Die Einstellung konnte nicht gespeichert werden. Die Statistik bleibt auf dieser Seite deaktiviert. Bitte erlaube den Website-Speicher und lade die Seite neu, um deine Auswahl dauerhaft zu speichern.');
+      render('Deine Auswahl konnte nicht gespeichert werden. Umami bleibt ausgeschaltet. Bitte erlaube den Website-Speicher und versuche es erneut.');
       return;
     }
     storageWriteFailed = false;
     readPreference();
     render();
     loadTracker();
+  }
+
+  prompt?.querySelector('[data-consent-accept]')?.addEventListener('click', () => saveChoice('accepted'));
+  prompt?.querySelector('[data-consent-reject]')?.addEventListener('click', () => saveChoice('rejected'));
+  manageButton?.addEventListener('click', () => {
+    if (choice === 'accepted') saveChoice('rejected');
+    else {
+      choice = null;
+      try { window.localStorage.removeItem(storageKey); } catch { storageAvailable = false; }
+      render();
+    }
+  });
+  settingsLink?.addEventListener('click', () => {
+    if (choice === 'accepted') saveChoice('rejected');
+    else {
+      try { window.localStorage.removeItem(storageKey); } catch { storageAvailable = false; }
+      choice = null;
+      render();
+      prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   });
 
   function syncPreference() {
     readPreference();
     render();
+    if (settingsLink) settingsLink.hidden = !websiteId || choice === null;
     loadTracker();
   }
 
