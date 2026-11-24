@@ -50,7 +50,7 @@ they’re with us every day!
 In Canada, the snow falls slow,
 across the lake the skaters go.
 But on your hood, what’s hanging there?
-A bit of fluff, without a care!
+A bit of fluff from who knows where!
 
 In China, dragons twist and sway,
 as dancers leap and laugh and play.
