@@ -16,7 +16,7 @@
 
   function readPreference() {
     if (storageWriteFailed) {
-      disabled = true;
+      choice = 'rejected';
       storageAvailable = false;
       return;
     }
@@ -31,7 +31,7 @@
     }
   }
 
-  // Also guards custom events and already open tabs after an opt-out.
+  // Also guards custom events and already open tabs after consent is withdrawn.
   window.umamiBeforeSend = (_type, payload) => {
     readPreference();
     return websiteId && choice === 'accepted' ? payload : false;
@@ -53,7 +53,7 @@
   function render(message) {
     if (prompt) {
       prompt.hidden = choice !== null || !websiteId;
-      if (promptStatus) promptStatus.textContent = message || 'Darf ich anonyme Nutzungsstatistiken mit Umami erfassen? Dabei werden technische Daten wie deine IP-Adresse an Umami übermittelt.';
+      if (promptStatus) promptStatus.textContent = message || 'Dürfen anonyme Nutzungsstatistiken erfasst werden? Dabei werden technische Daten wie deine IP-Adresse verarbeitet.';
     }
     if (controls) {
       controls.hidden = choice === null || !websiteId;

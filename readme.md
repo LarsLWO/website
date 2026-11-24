@@ -44,7 +44,6 @@ stories.html                Textübersicht mit Suche und Filtern
 ueber-mich.html              Autorenvorstellung und Kontakt
 impressum.html              Impressum
 datenschutz.html            Datenschutzerklärung
-cookies.html                Informationen zu Cookies
 404.html                    Fehlerseite
 search-index.json           Liquid-Vorlage für den Volltextindex
 feed.xml                    Liquid-Vorlage für den RSS-Feed
