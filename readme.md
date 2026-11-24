@@ -93,7 +93,7 @@ Alle folgenden Skripte liegen in `assets/js/` und werden mit `defer` eingebunden
 
 | Datei | Aufgabe und Einbindung |
 | --- | --- |
-| `stories.js` | Global: Teilen, Linkkopie mit Fallback, Kopierbestätigung, Drucken, Gedicht-/Songtextwechsel und Quellenangaben beim Kopieren von Textauszügen |
+| `stories.js` | Global: Teilen, Linkkopie mit Fallback, Kopierbestätigung, Drucken, Wechsel zwischen Textfassungen und Quellenangaben beim Kopieren von Textauszügen |
 | `contact.js` | Global: E-Mail-Adresse aus den vorbereiteten Daten zusammensetzen |
 | `story-card-audio.js` | Global: Audiowiedergabe über Kartenaktionen steuern |
 | `story-carousel.js` | Startseite: Navigation durch Textkarten |
@@ -136,7 +136,7 @@ Wichtige optionale Felder:
 - `text_type`: Textart; Standardwert der Klassifikation ist `Kurzgeschichte`.
 - `title_lang`, `text_lang`: Sprache von Titel und Text, etwa `en-GB`.
 - `audio`, `audio_duration`: Lokale Audiodatei und ISO-8601-Dauer, etwa `PT3M58S`.
-- `songtext`: Zusätzliche Markdown-Fassung; aktiviert die Gedicht-/Songtextansicht.
+- `tabs`: Liste mit Titeln und optionalen Markdown-Inhalten für beliebig viele Textfassungen; Format siehe unten.
 - `song_idea_credit`: Zusätzlicher Hinweis zur Entstehung eines Songs.
 - `reading_note`, `show_description`: Lesehinweis und Steuerung der Einleitung.
 - `description_link_text`, `description_link_url`: Verlinkter Bestandteil der Beschreibung.
@@ -147,6 +147,37 @@ Wichtige optionale Felder:
 - `noindex`, `sitemap`: Steuerung von Indexierung und Sitemap-Aufnahme.
 
 `tags` dienen der sichtbaren Verschlagwortung und den Filtern. `recommendation_tags` steuern unabhängig davon die Empfehlungen. Beim Umbenennen oder Verschieben einer Quelldatei mögliche URL-Änderungen und bestehende Verweise beachten.
+
+### Mehrere Textfassungen als Tabs
+
+Mit `tabs` im YAML-Front-Matter entstehen die Tabs automatisch in der angegebenen Reihenfolge, ohne feste Obergrenze:
+
+```yaml
+tabs:
+  - title: "Gedicht"
+    id: gedicht
+  - title: "Songtext"
+    id: songtext
+    text_type: "Songtext"
+    content: |
+      [Strophe 1]
+      Hier steht der Songtext.
+      Die nächste Zeile.
+
+      [Refrain]
+      Hier steht der Refrain.
+  - title: "English version"
+    id: english
+    text_type: "Songtext"
+    content: |
+      Here goes another version.
+```
+
+`title` ist die sichtbare Tab-Beschriftung. `id` ist die eindeutige, stabile Linkkennung innerhalb des Textes, etwa `#songtext`; dafür Kleinbuchstaben, Ziffern und Bindestriche verwenden. Ohne `id` wird die Kennung aus dem Titel erzeugt. Jeder Tab braucht eine andere Kennung.
+
+Beim ersten Tab kann `content` entfallen: Er zeigt dann den normalen Markdown-Text unterhalb des abschließenden `---`. Weitere Tabs enthalten ihren Markdown-Text unter `content: |`; alle Inhaltszeilen müssen wie im Beispiel eingerückt sein. Auch der erste Tab kann einen eigenen `content`-Block haben.
+
+`text_type` steuert die Darstellung (`Songtext` oder `Lyrik`) und übernimmt ohne eigene Angabe den Wert des Artikels. Tabs mit ausdrücklich gesetztem `text_type: "Songtext"` erhalten außerdem einen Direktlink auf den Artikelkarten. Alle Fassungen werden in die Volltextsuche aufgenommen. Ohne `tabs` wird der normale Markdown-Text wie bisher angezeigt. Ein vollständiges Beispiel ist `_texts/poems/tunnelmenschen.md`.
 
 ## Caching und Cache-Aktualisierung
 

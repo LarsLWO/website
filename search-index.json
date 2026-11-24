@@ -8,7 +8,12 @@ sitemap: false
 {% for text in searchable_texts %}
   {
     "url": {{ text.url | relative_url | jsonify }},
-    "content": {% if text.songtext %}{% assign searchable_songtext = text.songtext | markdownify | strip_html %}{% assign searchable_content = text.content | markdownify | strip_html | append: ' Songtext ' | append: searchable_songtext %}{% else %}{% assign searchable_content = text.content | markdownify | strip_html %}{% endif %}{{ searchable_content | normalize_whitespace | jsonify }}
+    {% assign searchable_content = text.content | markdownify | strip_html %}
+    {% for tab in text.tabs %}
+      {% assign tab_content = tab.content | default: '' | markdownify | strip_html %}
+      {% assign searchable_content = searchable_content | append: ' ' | append: tab.title | append: ' ' | append: tab_content %}
+    {% endfor %}
+    "content": {{ searchable_content | normalize_whitespace | jsonify }}
   }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ]

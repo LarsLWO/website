@@ -19,22 +19,25 @@ nav: stories
     {% if page.description and page.show_description != false %}<p class="story-intro"><strong>{% include story-description.html story=page %}</strong></p>{% endif %}
     {% if page.reading_note %}<p class="reading-note"><strong>Hinweis:</strong> {{ page.reading_note | escape }}</p>{% endif %}
     {% if page.audio %}{% include song-player.html %}{% endif %}
-    {% if page.songtext %}
+    {% if page.tabs.size > 0 %}
     <div class="story-variants" data-story-variants>
       <div class="eyebrow story-variant-tabs" aria-label="Textfassung">
-        <a id="gedicht-tab" href="#fassung-gedicht" data-fragment="#gedicht">Gedicht</a>
-        <a id="songtext-tab" href="#fassung-songtext" data-fragment="#songtext">Songtext</a>
+        {% for tab in page.tabs %}
+        {% assign tab_id = tab.id | default: tab.title | slugify %}
+        <a id="{{ tab_id | escape }}-tab" href="#fassung-{{ tab_id | escape }}" data-fragment="#{{ tab_id | escape }}">{{ tab.title | escape }}</a>
+        {% endfor %}
       </div>
-      <section id="fassung-gedicht" aria-labelledby="gedicht-tab">
-    {% endif %}
-    <div class="story-text{% if page.text_type == 'Songtext' %} song-text{% elsif page.text_type == 'Lyrik' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
-    {% if page.songtext %}
+      {% for tab in page.tabs %}
+      {% assign tab_id = tab.id | default: tab.title | slugify %}
+      {% assign tab_text_type = tab.text_type | default: page.text_type %}
+      <section id="fassung-{{ tab_id | escape }}" aria-labelledby="{{ tab_id | escape }}-tab">
+        <h2 class="story-variant-heading">{{ tab.title | escape }}</h2>
+        <div class="story-text{% if tab_text_type == 'Songtext' %} song-text{% elsif tab_text_type == 'Lyrik' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}{% unless forloop.first %} – {{ tab.title | escape }}{% endunless %}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}{% unless forloop.first %}#{{ tab_id | escape }}{% endunless %}">{% if tab.content %}{{ tab.content | markdownify }}{% elsif forloop.first %}{{ content }}{% endif %}</div>
       </section>
-      <section id="fassung-songtext" aria-labelledby="songtext-tab">
-        <h2 class="story-variant-heading">Songtext</h2>
-        <div class="story-text song-text" data-story-text data-story-title="{{ page.title | escape }} – Songtext"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}#songtext">{{ page.songtext | markdownify }}</div>
-      </section>
+      {% endfor %}
     </div>
+    {% else %}
+    <div class="story-text{% if page.text_type == 'Songtext' %} song-text{% elsif page.text_type == 'Lyrik' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
     {% endif %}
     <p class="story-signature">~ Lars Wollny</p>
     {% include story-toolbar.html bottom=true %}

@@ -18,147 +18,153 @@ image_width: 1280
 image_height: 853
 date: "2025-07-18"
 image_alt: "Farbige Federzeichnung eines schmutzigen Bahnhofstunnels mit Treppen links und rechts: Menschen in gleichen grauen Anzügen hasten an einer ruhig stehenden Rückenfigur mit rostroter Jacke vorbei."
-songtext: |
-  (Im Oktober 2026 als Songtext neu verfasst.)
-  
-  [Intro]
-  dieser tunnel
-  dieser unterirdische gang
-  zwischen den gleisen
+tabs:
+  - title: "Gedicht"
+    id: gedicht
+  - title: "Songtext"
+    id: songtext
+    text_type: "Songtext"
+    content: |
+      (Im Oktober 2026 als Songtext neu verfasst.)
 
-  dieser stinkende urinabschnitt
-  dieser abschnitt einer welt
-  die sich selbst längst aufgegeben hat
+      [Intro]
+      dieser tunnel
+      dieser unterirdische gang
+      zwischen den gleisen
 
-  [Vers 1]
-  eine welt aus beton
-  und pisslachen
-  graue wände
-  die kein licht durchlassen
+      dieser stinkende urinabschnitt
+      dieser abschnitt einer welt
+      die sich selbst längst aufgegeben hat
 
-  ein ort der gleichgültigkeit
-  der fortbewegung ohne ziel
-  tausend schritte durch die dunkelheit
-  doch keiner fühlt zu viel
+      [Vers 1]
+      eine welt aus beton
+      und pisslachen
+      graue wände
+      die kein licht durchlassen
 
-  ohne bewusstsein
-  ohne einen blick zurück
-  jeder trägt sein eigenes schweigen
-  stück für stück
+      ein ort der gleichgültigkeit
+      der fortbewegung ohne ziel
+      tausend schritte durch die dunkelheit
+      doch keiner fühlt zu viel
 
-  nur diese menschen
-  die durch diesen tunnel hetzen
-  als wären sie noch lebendig
-  doch sie sind längst vergessen
+      ohne bewusstsein
+      ohne einen blick zurück
+      jeder trägt sein eigenes schweigen
+      stück für stück
 
-  [Refrain]
-  und das licht flackert
-  immer wieder
-  an und aus
+      nur diese menschen
+      die durch diesen tunnel hetzen
+      als wären sie noch lebendig
+      doch sie sind längst vergessen
 
-  und die schritte hallen
-  durch den beton
-  wie ein letzter applaus
+      [Refrain]
+      und das licht flackert
+      immer wieder
+      an und aus
 
-  tunnelmenschen
-  unter kaltem neonlicht
-  tausend leere augen
-  doch sie sehen sich nicht
+      und die schritte hallen
+      durch den beton
+      wie ein letzter applaus
 
-  tunnelmenschen
-  gehen weiter durch die nacht
-  keiner weiß wohin
-  keiner weiß, was ihn noch wach macht
+      tunnelmenschen
+      unter kaltem neonlicht
+      tausend leere augen
+      doch sie sehen sich nicht
 
-  beton und urin
-  und die welt zieht vorbei
-  alle laufen weiter
-  doch keiner ist frei
+      tunnelmenschen
+      gehen weiter durch die nacht
+      keiner weiß wohin
+      keiner weiß, was ihn noch wach macht
 
-  [Vers 2]
-  dabei sind sie längst
-  teil des tunnels
-  teil dieser betonblase
-  dieses endlosen dunkels
+      beton und urin
+      und die welt zieht vorbei
+      alle laufen weiter
+      doch keiner ist frei
 
-  ihre schritte mechanisch
-  ihre blicke aus stein
-  jeder für sich
-  und doch keiner allein
+      [Vers 2]
+      dabei sind sie längst
+      teil des tunnels
+      teil dieser betonblase
+      dieses endlosen dunkels
 
-  die gesichter verschwimmen
-  in der flackernden nacht
-  und das licht über ihnen
-  hat längst schlappgemacht
+      ihre schritte mechanisch
+      ihre blicke aus stein
+      jeder für sich
+      und doch keiner allein
 
-  jeder hetzt
-  jeder rennt
-  jeder flieht
-  vor dem, was er in sich trägt
-  und doch niemals sieht
+      die gesichter verschwimmen
+      in der flackernden nacht
+      und das licht über ihnen
+      hat längst schlappgemacht
 
-  [Refrain]
-  und das licht flackert
-  immer wieder
-  an und aus
-  
-  und die schritte hallen
-  durch den beton
-  wie ein letzter applaus
-  
-  tunnelmenschen
-  unter kaltem neonlicht
-  tausend leere augen
-  doch sie sehen sich nicht
-  
-  tunnelmenschen
-  gehen weiter durch die nacht
-  keiner weiß wohin
-  keiner weiß, was ihn noch wach macht
+      jeder hetzt
+      jeder rennt
+      jeder flieht
+      vor dem, was er in sich trägt
+      und doch niemals sieht
 
-  beton und urin
-  und die welt zieht vorbei
-  alle laufen weiter
-  doch keiner ist frei
+      [Refrain]
+      und das licht flackert
+      immer wieder
+      an und aus
 
-  [Bridge]
-  und ich stehe mittendrin
-  zwischen all diesen gesichtern
-  und ich weiß nicht mehr
-  wo ich aufhöre
-  und die anderen beginnen
+      und die schritte hallen
+      durch den beton
+      wie ein letzter applaus
 
-  ich dachte immer
-  ich wär nur auf dem weg
-  doch vielleicht bin ich längst
-  ein teil von dem, was hier vergeht
+      tunnelmenschen
+      unter kaltem neonlicht
+      tausend leere augen
+      doch sie sehen sich nicht
 
-  (und ich gehe)
-  (und ich gehe)
-  (und ich gehe)
+      tunnelmenschen
+      gehen weiter durch die nacht
+      keiner weiß wohin
+      keiner weiß, was ihn noch wach macht
 
-  [Refrain]
-  tunnelmenschen
-  unter kaltem neonlicht
-  tausend leere augen
-  doch sie sehen sich nicht
+      beton und urin
+      und die welt zieht vorbei
+      alle laufen weiter
+      doch keiner ist frei
 
-  tunnelmenschen
-  gehen weiter durch die nacht
-  keiner weiß wohin
-  keiner weiß, was ihn noch wach macht
+      [Bridge]
+      und ich stehe mittendrin
+      zwischen all diesen gesichtern
+      und ich weiß nicht mehr
+      wo ich aufhöre
+      und die anderen beginnen
 
-  beton und urin
-  und die welt zieht vorbei
-  alle laufen weiter
-  doch keiner ist frei
+      ich dachte immer
+      ich wär nur auf dem weg
+      doch vielleicht bin ich längst
+      ein teil von dem, was hier vergeht
 
-  [Outro]
-  beton
-  urin
-  und das flackern des lichts
-  das nichts beleuchtet
-  außer der eigenen vergeblichkeit
+      (und ich gehe)
+      (und ich gehe)
+      (und ich gehe)
+
+      [Refrain]
+      tunnelmenschen
+      unter kaltem neonlicht
+      tausend leere augen
+      doch sie sehen sich nicht
+
+      tunnelmenschen
+      gehen weiter durch die nacht
+      keiner weiß wohin
+      keiner weiß, was ihn noch wach macht
+
+      beton und urin
+      und die welt zieht vorbei
+      alle laufen weiter
+      doch keiner ist frei
+
+      [Outro]
+      beton
+      urin
+      und das flackern des lichts
+      das nichts beleuchtet
+      außer der eigenen vergeblichkeit
 ---
 
 dieser tunnel

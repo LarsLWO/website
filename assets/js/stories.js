@@ -148,10 +148,9 @@
 
       shareMenus.forEach(function (menu, index) {
         const original = originalShare[index];
-        const isSong = fragment === '#songtext';
-        const url = isSong ? original.url + fragment : original.url;
-        const title = isSong ? panels[active].querySelector('[data-story-text]').dataset.storyTitle +
-          ' von Lars Wollny' : original.title;
+        const text = panels[active].querySelector('[data-story-text]');
+        const url = text.dataset.storyUrl;
+        const title = active === 0 ? original.title : text.dataset.storyTitle + ' von Lars Wollny';
         menu.dataset.shareUrl = url;
         menu.dataset.shareTitle = title;
         menu.querySelector('.share-copy-field').value = url;
