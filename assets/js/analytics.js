@@ -60,6 +60,7 @@
       manageButton.disabled = !websiteId;
       manageButton.textContent = choice === 'accepted' ? 'Statistik widerrufen' : 'Statistik später erlauben';
     }
+    if (settingsLink) settingsLink.hidden = !websiteId || choice === null;
     if (status) status.textContent = message || (!websiteId
       ? 'Die statistische Auswertung ist auf dieser Website ausgeschaltet.'
       : !storageAvailable
@@ -96,19 +97,22 @@
     }
   });
   settingsLink?.addEventListener('click', () => {
-    if (choice === 'accepted') saveChoice('rejected');
-    else {
-      try { window.localStorage.removeItem(storageKey); } catch { storageAvailable = false; }
-      choice = null;
-      render();
-      prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    try {
+      window.localStorage.removeItem(storageKey);
+      storageWriteFailed = false;
+      storageAvailable = true;
+    } catch {
+      storageWriteFailed = true;
+      storageAvailable = false;
     }
+    choice = null;
+    render();
+    prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 
   function syncPreference() {
     readPreference();
     render();
-    if (settingsLink) settingsLink.hidden = !websiteId || choice === null;
     loadTracker();
   }
 
