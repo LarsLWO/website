@@ -9,7 +9,13 @@
   const manageButton = controls?.querySelector('button');
   const status = controls?.querySelector('[role="status"]');
   const settingsLink = document.querySelector('[data-open-analytics-settings]');
+  const dialogLinks = document.querySelectorAll('[data-open-analytics-dialog]');
+  const receipt = document.querySelector('[data-analytics-receipt]');
+  const consentVersion = '2026-11-24-2';
   let choice = null;
+  let receiptTimestamp = null;
+  let receiptVersion = null;
+  let promptOpen = false;
   let storageAvailable = true;
   let storageWriteFailed = false;
   let trackerLoaded = false;
@@ -22,7 +28,22 @@
     }
     try {
       const stored = window.localStorage.getItem(storageKey);
-      choice = stored === 'accepted' || stored === 'rejected' ? stored : null;
+      let record = null;
+      try { record = stored ? JSON.parse(stored) : null; } catch { record = null; }
+      if (record && (record.choice === 'accepted' || record.choice === 'rejected')) {
+        choice = record.choice;
+        receiptTimestamp = record.timestamp || null;
+        receiptVersion = record.version || null;
+      } else if (stored === 'accepted' || stored === 'rejected') {
+        // Preserve an older choice without inventing a timestamp or text version.
+        choice = stored;
+        receiptTimestamp = null;
+        receiptVersion = null;
+      } else {
+        choice = null;
+        receiptTimestamp = null;
+        receiptVersion = null;
+      }
       storageAvailable = true;
     } catch {
       // If the preference cannot be read, do not start analytics.
@@ -52,8 +73,8 @@
 
   function render(message) {
     if (prompt) {
-      prompt.hidden = choice !== null || !websiteId;
-      if (promptStatus) promptStatus.textContent = message || 'Mich interessiert, welche Texte gerne gelesen werden. Darf ich das mit Umami Cloud statistisch auswerten? Dabei wird auch deine IP-Adresse verarbeitet.';
+      prompt.hidden = (choice !== null && !promptOpen) || !websiteId;
+      if (promptStatus && message) promptStatus.textContent = message;
     }
     if (controls) {
       controls.hidden = choice === null || !websiteId;
@@ -61,6 +82,15 @@
       manageButton.textContent = choice === 'accepted' ? 'Statistik widerrufen' : 'Statistik später erlauben';
     }
     if (settingsLink) settingsLink.hidden = !websiteId || choice === null;
+    if (receipt) {
+      const decision = receipt.querySelector('[data-receipt-decision]');
+      const date = receipt.querySelector('[data-receipt-date]');
+      const version = receipt.querySelector('[data-receipt-version]');
+      receipt.hidden = choice === null;
+      if (decision) decision.textContent = !storageAvailable ? 'Keine gespeicherte Auswahl (Browser-Speicher nicht verfügbar)' : choice === 'accepted' ? 'Zugestimmt' : choice === 'rejected' ? 'Abgelehnt' : 'Noch keine Auswahl';
+      if (date) date.textContent = receiptTimestamp ? new Intl.DateTimeFormat('de-DE', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(receiptTimestamp)) : 'Für diese ältere Auswahl nicht gespeichert';
+      if (version) version.textContent = receiptVersion || 'Für diese ältere Auswahl nicht gespeichert';
+    }
     if (status) status.textContent = message || (!websiteId
       ? 'Die statistische Auswertung ist auf dieser Website ausgeschaltet.'
       : !storageAvailable
@@ -72,7 +102,10 @@
 
   function saveChoice(nextChoice) {
     try {
-      window.localStorage.setItem(storageKey, nextChoice);
+      const timestamp = new Date().toISOString();
+      window.localStorage.setItem(storageKey, JSON.stringify({ choice: nextChoice, timestamp, version: consentVersion }));
+      receiptTimestamp = timestamp;
+      receiptVersion = consentVersion;
     } catch {
       choice = 'rejected';
       storageAvailable = false;
@@ -81,6 +114,7 @@
       return;
     }
     storageWriteFailed = false;
+    promptOpen = false;
     readPreference();
     render();
     loadTracker();
@@ -97,18 +131,16 @@
     }
   });
   settingsLink?.addEventListener('click', () => {
-    try {
-      window.localStorage.removeItem(storageKey);
-      storageWriteFailed = false;
-      storageAvailable = true;
-    } catch {
-      storageWriteFailed = true;
-      storageAvailable = false;
-    }
-    choice = null;
+    promptOpen = true;
     render();
     prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
+  dialogLinks.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    promptOpen = true;
+    render();
+    prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }));
 
   function syncPreference() {
     readPreference();
