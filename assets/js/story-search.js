@@ -83,9 +83,7 @@
   const filterKeys = ['q', 'genre', 'tag'];
 
   function restoreFiltersFromUrl() {
-    const fragment = new URLSearchParams(window.location.hash.slice(1));
-    const params = filterKeys.some(key => fragment.has(key))
-      ? fragment : new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.hash.slice(1));
     search.value = params.get('q') || '';
     genre.value = params.get('genre') || '';
     activeTag = params.get('tag') || '';
@@ -96,7 +94,6 @@
     const fragment = new URLSearchParams();
     const values = { q: search.value.trim(), genre: genre.value, tag: activeTag };
     Object.entries(values).forEach(([key, value]) => {
-      url.searchParams.delete(key);
       if (value) fragment.set(key, value);
     });
     const previousFragment = new URLSearchParams(url.hash.slice(1));
@@ -212,7 +209,7 @@
     filterStories();
   });
 
-  // Support browser history, pasted fragments and legacy query links.
+  // Support browser history and pasted fragments.
   let lastRestoredUrl;
   function restoreAndFilter() {
     if (lastRestoredUrl === window.location.href) return;

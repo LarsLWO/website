@@ -200,7 +200,7 @@ Bei einer Veröffentlichung der lokal erzeugten Ausgabe wird der Inhalt von `_si
 
 ## Suche, SEO und Medien
 
-- **Suche:** `search-index.json` enthält URLs und bereinigte Textinhalte einschließlich zusätzlicher Songtexte. `story-search.js` lädt den Index erst bei einer Suchanfrage. Bei einem Ladefehler bleiben Metadatentreffer möglich. Suchbegriff, Genre und Tag werden im URL-Fragment gespeichert; ältere Query-Links werden ebenfalls eingelesen.
+- **Suche:** `search-index.json` enthält URLs und bereinigte Textinhalte einschließlich zusätzlicher Songtexte. `story-search.js` lädt den Index erst bei einer Suchanfrage. Bei einem Ladefehler bleiben Metadatentreffer möglich. Suchbegriff, Genre und Tag werden ausschließlich im URL-Fragment nach `#` gespeichert und daraus eingelesen.
 - **SEO:** `seo.html` erzeugt Titel, Beschreibungen, Canonical-Links, Open-Graph- und Twitter-Metadaten. `structured-data.html` ergänzt unter anderem Website, Autor, Seite, literarisches Werk und gegebenenfalls Audio als JSON-LD.
 - **Sitemap und Feed:** Eigene Liquid-Vorlagen; der RSS-Feed enthält bis zu 20 Texte, nach Datum absteigend. Die Sitemap berücksichtigt die vorgesehenen Ausschlussfelder und Bildangaben.
 - **Bilder:** Das Artikelbild-Include erwartet bei gesetztem `image_webp_base` WebP-Dateien mit den Endungen `-480.webp`, `-800.webp` und `-1280.webp`. Wichtige Bilder laden priorisiert, weitere verzögert. Die Varianten liegen fertig im Repository; ein automatischer Bildkonverter ist nicht enthalten.
