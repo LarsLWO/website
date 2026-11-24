@@ -26,7 +26,7 @@ tabs:
     id: fussel-sind-fuer-alle-da
     content: |
       **Fussel sind für alle da**
-      (geschrieben für eine Eurodance/Happy Hardcore Variante)
+      (geschrieben als Eurodance/Happy Hardcore Variante)
 
       [Intro]  
       Fussel hier!  
@@ -121,7 +121,7 @@ tabs:
       Augen auf – da sitzt schon wieder einer drauf!
 
       [Shouts]  
-      Eins, zwei, drei – Fussel frei!  
+      Eins, zwei, drei – Fussel frei! Fussel frei!
       Fussel sind für alle da!
 
       [Chorus]  
@@ -143,8 +143,8 @@ tabs:
       hinter Knöpfen, unter Laschen –
       ein, zwei Fussel, ein, zwei Fussel,  
       die sind immer da!  
-      Ein, zwei Fussel, ein, zwei Fussel,  
-      die sind immer da!
+      Fussel hier! Fussel da!
+      Auf der ganzen Welt, oh ja!
 
       [Outro]  
       Fussel hier! Fussel da!  
