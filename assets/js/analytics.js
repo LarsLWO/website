@@ -130,7 +130,8 @@
       render();
     }
   });
-  settingsLink?.addEventListener('click', () => {
+  settingsLink?.addEventListener('click', event => {
+    event.preventDefault();
     promptOpen = true;
     render();
     prompt?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

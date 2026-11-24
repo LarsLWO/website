@@ -72,8 +72,6 @@
 }
 
 /* Keep the preference control inside the existing footer navigation width. */
-.analytics-settings-link{flex:none;align-self:center;margin-left:0;min-height:0;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;text-decoration:none;cursor:pointer}
-.analytics-settings-link:hover{border:0;background:none;color:var(--accent)}
 .analytics-consent{width:min(500px,calc(100vw - 32px));flex-direction:column;align-items:stretch;gap:10px}
 .analytics-consent-copy a{display:inline}
 .analytics-consent-actions{justify-content:flex-end}
@@ -256,10 +254,12 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     --link-underline-base-color: transparent;
   }
 
+
   :is(.site-header, .site-footer) nav a:is([aria-current=page], [aria-current=location], :hover, :focus-visible) {
     color: var(--accent);
     --link-underline-base-color: #ac6659;
   }
+
 }
 
 @media screen and (forced-colors: active) {
@@ -287,6 +287,7 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
   a:is(:hover, :focus-visible) {
     --link-underline-width: 100%;
   }
+
 }
 
 @media screen and (forced-colors: none) and (prefers-reduced-motion: no-preference) {
