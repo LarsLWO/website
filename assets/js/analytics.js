@@ -53,7 +53,7 @@
   function render(message) {
     if (prompt) {
       prompt.hidden = choice !== null || !websiteId;
-      if (promptStatus) promptStatus.textContent = message || 'Dürfen anonyme Nutzungsstatistiken erfasst werden? Dabei werden technische Daten wie deine IP-Adresse verarbeitet.';
+      if (promptStatus) promptStatus.textContent = message || 'Mich interessiert, welche Texte gerne gelesen werden. Darf ich das mit Umami Cloud statistisch auswerten? Dabei wird auch deine IP-Adresse verarbeitet.';
     }
     if (controls) {
       controls.hidden = choice === null || !websiteId;
