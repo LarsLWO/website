@@ -625,6 +625,6 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 .legal-toc ol{display:grid;grid-template-columns:1fr;gap:2px;margin:0;padding-left:24px}
 .legal-toc li{min-width:0;padding-left:3px}
 .legal-toc li::marker{color:var(--accent);font-size:14px}
-.legal-toc a{display:inline-block;padding:6px 0;text-decoration:none}
+.legal-toc a{display:inline-block;padding:6px 0;text-decoration:none;--link-underline-shift:6px}
 .legal-body h2[id]{scroll-margin-top:28px}
 @media print{.legal-toc{font-size:10pt;margin-bottom:16pt;padding:10pt 0}.legal-toc a{padding:2pt 0}}
