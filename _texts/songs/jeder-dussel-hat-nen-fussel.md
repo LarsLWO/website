@@ -151,51 +151,53 @@ tabs:
       Auf der ganzen Welt, oh ja!
 ---
 
-[Vers 1]
-In Afrika läuft stolz ein Gnu,  
-der Löwe gähnt und schaut ihm zu.  
-Doch plötzlich bleibt das Gnu mal steh‘n –  
+[Verse 1]
+In Afrika läuft stolz ein Gnu,
+der Löwe gähnt und schaut ihm zu.
+Doch plötzlich bleibt das Gnu mal steh‘n –
 ein Fussel hängt an seinen Zeh‘n!
 
-In Australien – schau mal zu –  
-da hüpft und springt ein Känguru!  
-Doch schau mal in den Beutel rein,  
+In Australien kommt's nie zur Ruh', (Uh-uh-uh)
+da hüpft und springt ein Känguru! (Uh-uh-uh)
+Doch schau mal in den Beutel rein,
 da sitzt ein Fussel ganz allein!
 
-[Refrain]
-Jeder Dussel hat ’nen Fussel,  
-auf der ganzen Welt, oh ja!  
-Ob in Schuh’n, in den Taschen,  
-in den Socken und beim Waschen –  
+[Chorus]
+Jeder Dussel hat ’nen Fussel,
+auf der ganzen Welt, oh ja!
+Ob in Schuh’n, in den Taschen,
+in den Socken und beim Waschen –
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
+Ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
 
-[Vers 2]
-In Kanada, da fällt viel Schnee,  
-Wir flitzen übers Eis am See.  
-Doch schau mal die Kapuze an –  
+[Verse 2]
+In Kanada, da fällt viel Schnee,
+wir können Schlittschuhlaufen auf dem See.
+Doch schau mal die Kapuze an –
 ein Fussel hängt auch dort noch dran!
 
-In China lässt man Drachen schwingen,  
-wenn Trommeln durch die Straßen klingen.  
-Doch schau nur hin, da wirbelt mehr,  
+In China gibt's den Drachentanz, (Uh-uh)
+die Leute hüpfen froh im Glanz. (Uh-uh)
+Doch schau nur hin, da wirbelt mehr,
 ein Fussel tanzt im Wind umher!
 
-[Refrain]
-Jeder Dussel hat ’nen Fussel,  
-auf der ganzen Welt, oh ja!  
-Ob in Schuh’n, in den Taschen,  
-in den Socken und beim Waschen –  
+[Chorus]
+Jeder Dussel hat ’nen Fussel,
+auf der ganzen Welt, oh ja!
+Ob in Schuh’n, in den Taschen,
+in den Socken und beim Waschen –
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
+Ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
 
-[Vers 3]
-In Frankreich gibt es ein Baguette,  
-dazu noch Käse und Omelett.  
-Doch plötzlich werd’ ich mäkelig:  
+[Verse 3]
+In Frankreich gibt es ein Baguette,
+dazu noch Käse und Omelett.
+Doch plötzlich werd’ ich mäkelig:
 Ein Fussel drin – wie ekelig!
 
-In Deutschland wird der Ball gerollt,  
-ein Pass, ein Tor für Schwarz-Rot-Gold!  
-Doch nach dem Spiel, was steckt im Schuh?  
+In Deutschland wird der Ball gerollt,
+ein Pass, ein Tor für Schwarz-Rot-Gold!
+Doch nach dem Spiel, was steckt im Schuh?
 Ein Fussel – der gehört dazu!
 
 [Bridge]
@@ -204,9 +206,25 @@ Ein Fussel – der gehört dazu!
 Doch wollt ihr dann das T-Shirt waschen,
 hüpf ich schnell in eure Taschen!“
 
-[Refrain]
+Na na na na na na
+na na na na na na na
+na na na na na na
+na na na na na na na
+na na na na
+na na na na
+na na na na na
+
+[Chorus]
 Jeder Dussel hat ’nen Fussel,  
 auf der ganzen Welt, oh ja!  
 Ob in Schuh’n, in den Taschen,  
 in den Socken und beim Waschen –  
 ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
+Ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
+
+Jeder Dussel hat ’nen Fussel,  
+auf der ganzen Welt, oh ja!  
+Ob in Schuh’n, in den Taschen,  
+in den Socken und beim Waschen –  
+ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
+Ein, zwei Fussel, ein, zwei Fussel, die sind immer da!
