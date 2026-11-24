@@ -2,7 +2,6 @@
 layout: magazine
 title: Geschriebenes
 nav: stories
-analytics: false
 permalink: /stories/
 description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen Brüchen im Alltag. Hier findest du meine Texte – mal leise, mal komisch, mal mit einem Blick in den Abgrund."
 ---
@@ -42,7 +41,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
           </select>
         </div>
 
-        <button type="button" id="reset" data-umami-event="filter-reset">
+        <button type="button" id="reset">
           Filter zurücksetzen
         </button>
       </div>
@@ -75,11 +74,11 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
         data-description="{{ story.description | escape }}">
 
         <h2{% if story.title_lang %} lang="{{ story.title_lang | escape }}"{% endif %}>
-          <a href="{{ story.url | relative_url }}" data-umami-event="story-click" data-umami-event-story="{{ story.title | escape }}" data-umami-event-source="title">
+          <a href="{{ story.url | relative_url }}">
             {{ story.title }}
           </a>
         </h2>
-        <div class="meta">{% include story-classification.html story=story %}</div>{% include story-card-dates.html story=story %}<div class="story-visual"><a class="image-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title | escape }} lesen" data-umami-event="story-click" data-umami-event-story="{{ story.title | escape }}" data-umami-event-source="image">{% include responsive-image.html story=story priority=forloop.first sizes='(max-width: 700px) 100vw, (max-width: 1260px) calc((100vw - 122px) / 2), 569px' %}</a>{% include story-card-actions.html story=story %}</div>
+        <div class="meta">{% include story-classification.html story=story %}</div>{% include story-card-dates.html story=story %}<div class="story-visual"><a class="image-link" href="{{ story.url | relative_url }}" aria-label="{{ story.title | escape }} lesen">{% include responsive-image.html story=story priority=forloop.first sizes='(max-width: 700px) 100vw, (max-width: 1260px) calc((100vw - 122px) / 2), 569px' %}</a>{% include story-card-actions.html story=story %}</div>
 
         <p>{% include story-description.html story=story %}</p>
         <p class="search-excerpt" hidden></p>
@@ -89,9 +88,7 @@ description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen B
           <button
             type="button"
             class="tag"
-            data-filter-tag="{{ tag | escape }}"
-            data-umami-event="tag-filter"
-            data-umami-event-tag="{{ tag | escape }}">
+            data-filter-tag="{{ tag | escape }}">
             #{{ tag }}
           </button>
         {% endfor %}

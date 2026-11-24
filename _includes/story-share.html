@@ -14,10 +14,10 @@
     Teilen<span class="visually-hidden">: {{ include.story.title | escape }}</span>
   </summary>
   <div class="share-menu">
-    <button class="share-option" type="button" data-copy-link data-umami-event="story-share" data-umami-event-method="copy" data-umami-event-story="{{ include.story.title | escape }}" hidden>Link kopieren</button>
-    <a class="share-option" href="mailto:?subject={{ share_title | url_encode | replace: '+', '%20' }}&amp;body={{ share_url | url_encode | replace: '+', '%20' }}" data-umami-event="story-share" data-umami-event-method="email" data-umami-event-story="{{ include.story.title | escape }}">E-Mail</a>
-    <a class="share-option" href="https://wa.me/?text={{ share_message | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer" data-umami-event="story-share" data-umami-event-method="whatsapp" data-umami-event-story="{{ include.story.title | escape }}">WhatsApp</a>
-    <button class="share-option" type="button" data-native-share data-umami-event="story-share" data-umami-event-method="native" data-umami-event-story="{{ include.story.title | escape }}" hidden>Weitere Apps …</button>
+    <button class="share-option" type="button" data-copy-link hidden>Link kopieren</button>
+    <a class="share-option" href="mailto:?subject={{ share_title | url_encode | replace: '+', '%20' }}&amp;body={{ share_url | url_encode | replace: '+', '%20' }}">E-Mail</a>
+    <a class="share-option" href="https://wa.me/?text={{ share_message | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <button class="share-option" type="button" data-native-share hidden>Weitere Apps …</button>
     <input class="share-copy-field" type="text" value="{{ share_url | escape }}" aria-label="Link zur Seite" readonly hidden>
     <p class="share-status" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>

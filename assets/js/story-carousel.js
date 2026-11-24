@@ -99,7 +99,6 @@
     if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
 
     event.preventDefault();
-    window.umami?.track?.('carousel-navigation', { direction: dx < 0 ? 'next' : 'previous', source: 'swipe' });
     if (dx < 0) move(1, next);
     else move(-1, previous);
   }, { passive: false });

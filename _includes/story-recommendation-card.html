@@ -1,10 +1,10 @@
 {% assign recommended_story = include.story %}
 <article class="story-recommendation-card">
-  <a class="story-recommendation-image" href="{{ recommended_story.url | relative_url }}" tabindex="-1" aria-hidden="true" data-umami-event="story-click" data-umami-event-story="{{ recommended_story.title | escape }}" data-umami-event-source="recommendation-image">
+  <a class="story-recommendation-image" href="{{ recommended_story.url | relative_url }}" tabindex="-1" aria-hidden="true">
     {% include responsive-image.html story=recommended_story sizes='(max-width: 700px) 160px, 112px' %}
   </a>
   <div class="story-recommendation-copy">
-    <h3><a href="{{ recommended_story.url | relative_url }}" data-umami-event="story-click" data-umami-event-story="{{ recommended_story.title | escape }}" data-umami-event-source="recommendation-title">{{ recommended_story.title | escape }}</a></h3>
+    <h3><a href="{{ recommended_story.url | relative_url }}">{{ recommended_story.title | escape }}</a></h3>
     <p class="story-recommendation-classification">{% include story-classification.html story=recommended_story %}</p>
     <div class="story-dates">{% include story-date.html story=recommended_story %}</div>
     {% if recommended_story.description %}

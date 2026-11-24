@@ -24,7 +24,7 @@ Der Betrieb benötigt einen statischen Webserver. Ruby und Jekyll werden für di
 _config.yml                 Jekyll-Konfiguration und Ausschlüsse beim Build
 _data/
   author.yml                Angaben für die Autorenvorstellung
-  legal.yml                 Kontakt-, Anbieter- und Analytics-Konfiguration
+  legal.yml                 Kontakt- und Anbieterangaben
 _layouts/
   magazine.html             Gemeinsames Seitengerüst
   story.html                Artikelansicht, eingebettet in magazine.html
@@ -58,7 +58,7 @@ _site/                      Generierte Website; nicht versioniert
 
 ## Layouts und gemeinsame Komponenten
 
-`_layouts/magazine.html` enthält Dokumentkopf, Navigation, Hauptbereich, Footer, globale Skripte und die bedingte Analytics-Einbindung. `_layouts/story.html` ergänzt Artikelkopf, Text, Medien, Werkzeugleisten und Empfehlungen.
+`_layouts/magazine.html` enthält Dokumentkopf, Navigation, Hauptbereich, Footer, globale Skripte und die zentrale Wiedergabeerfassung. `_layouts/story.html` ergänzt Artikelkopf, Text, Medien, Werkzeugleisten und Empfehlungen.
 
 | Komponente in `_includes/` | Aufgabe |
 | --- | --- |
@@ -208,13 +208,13 @@ Bei einer Veröffentlichung der lokal erzeugten Ausgabe wird der Inhalt von `_si
 
 ## Sicherheit und externe Dienste
 
-Das Hauptlayout setzt eine Content Security Policy und die Referrer Policy `strict-origin-when-cross-origin` über Meta-Tags. Die CSP beschränkt Ressourcen überwiegend auf die eigene Herkunft und erlaubt die benötigten Umami-Adressen `cloud.umami.is` und `gateway.umami.is`. HSTS und Schutz gegen das Einbetten in fremde Frames müssen über HTTP-Header des Hostings umgesetzt werden; Meta-Tags ersetzen diese Header nicht.
+Das Hauptlayout setzt eine Content Security Policy und die Referrer Policy `strict-origin-when-cross-origin` über Meta-Tags. Die CSP beschränkt Ressourcen überwiegend auf die eigene Herkunft. HSTS und Schutz gegen das Einbetten in fremde Frames müssen über HTTP-Header des Hostings umgesetzt werden; Meta-Tags ersetzen diese Header nicht.
 
-Umami Cloud wird über `assets/js/analytics.js` erst nach einer aktiven Zustimmung geladen. Die Einstellung wird im Local Storage unter `umami-consent` als `accepted` oder `rejected` gespeichert. Ein Widerruf unterbindet weitere Übermittlungen; im Footer kann die Entscheidung geändert werden. Seitenaufrufe und ausgewählte Bedienaktionen werden erfasst; URL-Suchparameter und Fragmente sind ausgeschlossen. Das Front-Matter-Feld `analytics: false` wird von der zentralen Einbindung nicht ausgewertet.
+GitHub Pages hostet die Website; Cloudflare übernimmt DNS, Reverse Proxy, CDN, Zwischenspeicherung, TLS und Schutz vor Angriffen. Cloudflare Workers zählen Seitenaufrufe sowie MP3- und PDF-Abrufe. Das zentral eingebundene `assets/js/audio-statistics.js` meldet den ersten Wiedergabestart je Audioelement und geladenem Dokument an `/statistik/wiedergabe`. Bei fehlgeschlagenen Meldungen kann ein späterer Start erneut gemeldet werden. Das Skript verwendet keine Cookies und keinen persistenten Browser-Speicher.
 
-In der Datenschutzerklärung können Besucher die Statistik ausschalten und wieder zulassen. Das Opt-out verwendet Umamis unterstützten Local-Storage-Schlüssel `umami.disabled`. Bei gespeichertem Widerspruch oder nicht lesbarem Browser-Speicher wird das externe Skript nicht geladen. Ein `data-before-send`-Handler prüft die Einstellung auch vor weiteren Seitenaufruf- und Ereignisübermittlungen. Änderungen werden über das `storage`-Ereignis in anderen geöffneten Tabs berücksichtigt und beim Wiederherstellen einer Seite erneut geprüft. Bei Speicherfehlern bleibt die aktuelle Seite ohne Statistik; die Oberfläche weist darauf hin, dass die Auswahl nicht dauerhaft gespeichert werden konnte. Das Opt-out gilt pro Browserprofil und Origin; es löscht keine zuvor erhobenen Daten.
+Die Statistik speichert Pfad, Datum und aggregierte Tageszahlen in Cloudflare D1 mit EU-Jurisdiktion. Das private Dashboard unter `statistik.larswollny.de` ist mit Cloudflare Access geschützt. Zusätzliche Worker-Protokollierung und Traces sind laut Betriebskonfiguration deaktiviert. Workers, Datenbank und Access werden außerhalb dieses Repositorys verwaltet. Die EU-Jurisdiktion der Datenbank begrenzt nicht sämtliche Verarbeitungen im weltweiten Cloudflare-Netzwerk.
 
-Die in `datenschutz.html` angegebenen Kontoeinstellungen (EU-Datenregion, Aufbewahrung) müssen mit dem verwendeten Umami-Cloud-Konto übereinstimmen. Ein Opt-out ersetzt keine gegebenenfalls erforderliche Einwilligung oder Interessenabwägung.
+Vor Veröffentlichung sind die Cloudflare-Auftragsverarbeitungsbedingungen, Drittlandgarantien, tatsächlichen Sicherheits-/Cookie-Einstellungen und Aufbewahrungsfristen zu prüfen. Die rechtliche Einordnung der clientseitigen Wiedergabemeldung nach § 25 TDDDG bleibt gesondert zu klären; fehlende Cookies allein belegen keine Einwilligungsfreiheit. Bereits früher im Browser gespeicherte Website-Daten werden vom aktuellen Code weder gelesen noch geschrieben oder gelöscht.
 
 E-Mail- und WhatsApp-Teilen verwenden Links; weitere Apps werden über die native Web-Share-API angesprochen. Es gibt keinen eigenen Versanddienst und kein serverseitiges Kontaktformular.
 
@@ -229,7 +229,7 @@ E-Mail- und WhatsApp-Teilen verwenden Links; weitere Apps werden über die nativ
 | Kartenaktionen ändern | `_includes/story-card-actions.html`, gegebenenfalls `story-card-audio.js` |
 | Suche oder Filter ändern | `stories.html`, `search-index.json`, `story-search.js` |
 | Gestaltung ändern | `assets/css/magazine.css`, gegebenenfalls `no-script.css` |
-| Kontakt-/Anbieterdaten oder Analytics ändern | `_data/legal.yml` und betroffene Rechtstexte |
+| Kontakt-/Anbieterdaten oder Datenschutzhinweise ändern | `_data/legal.yml` und betroffene Rechtstexte |
 | Autorendaten ändern | `_data/author.yml`, `ueber-mich.html` |
 | Domain oder globale Vorgaben ändern | `_config.yml`, `CNAME` und externe Hosting-/DNS-Konfiguration |
 

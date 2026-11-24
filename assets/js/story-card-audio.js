@@ -12,19 +12,6 @@
     const label = button.querySelector('[data-card-play-label]');
     const status = actions.querySelector('[data-card-audio-status]');
 
-    // Umami: Fortschritt pro Wiedergabe erfassen
-    const milestones = [25, 50, 75];
-    const reached = new Set();
-
-    function trackEvent(eventName, properties) {
-      if (typeof window.umami?.track !== 'function') return;
-
-      window.umami.track(eventName, {
-        song: button.dataset.songTitle,
-        ...properties
-      });
-    }
-
     function update() {
       const playing = !audio.paused && !audio.ended;
       button.setAttribute('aria-pressed', String(playing));
@@ -60,38 +47,6 @@
       } catch (error) {
         if (error.name !== 'AbortError') showError();
       }
-    });
-
-    // Umami: Audiostarts erfassen
-    audio.addEventListener('play', function () {
-      trackEvent('audio-play', {});
-    });
-
-    // Umami: Wiedergabefortschritt erfassen
-    audio.addEventListener('timeupdate', function () {
-      if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
-        return;
-      }
-
-      const percent = (audio.currentTime / audio.duration) * 100;
-
-      milestones.forEach(function (milestone) {
-        if (percent >= milestone && !reached.has(milestone)) {
-          reached.add(milestone);
-          trackEvent('audio-progress', {
-            percent: milestone
-          });
-        }
-      });
-    });
-
-    // Umami: Song vollständig abgespielt
-    audio.addEventListener('ended', function () {
-      trackEvent('audio-progress', {
-        percent: 100
-      });
-
-      reached.clear();
     });
 
     ['play', 'pause', 'ended', 'emptied'].forEach(function (event) {
