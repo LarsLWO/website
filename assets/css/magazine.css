@@ -70,6 +70,10 @@
   .publication-desktop{display:none}
   .publication-mobile{display:inline}
 }
+
+/* Keep the preference control inside the existing footer navigation width. */
+.analytics-settings-link{flex:none;align-self:center;margin-left:auto;min-height:0;padding:0;border:0;background:none;color:var(--muted);font:inherit;text-align:right;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;cursor:pointer}
+.analytics-settings-link:hover{border:0;background:none;color:var(--accent)}
 .story-card .meta{margin-top:0}.story-visual{margin-bottom:18px}
 
 /* Small portrait within the background text. */
