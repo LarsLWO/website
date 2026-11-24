@@ -63,7 +63,7 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Zur statistischen Auswertung der Audionutzung werden über Umami Ereignisse erfasst. Dazu gehören der Start beziehungsweise das Fortsetzen einer Wiedergabe und das Erreichen bestimmter Positionen innerhalb eines Songs (25, 50, 75 und 100 Prozent). Dabei werden der Songtitel und der jeweilige Fortschrittswert übermittelt. Die Fortschrittsmessung zeigt, welche Position im Song erreicht wurde, nicht die tatsächlich gehörte Zeit. Eine Zuordnung zu namentlich bekannten Personen erfolgt nicht. Weitere Informationen findest du im Abschnitt „Umami Web Analytics“.</p>
 
-    <p>Die Website setzt selbst keine Cookies für die Besucherstatistik und speichert dafür keine dauerhafte Besucherkennung im Browser. Umami verwendet nach eigenen Angaben ebenfalls keine Tracking-Cookies. Die statistische Auswertung und die technische Sitzungserkennung werden im Abschnitt „Umami Web Analytics“ erläutert.</p>
+    <p>Die Website setzt keine Cookies für die Besucherstatistik und speichert dafür keine dauerhafte Besucherkennung im Browser. Umami verwendet nach eigenen Angaben ebenfalls keine Tracking-Cookies. Wenn du die Statistik deaktivierst, wird ausschließlich deine Widerspruchseinstellung im lokalen Browser-Speicher (Local Storage) unter <code>umami.disabled</code> gespeichert. Sie enthält keine Besucherkennung und dient dazu, deine Auswahl zu beachten. Die statistische Auswertung und das <a href="#statistik-opt-out">Opt-out</a> werden im Abschnitt „Umami Web Analytics“ erläutert.</p>
 
     <h2>4. Teilen und Kopieren</h2>
 
@@ -83,9 +83,9 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Diese Website verwendet Umami Cloud, einen Webanalysedienst der Umami Software, Inc., USA. Der Dienst dient der datensparsamen statistischen Auswertung der Website. Ziel ist es, die Reichweite des Angebots, die Nutzung einzelner Geschichten und Songs sowie die ungefähre geografische Herkunft der Besucher zu verstehen.</p>
 
-    <p>Beim Aufruf der Website wird ein JavaScript von cloud.umami.is geladen. Zur Übermittlung der Statistikdaten stellt dein Browser eine Verbindung zu Umami her, unter anderem zu gateway.umami.is. Dabei werden technische Verbindungsdaten verarbeitet, insbesondere die IP-Adresse.</p>
+    <p>Sofern du die Statistik in diesem Browser nicht deaktiviert hast, wird beim Aufruf der Website ein JavaScript von cloud.umami.is geladen. Zur Übermittlung der Statistikdaten stellt dein Browser eine Verbindung zu Umami her, unter anderem zu gateway.umami.is. Dabei werden technische Verbindungsdaten verarbeitet, insbesondere die IP-Adresse. Bei bereits gespeichertem Opt-out wird das Umami-Skript nicht geladen. Ist der lokale Browser-Speicher nicht zugänglich, wird die Statistik vorsorglich nicht gestartet.</p>
 
-    <p>Umami erfasst unter anderem Seitenaufrufe, aufgerufene Seitenadressen, Seitentitel, verweisende Websites, Browsertyp, Betriebssystem, Gerätetyp, Bildschirmauflösung und Browsersprache. Aus der IP-Adresse beziehungsweise entsprechenden Infrastrukturinformationen werden ungefähre geografische Angaben wie Land, Region und Stadt abgeleitet. Die Standortbestimmung erfolgt nicht über GPS und kann insbesondere bei VPN-Verbindungen, Mobilfunknetzen oder gemeinsam genutzten Internetzugängen ungenau sein.</p>
+    <p>Umami erfasst unter anderem Seitenaufrufe, aufgerufene Seitenadressen, Seitentitel, verweisende Websites, Browsertyp, Betriebssystem, Gerätetyp, Bildschirmauflösung und Browsersprache. Bei den aufgerufenen Seitenadressen werden URL-Suchparameter (nach dem Fragezeichen) und URL-Fragmente (nach dem Rautezeichen) durch die Tracker-Konfiguration von der Übermittlung ausgeschlossen. Aus der IP-Adresse beziehungsweise entsprechenden Infrastrukturinformationen werden ungefähre geografische Angaben wie Land, Region und Stadt abgeleitet. Die Standortbestimmung erfolgt nicht über GPS und kann insbesondere bei VPN-Verbindungen, Mobilfunknetzen oder gemeinsam genutzten Internetzugängen ungenau sein.</p>
 
     <p>Zusätzlich werden ausgewählte Nutzungsereignisse erfasst. Dazu gehören der Start beziehungsweise das Fortsetzen der Audiowiedergabe sowie das Erreichen von 25, 50, 75 und 100 Prozent der Spieldauer. Die zugehörigen Ereignisdaten enthalten den Songtitel und bei Fortschrittsereignissen den erreichten Prozentwert. Diese Angaben dienen dazu, die Nutzung der angebotenen Audioinhalte statistisch auszuwerten. Es werden hierfür keine zusätzlichen persönlichen Angaben wie Name oder E-Mail-Adresse erhoben.</p>
 
@@ -95,13 +95,22 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Nach Angaben von Umami werden die IP-Adressen nicht als eigenes Feld in den regulären Analysedatensätzen gespeichert. Sie werden jedoch zur Verarbeitung der Anfragen, zur ungefähren Standortbestimmung und zur Berechnung pseudonymer Kennungen verwendet. Unabhängig davon können Umami und beteiligte Infrastrukturanbieter IP-Adressen in gesonderten Betriebs- und Sicherheitsprotokollen verarbeiten und speichern.</p>
 
-    <p>Die statistische Verarbeitung dient dem berechtigten Interesse an einer datensparsamen Reichweitenmessung und der Verbesserung dieses nichtkommerziellen Angebots. Als Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO vorgesehen. Die Zulässigkeit dieser Verarbeitung setzt eine entsprechende Interessenabwägung voraus. Ob für einzelne technische Zugriffe zusätzlich eine Einwilligung nach § 25 TDDDG erforderlich ist, richtet sich nach deren konkreter Funktionsweise. Informationen zum Widerspruchsrecht findest du im Abschnitt „Deine Rechte“.</p>
+    <p>Die statistische Verarbeitung dient dem berechtigten Interesse an einer datensparsamen Reichweitenmessung und der Verbesserung dieses nichtkommerziellen Angebots. Als Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO vorgesehen. Die Zulässigkeit dieser Verarbeitung setzt eine entsprechende Interessenabwägung voraus. Ob für einzelne technische Zugriffe zusätzlich eine Einwilligung nach § 25 TDDDG erforderlich ist, richtet sich nach deren konkreter Funktionsweise. Du kannst die Statistik jederzeit über das folgende Opt-out deaktivieren. Informationen zu deinem gesetzlichen Widerspruchsrecht findest du außerdem im Abschnitt „Deine Rechte“.</p>
+
+    <h3 id="statistik-opt-out">Statistik deaktivieren (Opt-out)</h3>
+    <p>Du kannst die Erfassung deiner weiteren Seitenaufrufe und Bedienaktionen durch Umami für diesen Browser auf dieser Website ausschalten und später wieder zulassen. Dafür wird die Einstellung <code>umami.disabled</code> im Local Storage gespeichert. Der Eintrag bleibt ohne festes Ablaufdatum erhalten, bis du die Statistik wieder zulässt oder die Website-Daten löschst. Er wird nicht an Umami übermittelt.</p>
+    <div class="analytics-preference" data-analytics-preference hidden>
+      <p role="status" aria-live="polite" aria-atomic="true"></p>
+      <button class="analytics-preference-button" type="button" aria-describedby="statistik-opt-out-hinweis">Statistik deaktivieren</button>
+    </div>
+    <noscript><p>JavaScript ist deaktiviert. Deshalb werden keine Umami-Statistiken erfasst. Um eine Einstellung für spätere Besuche mit aktiviertem JavaScript zu speichern, aktiviere JavaScript und verwende diese Schaltfläche.</p></noscript>
+    <p id="statistik-opt-out-hinweis">Die Auswahl gilt nur für diesen Browser, dieses Browserprofil und diese Website-Adresse. In anderen Browsern, auf anderen Geräten oder nach dem Löschen der Website-Daten musst du erneut widersprechen. Im privaten Modus kann die Einstellung beim Schließen des Fensters verloren gehen. Das Opt-out stoppt weitere Statistikübermittlungen; bereits übermittelte Daten werden dadurch nicht gelöscht. Technisch notwendige Zugriffe beim Website-Hosting bleiben davon unberührt.</p>
 
     <p>Empfänger der Statistikdaten ist Umami Software, Inc., USA. Für dieses Angebot ist in Umami Cloud die Datenregion Europäische Union (EU) ausgewählt. Die regulären Analysedaten werden damit in der EU gespeichert. Umami verarbeitet die Daten im Rahmen einer Auftragsverarbeitung und setzt hierfür weitere Dienstleister ein. Einzelne Verarbeitungsvorgänge, insbesondere die technische Bereitstellung des Dienstes, Sicherheitsmaßnahmen und Betriebsprotokollierung, können auch außerhalb der EU stattfinden.</p>
 
     <p>Bei einer Verarbeitung oder Übermittlung personenbezogener Daten außerhalb des Europäischen Wirtschaftsraums, insbesondere in die USA, kommen die in der Auftragsverarbeitungsvereinbarung von Umami vorgesehenen datenschutzrechtlichen Übermittlungsmechanismen und Garantien zur Anwendung. Welche Garantien im Einzelnen einschlägig sind, richtet sich nach dem jeweiligen Empfänger und der konkreten Übermittlung.</p>
 
-    <p>Die reguläre Aufbewahrungsdauer der Analysedaten nach Angaben des Anbieters beträgt sechs Monate. Davon zu unterscheiden sind gesonderte Betriebs- und Sicherheitsprotokolle sowie mögliche Sicherungskopien, für die abweichende Aufbewahrungsfristen gelten können.</p>
+    <p>Für dieses Angebot ist eine reguläre Aufbewahrungsdauer der Analysedaten von sechs Monaten vorgesehen; dies entspricht der vom Anbieter für den Hobby-Tarif angegebenen Frist. Davon zu unterscheiden sind gesonderte Betriebs- und Sicherheitsprotokolle sowie mögliche Sicherungskopien, für die abweichende Aufbewahrungsfristen gelten können.</p>
 
     <p>Eine Nutzung der erhobenen Statistikdaten für eigene Werbeprofile oder ein websiteübergreifendes Tracking durch den Websitebetreiber ist nicht vorgesehen. Es werden keine eigenen dauerhaften Besucherkennungen an Umami übermittelt.</p>
 
@@ -155,6 +164,6 @@ description: Hinweise zur Verarbeitung personenbezogener Daten auf dieser Websit
 
     <p>Für den Besuch der Website ist keine Registrierung erforderlich. Technische Verbindungsdaten werden benötigt, um die angeforderten Inhalte auszuliefern. Eine automatisierte Entscheidungsfindung einschließlich Profiling findet durch die Funktionen dieser Website nicht statt.</p>
 
-    <p>Stand: 23. November 2026</p>
+    <p>Stand: 24. November 2026</p>
   </div>
 </article>

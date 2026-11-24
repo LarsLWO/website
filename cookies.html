@@ -2,7 +2,7 @@
 layout: magazine
 title: Cookies
 permalink: /cookies/
-description: Informationen zum Verzicht auf Cookies auf der Website von Lars Wollny.
+description: Informationen zu Cookies, Umami Cloud und der lokalen Opt-out-Einstellung.
 ---
 <article>
   <header class="hero">
@@ -10,7 +10,10 @@ description: Informationen zum Verzicht auf Cookies auf der Website von Lars Wol
     <h1>Keine Cookies.<br><em>Deine Privatsphäre.</em></h1>
   </header>
   <div class="legal-body">
-    <p>Deine Privatsphäre ist mir wichtig. Diese Website setzt keine Cookies und speichert keine dauerhaften Besucherkennungen in deinem Browser. Für die statistische Auswertung von Seitenaufrufen und Audioinhalten wird Umami Cloud eingesetzt. Der Dienst verwendet nach Angaben des Anbieters keine Tracking-Cookies oder vergleichbaren Browser-Speicher.</p>
+    <p>Deine Privatsphäre ist mir wichtig. Diese Website setzt keine Cookies und speichert keine dauerhaften Besucherkennungen in deinem Browser. Für die statistische Auswertung von Seitenaufrufen, Audioinhalten und ausgewählten Bedienaktionen wird Umami Cloud eingesetzt. Der Dienst verwendet nach Angaben des Anbieters keine Tracking-Cookies. Technische Verbindungsdaten wie deine IP-Adresse werden dennoch verarbeitet; ohne Cookies bedeutet nicht, dass keine Datenverarbeitung stattfindet.</p>
+    <h2>Deine Einstellung zur Statistik</h2>
+    <p>Du kannst die Statistik in der <a href="{{ '/datenschutz/' | relative_url }}#statistik-opt-out">Datenschutzerklärung deaktivieren oder wieder zulassen</a>. Beim Deaktivieren wird die Einstellung <code>umami.disabled</code> im lokalen Browser-Speicher (Local Storage) hinterlegt. Das ist kein Cookie und keine Besucherkennung. Der Eintrag dient ausschließlich dazu, deinen Widerspruch zu speichern, und wird nicht an Umami übermittelt.</p>
+    <p>Die Einstellung gilt für diesen Browser und diese Website-Adresse. Sie hat kein festes Ablaufdatum und bleibt bestehen, bis du die Statistik wieder zulässt oder die Website-Daten löschst. Bei gespeichertem Opt-out wird das Umami-Skript nicht geladen. Wenn der Browser den Zugriff auf den lokalen Speicher blockiert, wird die Statistik vorsorglich nicht gestartet.</p>
     <p>Auf dieser Website wird kein Cookie-Banner eingesetzt. Ob eine Einwilligung erforderlich ist, hängt jedoch nicht allein vom Einsatz von Cookies ab. Wenn du einen externen Link öffnest, kann der jeweilige Anbieter eigene Cookies setzen oder auf Informationen in deinem Endgerät zugreifen. Für diese Verarbeitung ist der externe Anbieter verantwortlich.</p>
     <p>Weitere Informationen zur Verarbeitung personenbezogener Daten findest du in der <a href="{{ '/datenschutz/' | relative_url }}">Datenschutzerklärung</a>.</p>
   </div>

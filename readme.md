@@ -209,9 +209,15 @@ Bei einer Veröffentlichung der lokal erzeugten Ausgabe wird der Inhalt von `_si
 
 ## Sicherheit und externe Dienste
 
-Das Hauptlayout setzt eine Content Security Policy und die Referrer Policy `strict-origin-when-cross-origin` über Meta-Tags. Die CSP beschränkt Ressourcen überwiegend auf die eigene Herkunft und erlaubt die benötigten Cloudflare-Analytics-Adressen. HSTS und Schutz gegen das Einbetten in fremde Frames müssen über HTTP-Header des Hostings umgesetzt werden; Meta-Tags ersetzen diese Header nicht.
+Das Hauptlayout setzt eine Content Security Policy und die Referrer Policy `strict-origin-when-cross-origin` über Meta-Tags. Die CSP beschränkt Ressourcen überwiegend auf die eigene Herkunft und erlaubt die benötigten Umami-Adressen `cloud.umami.is` und `gateway.umami.is`. HSTS und Schutz gegen das Einbetten in fremde Frames müssen über HTTP-Header des Hostings umgesetzt werden; Meta-Tags ersetzen diese Header nicht.
 
-Cloudflare Web Analytics wird eingebunden, wenn `site.data.legal.analytics_enabled` aktiv ist und die einzelne Seite nicht `analytics: false` setzt. E-Mail- und WhatsApp-Teilen verwenden Links; weitere Apps werden über die native Web-Share-API angesprochen. Es gibt keinen eigenen Versanddienst und kein serverseitiges Kontaktformular.
+Umami Cloud wird über `assets/js/analytics.js` geladen, wenn `site.data.legal.analytics_enabled` aktiv ist und kein Opt-out vorliegt. Seitenaufrufe und ausgewählte Bedienaktionen werden erfasst; URL-Suchparameter und Fragmente sind ausgeschlossen. Das frühere Front-Matter-Feld `analytics: false` steuert die aktuelle Einbindung nicht.
+
+In der Datenschutzerklärung können Besucher die Statistik ausschalten und wieder zulassen. Das Opt-out verwendet Umamis unterstützten Local-Storage-Schlüssel `umami.disabled`. Bei gespeichertem Widerspruch oder nicht lesbarem Browser-Speicher wird das externe Skript nicht geladen. Ein `data-before-send`-Handler prüft die Einstellung auch vor weiteren Seitenaufruf- und Ereignisübermittlungen. Änderungen werden über das `storage`-Ereignis in anderen geöffneten Tabs berücksichtigt und beim Wiederherstellen einer Seite erneut geprüft. Bei Speicherfehlern bleibt die aktuelle Seite ohne Statistik; die Oberfläche weist darauf hin, dass die Auswahl nicht dauerhaft gespeichert werden konnte. Das Opt-out gilt pro Browserprofil und Origin; es löscht keine zuvor erhobenen Daten.
+
+Die in `datenschutz.html` angegebenen Kontoeinstellungen (EU-Datenregion, Aufbewahrung) müssen mit dem verwendeten Umami-Cloud-Konto übereinstimmen. Ein Opt-out ersetzt keine gegebenenfalls erforderliche Einwilligung oder Interessenabwägung.
+
+E-Mail- und WhatsApp-Teilen verwenden Links; weitere Apps werden über die native Web-Share-API angesprochen. Es gibt keinen eigenen Versanddienst und kein serverseitiges Kontaktformular.
 
 ## Typische Änderungen und Prüfung
 
