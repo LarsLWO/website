@@ -3,8 +3,6 @@ layout: story
 title: "Jeder Dussel hat ’nen Fussel"
 text_type: "Songtext"
 genre: "Songtext"
-audio: /assets/audio/jeder-dussel-hat-nen-fussel-lars-wollny-128.mp3
-audio_duration: "PT3M39S"
 song_idea_credit: "Danke an meine Töchter für die Idee zu diesem Lied!"
 tags:
   - Humor
@@ -22,6 +20,8 @@ date: "2025-01-09"
 tabs:
   - title: "Jeder Dussel hat 'nen Fussel"
     id: songtext
+    audio: /assets/audio/jeder-dussel-hat-nen-fussel-lars-wollny-128.mp3
+    audio_duration: "PT3M39S"
   - title: "Fussel sind für alle da"
     id: fussel-sind-fuer-alle-da
     content: |
@@ -141,8 +141,7 @@ tabs:
       in den Socken und beim Waschen –  
       ob beim Naschen, zwischen Flaschen,  
       hinter Knöpfen, unter Laschen –
-
-      Ein, zwei Fussel, ein, zwei Fussel,  
+      ein, zwei Fussel, ein, zwei Fussel,  
       die sind immer da!  
       Ein, zwei Fussel, ein, zwei Fussel,  
       die sind immer da!

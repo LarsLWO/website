@@ -1,21 +1,24 @@
-<section class="song-player" aria-label="Lied anhören">
+{% assign player_song = include.song | default: page %}
+{% assign player_title = include.title | default: page.title %}
+{% assign player_id = include.player_id | default: 'song-info' %}
+{% assign player_credit = player_song.song_idea_credit | default: page.song_idea_credit %}
+<section class="song-player" data-song-player aria-label="Lied anhören">
   <div class="song-player-heading">
     <p class="song-player-label">Zum Anhören</p>
-    <button class="song-info-button" type="button" aria-label="Informationen zur Entstehung des Songs" aria-haspopup="dialog" aria-controls="song-info" data-song-info-open hidden><span aria-hidden="true">i</span></button>
+    <button class="song-info-button" type="button" aria-label="Informationen zur Entstehung des Songs" aria-haspopup="dialog" aria-controls="{{ player_id | escape }}" data-song-info-open hidden><span aria-hidden="true">i</span></button>
   </div>
   <div class="song-player-controls">
-    <audio controls preload="metadata" aria-label="{{ page.title | escape }} anhören">
-      <source src="{{ page.audio | relative_url }}" type="audio/mpeg">
-      Dein Browser unterstützt diesen Audioplayer nicht. <a href="{{ page.audio | relative_url }}">Song als MP3 öffnen</a>.
+    <audio controls preload="metadata" aria-label="{{ player_title | escape }} anhören">
+      <source src="{{ player_song.audio | relative_url }}" type="audio/mpeg">
+      Dein Browser unterstützt diesen Audioplayer nicht. <a href="{{ player_song.audio | relative_url }}">Song als MP3 öffnen</a>.
     </audio>
   </div>
-  <dialog class="song-info-dialog" id="song-info" aria-labelledby="song-info-title" aria-describedby="song-info-credits">
+  <dialog class="song-info-dialog" id="{{ player_id | escape }}" aria-labelledby="{{ player_id | escape }}-title" aria-describedby="{{ player_id | escape }}-credits">
     <div class="song-info-heading">
-      <h2 id="song-info-title" tabindex="-1" autofocus>Über diesen Song</h2>
+      <h2 id="{{ player_id | escape }}-title" tabindex="-1" autofocus>Über diesen Song</h2>
       <form method="dialog"><button class="song-info-close" aria-label="Informationen schließen">×</button></form>
     </div>
-    <p id="song-info-credits">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if page.song_idea_credit %}<br><br>{{ page.song_idea_credit | escape }}{% endif %}</p>
+    <p id="{{ player_id | escape }}-credits">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if player_credit %}<br><br>{{ player_credit | escape }}{% endif %}</p>
   </dialog>
-  <noscript><p class="song-info-fallback">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if page.song_idea_credit %}<br><br>{{ page.song_idea_credit | escape }}{% endif %}</p></noscript>
+  <noscript><p class="song-info-fallback">Text und musikalische Idee: Lars Wollny<br>Musikalische Umsetzung mithilfe KI-gestützter Dienste{% if player_credit %}<br><br>{{ player_credit | escape }}{% endif %}</p></noscript>
 </section>
-<script src="{{ '/assets/js/song-player.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

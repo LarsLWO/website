@@ -140,6 +140,9 @@
         tab.setAttribute('aria-selected', String(index === active));
         tab.tabIndex = index === active ? 0 : -1;
         panels[index].hidden = index !== active;
+        if (index !== active) {
+          panels[index].querySelectorAll('audio').forEach(function (audio) { audio.pause(); });
+        }
       });
 
       if (updateUrl && window.location.hash !== fragment) {

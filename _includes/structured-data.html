@@ -43,24 +43,28 @@
       "inLanguage": {{ page.text_lang | default: site.lang | jsonify }},
       "genre": {{ page.genre | jsonify }},
       "keywords": {{ page.tags | join: ', ' | jsonify }},
-{% if page.audio %}      "audio": {"@id": {{ canonical_url | append: '#audio' | jsonify }}},
+{% capture story_audio_json %}
+  {% assign audio_separator = '' %}
+  {% if page.tabs.size > 0 %}
+    {% for tab in page.tabs %}
+      {% assign audio_song = tab %}
+      {% if forloop.first and tab.audio == nil %}{% assign audio_song = page %}{% endif %}
+      {% if audio_song.audio %}
+        {{ audio_separator }}{% include structured-audio.html song=audio_song title=tab.title %}
+        {% assign audio_separator = ',' %}
+      {% endif %}
+    {% endfor %}
+  {% elsif page.audio %}
+    {% include structured-audio.html song=page title=page.title %}
+  {% endif %}
+{% endcapture %}
+{% assign story_audio_json = story_audio_json | strip %}
+{% if story_audio_json != empty %}      "audio": [{{ story_audio_json }}],
 {% endif %}      "image": {{ seo_image | jsonify }},
       "author": {"@id": {{ '/' | absolute_url | append: '#author' | jsonify }}},
       "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.date %},
       "datePublished": {{ page.date | date: '%Y-%m-%d' | jsonify }}{% endif %}
-    }{% if page.audio %},
-    {
-      "@type": "AudioObject",
-      "@id": {{ canonical_url | append: '#audio' | jsonify }},
-      "name": {{ page.title | jsonify }},
-      "description": {{ 'Musikalische Umsetzung zum Songtext „' | append: page.title | append: '“.' | jsonify }},
-      "contentUrl": {{ page.audio | absolute_url | jsonify }},
-      "encodingFormat": "audio/mpeg",
-      "inLanguage": {{ page.text_lang | default: site.lang | jsonify }},
-      "isBasedOn": {"@id": {{ canonical_url | append: '#story' | jsonify }}},
-      "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if page.audio_duration %},
-      "duration": {{ page.audio_duration | jsonify }}{% endif %}
-    }{% endif %}{% endif %}
+    }{% endif %}
   ]
 }
 </script>

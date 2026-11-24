@@ -1,0 +1,11 @@
+{
+  "@type": "AudioObject",
+  "name": {{ include.title | jsonify }},
+  "description": {{ 'Musikalische Umsetzung zum Songtext „' | append: include.title | append: '“.' | jsonify }},
+  "contentUrl": {{ include.song.audio | absolute_url | jsonify }},
+  "encodingFormat": "audio/mpeg",
+  "inLanguage": {{ page.text_lang | default: site.lang | jsonify }},
+  "isBasedOn": {"@id": {{ canonical_url | append: '#story' | jsonify }}},
+  "mainEntityOfPage": {"@id": {{ canonical_url | append: '#webpage' | jsonify }}}{% if include.song.audio_duration %},
+  "duration": {{ include.song.audio_duration | jsonify }}{% endif %}
+}

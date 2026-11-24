@@ -179,6 +179,28 @@ Beim ersten Tab kann `content` entfallen: Er zeigt dann den normalen Markdown-Te
 
 `text_type` steuert die Darstellung (`Songtext` oder `Lyrik`) und übernimmt ohne eigene Angabe den Wert des Artikels. Tabs mit ausdrücklich gesetztem `text_type: "Songtext"` erhalten außerdem einen Direktlink auf den Artikelkarten. Alle Fassungen werden in die Volltextsuche aufgenommen. Ohne `tabs` wird der normale Markdown-Text wie bisher angezeigt. Ein vollständiges Beispiel ist `_texts/poems/tunnelmenschen.md`.
 
+#### Eigene MP3 pro Tab
+
+Jeder Tab kann `audio`, `audio_duration` und optional `song_idea_credit` erhalten:
+
+```yaml
+tabs:
+  - title: "Original"
+    id: original
+    audio: /assets/audio/original.mp3
+    audio_duration: "PT3M39S"
+  - title: "Alternative"
+    id: alternative
+    audio: /assets/audio/alternative.mp3
+    audio_duration: "PT4M12S"
+    content: |
+      Hier steht die alternative Textfassung.
+```
+
+Der Player steht innerhalb des zugehörigen Tabs. Beim Wechsel wird der verlassene Player pausiert; der neue startet erst durch Betätigung des Players. Tabs ohne `audio` haben keinen Player. Die Teaser-Kachel spielt die MP3 des ersten Tabs ab; zusätzliche MP3-Dateien erzeugen keine weiteren Kachelbuttons.
+
+Bisherige `audio`-Angaben auf Artikelebene funktionieren weiterhin: Ohne Tabs erscheint der normale Player, bei Tabs gilt die Angabe als Ersatz für eine fehlende MP3 im ersten Tab. Weitere Tabs übernehmen diese MP3 nicht. `song_idea_credit` auf Artikelebene gilt als gemeinsamer Hinweis, den ein Tab überschreiben kann. `audio_duration` ist optional und beschreibt die Dauer für die strukturierten Metadaten.
+
 ## Caching und Cache-Aktualisierung
 
 Alle lokalen CSS- und JavaScript-Einbindungen verwenden einheitlich den Jekyll-Build-Zeitstempel als Versionsparameter:

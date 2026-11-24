@@ -18,7 +18,6 @@ nav: stories
   <div class="reading article-body">
     {% if page.description and page.show_description != false %}<p class="story-intro"><strong>{% include story-description.html story=page %}</strong></p>{% endif %}
     {% if page.reading_note %}<p class="reading-note"><strong>Hinweis:</strong> {{ page.reading_note | escape }}</p>{% endif %}
-    {% if page.audio %}{% include song-player.html %}{% endif %}
     {% if page.tabs.size > 0 %}
     <div class="story-variants" data-story-variants>
       <div class="eyebrow story-variant-tabs" aria-label="Textfassung">
@@ -32,11 +31,16 @@ nav: stories
       {% assign tab_text_type = tab.text_type | default: page.text_type %}
       <section id="fassung-{{ tab_id | escape }}" aria-labelledby="{{ tab_id | escape }}-tab">
         <h2 class="story-variant-heading">{{ tab.title | escape }}</h2>
+        {% assign tab_song = tab %}
+        {% if forloop.first and tab.audio == nil %}{% assign tab_song = page %}{% endif %}
+        {% assign player_id = 'song-info-' | append: tab_id %}
+        {% if tab_song.audio %}{% include song-player.html song=tab_song title=tab.title player_id=player_id %}{% endif %}
         <div class="story-text{% if tab_text_type == 'Songtext' %} song-text{% elsif tab_text_type == 'Lyrik' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}{% unless forloop.first %} – {{ tab.title | escape }}{% endunless %}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}{% unless forloop.first %}#{{ tab_id | escape }}{% endunless %}">{% if tab.content %}{{ tab.content | markdownify }}{% elsif forloop.first %}{{ content }}{% endif %}</div>
       </section>
       {% endfor %}
     </div>
     {% else %}
+    {% if page.audio %}{% include song-player.html %}{% endif %}
     <div class="story-text{% if page.text_type == 'Songtext' %} song-text{% elsif page.text_type == 'Lyrik' %} poem-text{% endif %}"{% if page.text_lang %} lang="{{ page.text_lang | escape }}"{% endif %} data-story-text data-story-title="{{ page.title | escape }}"{% if page.date %} data-story-published-year="{{ page.date | date: '%Y' }}"{% endif %} data-story-url="{{ page.url | absolute_url | escape }}">{{ content }}</div>
     {% endif %}
     <p class="story-signature">~ Lars Wollny</p>
