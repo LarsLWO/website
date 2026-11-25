@@ -5,4 +5,10 @@ sitemap: false
 User-agent: *
 Allow: /
 
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
