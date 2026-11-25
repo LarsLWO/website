@@ -680,18 +680,8 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     padding-block: clamp(72px, 7.3vw, 112px) clamp(54px, 4.5vw, 72px);
   }
 
-  .home-hero .eyebrow {
-    font-size: clamp(12px, 1.1vw, 16px);
-    letter-spacing: .1em;
-  }
-
-  .home-hero h1 {
-    font-size: clamp(48px, 5vw, 76px);
-  }
-
   .home-hero .intro {
     max-width: min(50vw, 720px);
-    font-size: clamp(19px, 1.6vw, 24px);
     color: #4d534b;
   }
 }
@@ -703,10 +693,6 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 
   .home-hero > .hero {
     padding-block: clamp(42px, 8vw, 58px) 38px;
-  }
-
-  .home-hero h1 {
-    font-size: clamp(39px, 7.5vw, 54px);
   }
 
   .home-hero .intro {
