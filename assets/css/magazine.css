@@ -591,6 +591,25 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 
 /* Match the breakpoint used by the two-column teaser grids. */
 @media screen and (width > 700px) {
+  .story-carousel-stage {
+    --teaser-block-spacing: clamp(12px, 2.5vw, 28px);
+    padding-block: var(--teaser-block-spacing);
+  }
+
+  .story-carousel .story-card {
+    padding-block: var(--teaser-block-spacing);
+  }
+
+  .story-carousel .story-card::before,
+  .story-carousel .story-card > h2 a::after {
+    inset-block: calc(-1 * var(--teaser-block-spacing));
+    border-radius: 0;
+  }
+
+  .story-carousel:not(.is-active) .story-grid {
+    row-gap: max(42px, calc(2 * var(--teaser-block-spacing)));
+  }
+
   .story-card:is(:hover, :has(> h2 a:focus-visible))::before {
     background-color: rgb(0 0 0 / 5%);
   }
