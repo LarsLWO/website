@@ -628,3 +628,64 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 .legal-toc a{display:inline-block;padding:6px 0;text-decoration:none;--link-underline-shift:6px}
 .legal-body h2[id]{scroll-margin-top:28px}
 @media print{.legal-toc{font-size:10pt;margin-bottom:16pt;padding:10pt 0}.legal-toc a{padding:2pt 0}}
+
+@media screen {
+  .home-hero {
+    margin-inline: calc((100% - 100cqw) / 2);
+    background-color: var(--sand);
+    background-image:
+      radial-gradient(ellipse at 18% 50%, var(--paper) 0%, transparent 65%),
+      linear-gradient(90deg, #f5f1e8b8, #f5f1e88c 45%, transparent 74%),
+      url("../images/optimized/startseite-buch-kerzenschein.jpg");
+    background-position: right bottom;
+    background-size: cover;
+  }
+
+  .home-hero > .hero {
+    max-width: none;
+    padding-block: clamp(72px, 7.3vw, 112px) clamp(54px, 4.5vw, 72px);
+  }
+
+  .home-hero .eyebrow {
+    font-size: clamp(12px, 1.1vw, 16px);
+    letter-spacing: .1em;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(48px, 5vw, 76px);
+  }
+
+  .home-hero .intro {
+    max-width: min(50vw, 720px);
+    font-size: clamp(19px, 1.6vw, 24px);
+    color: #4d534b;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home-hero {
+    background-image:
+      linear-gradient(180deg, var(--paper) 0%, var(--paper) 58%, #f5f1e878 78%, transparent 94%),
+      url("../images/optimized/startseite-buch-kerzenschein.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%, auto 75%;
+  }
+
+  .home-hero > .hero {
+    padding-block: clamp(42px, 8vw, 58px) clamp(150px, 32vw, 220px);
+  }
+
+  .home-hero h1 {
+    font-size: clamp(39px, 7.5vw, 54px);
+  }
+
+  .home-hero .intro {
+    max-width: 48ch;
+  }
+}
+
+@media screen and (forced-colors: active) {
+  .home-hero {
+    background-image: none;
+  }
+}
