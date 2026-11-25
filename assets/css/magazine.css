@@ -592,7 +592,7 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 /* Match the breakpoint used by the two-column teaser grids. */
 @media screen and (width > 700px) {
   .story-carousel-stage {
-    --teaser-block-spacing: clamp(12px, 2.5vw, 28px);
+    --teaser-block-spacing: calc(clamp(12px, 2.5vw, 28px) - 7.5px);
     padding-block: var(--teaser-block-spacing);
   }
 
@@ -620,6 +620,18 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 
   .story-card:is(:hover, :has(> h2 a:focus-visible)) .image-link img {
     transform: scale(1.025);
+  }
+
+  .story-carousel .story-tags {
+    /* Keep tag borders on a stable layer while the teaser image scales. */
+    position: relative;
+    z-index: 2;
+    transform: translateZ(0);
+    pointer-events: none;
+  }
+
+  .story-carousel .story-tags .tag {
+    pointer-events: auto;
   }
 }
 
