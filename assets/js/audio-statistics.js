@@ -19,7 +19,7 @@ document.addEventListener("playing", function (event) {
     encodeURIComponent(url.pathname),
     {
       method: "POST",
-      credentials: "omit",
+      credentials: "same-origin",
       keepalive: true
     }
   ).then(response => {
