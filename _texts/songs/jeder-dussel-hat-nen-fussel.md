@@ -157,8 +157,8 @@ der Löwe gähnt und schaut ihm zu.
 Doch plötzlich bleibt das Gnu mal steh‘n –
 ein Fussel hängt an seinen Zeh‘n!
 
-In Australien kommt's nie zur Ruh', (Uh-uh-uh)
-da hüpft und springt ein Känguru! (Uh-uh-uh)
+In Australien kommt's nie zur Ruh', (Uh-uh)
+da hüpft und springt ein Känguru! (Uh-uh)
 Doch schau mal in den Beutel rein,
 da sitzt ein Fussel ganz allein!
 
