@@ -675,13 +675,8 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     background-size: cover;
   }
 
-  .home-hero > .hero {
-    max-width: none;
-    padding-block: clamp(72px, 7.3vw, 112px) clamp(54px, 4.5vw, 72px);
-  }
-
   .home-hero .intro {
-    max-width: min(50vw, 720px);
+    max-width: min(52vw, 35rem);
     color: #4d534b;
   }
 }
@@ -689,10 +684,6 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 @media screen and (max-width: 700px) {
   .home-hero {
     background: var(--paper);
-  }
-
-  .home-hero > .hero {
-    padding-block: clamp(42px, 8vw, 58px) 38px;
   }
 
   .home-hero .intro {
