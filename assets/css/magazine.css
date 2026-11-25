@@ -622,11 +622,14 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     transform: scale(1.025);
   }
 
+  /* Keep the tags and controls on stable layers while the teaser image scales. */
+  .story-carousel :is(.story-tags, .story-card-actions) {
+    transform: translateZ(0);
+  }
+
   .story-carousel .story-tags {
-    /* Keep tag borders on a stable layer while the teaser image scales. */
     position: relative;
     z-index: 2;
-    transform: translateZ(0);
     pointer-events: none;
   }
 
