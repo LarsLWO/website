@@ -606,7 +606,7 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     padding-block: var(--teaser-block-spacing);
   }
 
-  .page-hero + :is(.stories-intro, .about-body) {
+  .page-hero + :is(.stories-intro, .about-body, .about-section) {
     padding-top: calc(2 * var(--teaser-block-spacing));
   }
 
@@ -701,8 +701,24 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
     --hero-image: url("../images/optimized/hero-hinter-den-worten-herbst-lars-wollny.webp");
   }
 
+  .future-hero {
+    --hero-image: url("../images/optimized/hero-hinter-den-worten-tunnel-lars-wollny.webp");
+  }
+
   .page-hero > .hero {
     max-width: none;
+  }
+
+  .page-hero .hero h2 {
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -.035em;
+    margin: 0 0 25px;
+  }
+
+  .page-hero h2 em {
+    color: var(--accent);
+    font-style: normal;
   }
 
   .page-hero .intro {
