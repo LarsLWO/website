@@ -1,0 +1,17 @@
+{% if site.data.literary_quotes.size > 0 %}
+<section class="about-section" aria-labelledby="herausgegriffen" data-selected-quote>
+  <h2 id="herausgegriffen">Herausgegriffen.</h2>
+  {% for quote in site.data.literary_quotes %}
+    {% capture quote_markup %}
+    <figure class="literary-quote" data-quote-display>
+      <blockquote cite="{{ quote.url | relative_url | escape }}">
+        <p>{{ quote.text | escape | newline_to_br }}</p>
+      </blockquote>
+      <figcaption>— <cite><a href="{{ quote.url | relative_url | escape }}">{{ quote.title | escape }}</a></cite></figcaption>
+    </figure>
+    {% endcapture %}
+    {% if forloop.first %}{{ quote_markup }}{% endif %}
+    <template data-quote-option>{{ quote_markup }}</template>
+  {% endfor %}
+</section>
+{% endif %}

@@ -20,6 +20,8 @@ description: "Ich bin Lars Wollny. Ich schreibe über familiäre Spannungen, Ste
       <p>Ich schreibe über familiäre Spannungen, über Stereotype und Machtverhältnisse. Mich interessieren die Erwartungen, die Menschen aneinander haben – und die kleinen Bemerkungen, die für den einen längst vergessen sind und für den anderen bleiben.</p>
     </section>
 
+    {% include selected-quote.html %}
+
     <section class="about-section" aria-labelledby="morgen">
       <h2 id="morgen">Erzähl mir von morgen.</h2>
       <p>Wie wollen wir leben? Und welche Entscheidungen treffen wir heute, die dieses Morgen bestimmen?</p>
@@ -54,3 +56,4 @@ description: "Ich bin Lars Wollny. Ich schreibe über familiäre Spannungen, Ste
   </div>
 </article>
 <script src="{{ '/assets/js/elapsed-years.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/selected-quote.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

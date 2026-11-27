@@ -183,6 +183,13 @@
 @media(max-width:700px){.about-section{margin-bottom:36px}}
 @media print{.about-section{max-width:none;margin-bottom:12pt}.about-section>p{margin:0 0 7pt}}
 
+/* A single editorial excerpt, with its source below. */
+.literary-quote{margin:0}
+.literary-quote blockquote{margin:0 0 16px}
+.literary-quote blockquote p{margin:0;font-size:1.2em;font-style:italic;line-height:1.65;overflow-wrap:anywhere}
+.literary-quote cite{font-style:normal}
+.literary-quote a{color:var(--accent)}
+
 /* Build-generated links for each writing theme. */
 .related-texts{display:block;margin:18px 0 0;font:18px/1.6 Arial,sans-serif}
 .related-texts ul{display:flex;flex-wrap:wrap;gap:4px 0;list-style:none;padding:0;margin:0}
