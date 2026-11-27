@@ -591,9 +591,16 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 
 /* Match the breakpoint used by the two-column teaser grids. */
 @media screen and (width > 700px) {
-  .story-carousel-stage {
+  :root {
     --teaser-block-spacing: calc(clamp(12px, 2.5vw, 28px) - 7.5px);
+  }
+
+  .story-carousel-stage {
     padding-block: var(--teaser-block-spacing);
+  }
+
+  .page-hero + :is(.stories-intro, .about-body) {
+    padding-top: calc(2 * var(--teaser-block-spacing));
   }
 
   .story-carousel .story-card {
