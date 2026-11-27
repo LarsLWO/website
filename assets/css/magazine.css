@@ -664,39 +664,53 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
 @media print{.legal-toc{font-size:10pt;margin-bottom:16pt;padding:10pt 0}.legal-toc a{padding:2pt 0}}
 
 @media screen {
-  .home-hero {
+  .page-hero {
     margin-inline: calc((100% - 100cqw) / 2);
     background-color: var(--sand);
     background-image:
       radial-gradient(ellipse at 18% 50%, var(--paper) 0%, transparent 65%),
       linear-gradient(90deg, #f5f1e8b8, #f5f1e88c 45%, transparent 74%),
-      url("../images/optimized/startseite-buch-kerzenschein.webp");
+      var(--hero-image);
     background-position: right bottom;
     background-size: cover;
   }
 
-  .home-hero > .hero {
+  .home-hero {
+    --hero-image: url("../images/optimized/hero-home-lars-wollny.webp");
+  }
+
+  .stories-hero {
+    --hero-image: url("../images/optimized/hero-geschriebenes-lars-wollny.webp");
+  }
+
+  .about-hero {
+    --hero-image: url("../images/optimized/hero-hinter-den-worten-lars-wollny.webp");
+  }
+
+  .page-hero > .hero {
     max-width: none;
   }
 
-  .home-hero .intro {
+  .page-hero .intro {
     max-width: min(52vw, 35rem);
+    min-height: 3lh;
     color: #4d534b;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .home-hero {
+  .page-hero {
     background: var(--paper);
   }
 
-  .home-hero .intro {
+  .page-hero .intro {
     max-width: 48ch;
+    min-height: auto;
   }
 }
 
 @media screen and (forced-colors: active) {
-  .home-hero {
+  .page-hero {
     background-image: none;
   }
 }

@@ -5,9 +5,11 @@ nav: stories
 permalink: /stories/
 description: "Von unerwarteten Begegnungen, eigensinnigen Menschen und kleinen Brüchen im Alltag. Hier findest du meine Texte – mal leise, mal komisch, mal mit einem Blick in den Abgrund."
 ---
+<section class="page-hero stories-hero">
+  <div class="wrap hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></div>
+</section>
 <div class="stories-intro">
   <div class="wrap">
-    <section class="hero"><p class="eyebrow">Geschriebenes</p><h1>Kleine Geschichten.<br><em>Andere Welten.</em></h1><p class="intro">{{ page.description | escape }}</p></section>
 
     <noscript>
       <link rel="stylesheet" href="{{ '/assets/css/no-script.css' | relative_url }}?v={{ site.time | date: '%s' }}">
