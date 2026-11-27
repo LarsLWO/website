@@ -691,7 +691,7 @@ a[href^="https://"]:not([href*="larswollny.de"])::after{content:"";display:inlin
   }
 
   .about-hero {
-    --hero-image: url("../images/optimized/hero-hinter-den-worten-lars-wollny.webp");
+    --hero-image: url("../images/optimized/hero-hinter-den-worten-herbst-lars-wollny.webp");
   }
 
   .page-hero > .hero {
